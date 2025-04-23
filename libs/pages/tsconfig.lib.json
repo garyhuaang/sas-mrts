@@ -1,5 +1,5 @@
 {
-  "extends": "../../../tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
     "types": [
@@ -30,7 +30,10 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../common/tsconfig.lib.json"
+      "path": "../shared/common/tsconfig.lib.json"
+    },
+    {
+      "path": "../shared/ui/tsconfig.lib.json"
     }
   ]
 }

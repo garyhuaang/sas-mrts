@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.2.10",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-router-dom": "^6.29.0"
@@ -56,6 +57,7 @@
   "workspaces": [
     "apps/*",
     "libs/shared/*",
-    "libs/pages/*"
+    "libs/pages/*",
+    "libs/*"
   ]
 }

@@ -8,9 +8,7 @@ module.exports = {
   content: [
     join(__dirname, 'src/**/*.{js,ts,jsx,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
-    // Add UI lib path explicitly
     join(__dirname, '../../libs/shared/ui/base/src/**/*.{js,ts,jsx,tsx}'),
-    // Add base config content if it exists and is an array
     ...(Array.isArray(baseConfig.content) ? baseConfig.content : []),
   ],
   // The rest of the configuration remains the same as before

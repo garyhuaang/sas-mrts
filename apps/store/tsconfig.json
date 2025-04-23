@@ -9,10 +9,7 @@
   },
   "references": [
     {
-      "path": "../../libs/shared/ui"
-    },
-    {
-      "path": "../../libs/pages/layout"
+      "path": "../../libs/pages"
     },
     {
       "path": "./tsconfig.app.json"
