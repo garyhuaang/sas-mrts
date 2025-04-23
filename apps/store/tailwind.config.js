@@ -1,15 +1,23 @@
+const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
+const { join } = require('path');
+const baseConfig = require('../../tailwind.config');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  // Properly spread only the content from baseConfig
+  content: [
+    join(__dirname, 'src/**/*.{js,ts,jsx,tsx}'),
+    ...createGlobPatternsForDependencies(__dirname),
+    // Add UI lib path explicitly
+    join(__dirname, '../../libs/shared/ui/base/src/**/*.{js,ts,jsx,tsx}'),
+    // Add base config content if it exists and is an array
+    ...(Array.isArray(baseConfig.content) ? baseConfig.content : []),
+  ],
+  // The rest of the configuration remains the same as before
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
+    ...(baseConfig.theme || {}),
     extend: {
+      ...(baseConfig.theme?.extend || {}),
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -66,5 +74,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  // Merge plugins safely
+  plugins: [
+    ...(Array.isArray(baseConfig.plugins) ? baseConfig.plugins : []),
+    require('tailwindcss-animate'),
+  ],
 };

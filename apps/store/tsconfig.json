@@ -1,7 +1,16 @@
 {
   "files": [],
   "include": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
   "references": [
+    {
+      "path": "../../libs/shared/ui"
+    },
     {
       "path": "../../libs/pages/layout"
     },
