@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/pages/layout"
+    },
+    {
       "path": "./tsconfig.app.json"
     }
   ],

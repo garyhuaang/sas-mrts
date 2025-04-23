@@ -5,6 +5,12 @@
   "references": [
     {
       "path": "./apps/store"
+    },
+    {
+      "path": "./libs/shared/ui"
+    },
+    {
+      "path": "./libs/pages/layout"
     }
   ]
 }
