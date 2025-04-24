@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { NavBar } from '@sas-mrts/ui';
+
 import { navigationRoutes } from '@sas-mrts/common';
+import { NavBar } from '@sas-mrts/ui';
 
 function Layout() {
   return (

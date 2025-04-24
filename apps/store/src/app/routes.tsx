@@ -1,13 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
+
 import {
-  Layout,
-  Landing,
   About,
-  Products,
   Cart,
   Checkout,
-  Orders,
+  Landing,
+  Layout,
   Login,
+  Orders,
+  Products,
   Register,
 } from '@sas-mrts/pages';
 

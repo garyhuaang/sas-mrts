@@ -6,10 +6,10 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/shared/ui/**/*.{ts,tsx,js,jsx}"]
       }
     }
   }

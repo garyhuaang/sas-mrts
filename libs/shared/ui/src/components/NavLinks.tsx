@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
+
+import { Button } from '../base/Button';
 import {
   NavigationMenu,
-  NavigationMenuList,
   NavigationMenuItem,
+  NavigationMenuList,
 } from '../base/NavigationMenu';
+
 import { Route } from '@sas-mrts/common';
-import { Button } from '../base/Button';
-import { Link } from 'react-router-dom';
 
 function NavLinks({ routes }: { routes: Route[] }) {
   return (

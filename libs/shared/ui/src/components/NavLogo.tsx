@@ -1,5 +1,6 @@
-import { SofaIcon } from '@sas-mrts/common';
 import { Button } from '../base/Button';
+
+import { SofaIcon } from '@sas-mrts/common';
 
 function NavLogo() {
   return (

@@ -1,6 +1,7 @@
-import { Route } from '@sas-mrts/common';
 import { NavLinks } from './NavLinks';
 import { NavLogo } from './NavLogo';
+
+import { Route } from '@sas-mrts/common';
 
 function NavBar({ routes }: { routes: Route[] }) {
   return (
