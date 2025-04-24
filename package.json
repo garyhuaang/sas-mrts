@@ -2,7 +2,11 @@
   "name": "@sas-mrts/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "lint": "nx run-many --target=lint --all",
+    "prepare": "husky",
+    "buildr": "bash ./reset-build.sh"
+  },
   "private": true,
   "dependencies": {
     "@radix-ui/react-navigation-menu": "^1.2.10",
@@ -52,6 +56,7 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.19.0",
     "vite": "^6.0.0",
+    "vite-plugin-svgr": "^4.3.0",
     "vitest": "^3.0.0"
   },
   "workspaces": [
