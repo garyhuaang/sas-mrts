@@ -1,7 +1,8 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'
 
-import { navigationRoutes } from '@sas-mrts/common';
-import { NavBar } from '@sas-mrts/ui';
+import { NavBar } from '@sas-mrts/ui'
+
+import { navigationRoutes } from '@sas-mrts/common'
 
 function Layout() {
   return (
@@ -9,7 +10,7 @@ function Layout() {
       <Outlet />
       <NavBar routes={navigationRoutes} />
     </div>
-  );
+  )
 }
 
-export { Layout };
+export { Layout }

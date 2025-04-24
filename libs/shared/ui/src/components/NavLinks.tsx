@@ -11,7 +11,7 @@ import { Route } from '@sas-mrts/common'
 
 function NavLinks({ routes }: { routes: Route[] }) {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="align-element">
       <NavigationMenuList>
         {routes.map((route) => (
           <NavigationMenuItem key={route.name}>

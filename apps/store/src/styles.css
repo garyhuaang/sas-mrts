@@ -118,6 +118,12 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@layer components {
+  .align-element {
+    @apply mx-auto max-w-6xl px-8;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

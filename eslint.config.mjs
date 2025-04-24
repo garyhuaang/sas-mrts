@@ -1,12 +1,12 @@
-import nx from '@nx/eslint-plugin';
-import eslintPluginReact from 'eslint-plugin-react';
-import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
-import typescriptEslintParser from '@typescript-eslint/parser';
-import prettier from 'eslint-plugin-prettier';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import importPlugin from 'eslint-plugin-import';
-import airbnbConfig from 'eslint-config-airbnb';
-import airbnbTypeScriptConfig from 'eslint-config-airbnb-typescript';
+import nx from '@nx/eslint-plugin'
+import eslintPluginReact from 'eslint-plugin-react'
+import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
+import typescriptEslintParser from '@typescript-eslint/parser'
+import prettier from 'eslint-plugin-prettier'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import importPlugin from 'eslint-plugin-import'
+import airbnbConfig from 'eslint-config-airbnb'
+import airbnbTypeScriptConfig from 'eslint-config-airbnb-typescript'
 
 export default [
   ...nx.configs['flat/base'],
@@ -66,11 +66,11 @@ export default [
             // Add internal packages showing on top
             ['^@nx', '^react', '^\\w'],
             // Internal packages
-            ['^@store(/.*|$)'],
+            ['^@sas-mrts/store(/.*|$)'],
+            ['^@sas-mrts/ui(/.*|$)'],
+            ['^@sas-mrts/pages(/.*|$)'],
             ['^@components(/.*|$)'],
-            ['^@ui(/.*|$)'],
             ['^@lib(/.*|$)'],
-            ['^@pages(/.*|$)'],
             ['^@routes(/.*|$)'],
             ['^@layouts(/.*|$)'],
             ['^@utils(/.*|$)'],
@@ -213,4 +213,4 @@ export default [
     },
     rules: {},
   },
-];
+]
