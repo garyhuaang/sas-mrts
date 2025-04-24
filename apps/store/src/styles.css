@@ -1,3 +1,7 @@
+@import 'tailwindcss';
+@config "../../../tailwind.config.js";
+@plugin "tailwindcss-animate";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
