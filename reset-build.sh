@@ -17,7 +17,7 @@ npm i
 echo "🔄 Syncing Nx workspace..."
 nx sync
 
-echo "🏗️ Building common and layout libraries..."
+echo "🏗️ Building store..."
 nx build store
 
 echo "✅ Build process completed!"
