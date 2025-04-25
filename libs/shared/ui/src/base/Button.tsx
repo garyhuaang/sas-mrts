@@ -54,4 +54,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = 'Button'
 
-export { Button, buttonVariants }
+type ButtonVariant =
+  | 'default'
+  | 'secondary'
+  | 'outline'
+  | 'ghost'
+  | 'destructive'
+type ButtonSize = 'default' | 'sm' | 'lg' | 'icon'
+
+export { Button, buttonVariants, type ButtonVariant, type ButtonSize }

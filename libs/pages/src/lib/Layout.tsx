@@ -1,14 +1,16 @@
 import { Outlet } from 'react-router-dom'
 
 import { NavBar } from '@sas-mrts/ui'
+import { UserAuthHeader } from '@sas-mrts/ui'
 
-import { navigationRoutes } from '@sas-mrts/common'
+import { userShopRoutes } from '@sas-mrts/common'
 
 function Layout() {
   return (
     <div>
+      <UserAuthHeader />
+      <NavBar routes={userShopRoutes} />
       <Outlet />
-      <NavBar routes={navigationRoutes} />
     </div>
   )
 }
