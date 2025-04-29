@@ -12,6 +12,9 @@
       "path": "../../libs/pages"
     },
     {
+      "path": "../../libs/rStore"
+    },
+    {
       "path": "./tsconfig.app.json"
     }
   ],
