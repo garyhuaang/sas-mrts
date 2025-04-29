@@ -14,6 +14,9 @@
     },
     {
       "path": "./libs/shared/common"
+    },
+    {
+      "path": "./libs/rStore"
     }
   ]
 }
