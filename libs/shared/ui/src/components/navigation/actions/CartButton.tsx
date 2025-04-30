@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Button } from '../../../base/Button'
 
 import { CartIcon } from '@sas-mrts/common'
@@ -7,14 +9,25 @@ const itemsInCart = 0
 function CartButton() {
   return (
     <>
-      <Button asChild className="p-3 cursor-pointer" variant="outline">
-        <CartIcon className="h-12 w-12" />
+      <Button
+        asChild
+        className="flex justify-center items-center relative p-3 cursor-pointer"
+        variant="outline"
+      >
+        <Link className="h-12 w-12" to="/cart">
+          <CartIcon />
+          <div
+            className="
+              absolute -top-3 -right-3
+              h-6 w-6 pb-0.5
+            bg-primary rounded-full
+              text-secondary text-sm
+              flex items-center justify-center"
+          >
+            {itemsInCart}
+          </div>
+        </Link>
       </Button>
-      <div className="flex justify-center align-center absolute w-5 h-5 bg-current rounded-full right-7 top-15">
-        <span className="text-secondary justify-center text-sm mb-0.5">
-          {itemsInCart}
-        </span>
-      </div>
     </>
   )
 }

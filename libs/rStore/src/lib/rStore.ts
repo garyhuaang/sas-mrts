@@ -1,3 +1,5 @@
+import { type TypedUseSelectorHook, useSelector } from 'react-redux'
+
 import { productsReducer, themeReducer } from './features'
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
@@ -13,4 +15,6 @@ export const rStore = configureStore({
   },
 })
 
-export type RootState = ReturnType<typeof rStore.getState>
+type RootState = ReturnType<typeof rStore.getState>
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
