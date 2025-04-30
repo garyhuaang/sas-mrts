@@ -1,10 +1,16 @@
-import productsSliceReducer from './features/products.slice'
+import { productsReducer, themeReducer } from './features'
 
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+
+const rootReducer = combineReducers({
+  themeReducer: themeReducer,
+  productsReducer: productsReducer,
+})
 
 export const rStore = configureStore({
-  reducer: { productsSliceReducer },
+  reducer: {
+    rootReducer,
+  },
 })
 
 export type RootState = ReturnType<typeof rStore.getState>
-export type AppDispatch = () => typeof rStore.dispatch

@@ -31,6 +31,9 @@
   "references": [
     {
       "path": "../common/tsconfig.lib.json"
+    },
+    {
+      "path": "../../rStore/tsconfig.lib.json"
     }
   ]
 }

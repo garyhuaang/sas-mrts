@@ -6,6 +6,9 @@
       "path": "../common"
     },
     {
+      "path": "../../rStore"
+    },
+    {
       "path": "./tsconfig.lib.json"
     }
   ],
