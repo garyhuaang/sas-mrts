@@ -55,7 +55,6 @@ export const createClient = (baseURL: string) => {
   return apiClient
 }
 
-// Usage examples:
 export const storeClient = createClient(
   'https://strapi-store-server.onrender.com/api'
 )
