@@ -107,7 +107,6 @@ export default [
       '@typescript-eslint/no-floating-promises': 'off',
       'react/jsx-one-expression-per-line': 'off',
       'spaced-comment': ['error', 'always'],
-      'space-in-brakcet': ['error', 'never'],
       eqeqeq: ['error', 'smart'],
       'no-else-return': 'error',
       'no-empty-function': 'error',
@@ -197,7 +196,7 @@ export default [
       ],
       'array-bracket-spacing': [
         'error',
-        'always',
+        'never',
         {
           objectsInArrays: true,
           arraysInArrays: false,
