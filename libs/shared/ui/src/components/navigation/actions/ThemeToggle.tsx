@@ -7,7 +7,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '../../index'
+} from '../../../index'
 
 import { MoonIcon, SunIcon } from '@sas-mrts/common'
 import { setTheme } from '@sas-mrts/rStore'
