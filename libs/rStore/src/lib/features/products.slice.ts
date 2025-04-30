@@ -1,20 +1,32 @@
 import { storeClient } from '../api/client'
+import type { RootState } from '../rStore'
 import { createAppAsyncThunk } from '../types'
-import { Products } from '../types/products.type'
+import { type Product, Products } from '../types/products.type'
 
-import { createSlice } from '@reduxjs/toolkit'
+import { createSelector, createSlice } from '@reduxjs/toolkit'
 
-type ProdcutsListState = {
-  products: Products
+type ProdcutsState = {
+  items: Products
   isLoading: boolean
   error: string | null
 }
 
-const initialState: ProdcutsListState = {
-  products: [],
+const initialState: ProdcutsState = {
+  items: [],
   isLoading: false,
   error: null,
 }
+
+export const selectProductsState = (state: RootState) => state.products.items
+
+export const selectProducts = createSelector(
+  [selectProductsState],
+  (items: Products) => {
+    if (items) {
+      return Object?.values(items)[0]?.map((item: Product) => ({ ...item }))
+    }
+  }
+)
 
 export const fetchProducts = createAppAsyncThunk(
   'products/fetchProducts',
@@ -36,7 +48,7 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false
-        state.products = action.payload
+        state.items = action.payload
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false
