@@ -1,36 +1,48 @@
+import { storeClient } from '../api/client'
+import { createAppAsyncThunk } from '../types'
 import { Products } from '../types/products.type'
 
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-const initialState: Products = [
-  {
-    id: null,
-    attributes: {
-      title: '',
-      company: '',
-      description: '',
-      featured: false,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      publishedAt: new Date().toISOString(),
-      category: '',
-      image: '',
-      price: '0.00',
-      shipping: false,
-      colors: [],
-    },
-  },
-]
+type ProdcutsListState = {
+  products: Products
+  isLoading: boolean
+  error: string | null
+}
+
+const initialState: ProdcutsListState = {
+  products: [],
+  isLoading: false,
+  error: null,
+}
+
+export const fetchProducts = createAppAsyncThunk(
+  'products/fetchProducts',
+  async () => {
+    const response = await storeClient.get<Products>('/products')
+
+    return response.data
+  }
+)
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    setProducts: (state, action: PayloadAction<Products>) => {
-      state = action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.products = action.payload
+      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.error.message || 'Failed to fetch products'
+      })
   },
 })
 
 export const productsReducer = productsSlice.reducer
-export const { setProducts } = productsSlice.actions

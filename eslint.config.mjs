@@ -19,7 +19,7 @@ export default [
       '**/vitest.config.*.timestamp*',
       '**/node_modules',
       '**/libs/shared/ui/src/base/*',
-      '**/libs/rStro/src/lib/NxRootStore/**/*',
+      '**/libs/rStore/src/lib/api/*',
     ],
   },
   {
@@ -107,6 +107,7 @@ export default [
       '@typescript-eslint/no-floating-promises': 'off',
       'react/jsx-one-expression-per-line': 'off',
       'spaced-comment': ['error', 'always'],
+      'space-in-brakcet': ['error', 'never'],
       eqeqeq: ['error', 'smart'],
       'no-else-return': 'error',
       'no-empty-function': 'error',

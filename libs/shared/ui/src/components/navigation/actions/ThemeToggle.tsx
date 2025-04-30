@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux'
-
 import {
   Button,
   DropdownMenu,
@@ -10,10 +8,10 @@ import {
 } from '../../../index'
 
 import { MoonIcon, SunIcon } from '@sas-mrts/common'
-import { setTheme } from '@sas-mrts/rStore'
+import { setTheme, useAppDispatch } from '@sas-mrts/rStore'
 
 function ThemeToggle() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <DropdownMenu>

@@ -9,11 +9,7 @@ const itemsInCart = 0
 function CartButton() {
   return (
     <>
-      <Button
-        asChild
-        className="flex justify-center items-center relative p-3 cursor-pointer"
-        variant="outline"
-      >
+      <Button asChild className="relative p-3 cursor-pointer" variant="outline">
         <Link className="h-12 w-12" to="/cart">
           <CartIcon />
           <div

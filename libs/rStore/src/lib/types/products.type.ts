@@ -13,4 +13,4 @@ export type Product = {
   colors: string[]
 }
 
-export type Products = [{ id: number | null; attributes: Product }]
+export type Products = [{ id: number; attributes: Product }] | unknown

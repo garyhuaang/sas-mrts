@@ -1,5 +1,21 @@
+import { useEffect } from 'react'
+
+import { type Products, useAppSelector } from '@sas-mrts/rStore'
+
 function Products() {
-  return <div>Products</div>;
+  const products = useAppSelector((state) => [[state.products.products]])
+
+  useEffect(() => {
+    console.log(products)
+  }, [products])
+
+  return (
+    <div>
+      {products?.map((product) => (
+        <div key={products.toString()}>{product.toString()}</div>
+      ))}
+    </div>
+  )
 }
 
-export { Products };
+export { Products }
