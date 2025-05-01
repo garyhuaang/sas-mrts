@@ -13,4 +13,18 @@ export type Product = {
   colors: string[]
 }
 
-export type Products = [{ id: number; attributes: Product }]
+export type Products = { id: number; attributes: Product }[]
+
+export type Pagination = {
+  pagination: {
+    page: number
+    pageSize: number
+    pageCount: number
+    total: number
+  }
+}
+
+export type ProductsResponse = {
+  data: Products
+  meta: Pagination
+}

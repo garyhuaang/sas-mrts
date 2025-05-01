@@ -1,7 +1,7 @@
 import { storeClient } from '../api/client'
 import type { RootState } from '../rStore'
 import { createAppAsyncThunk } from '../types'
-import { type Product, Products } from '../types/products.type'
+import { Products, type ProductsResponse } from '../types/products.type'
 
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 
@@ -21,19 +21,21 @@ export const selectProductsState = (state: RootState) => state.products.items
 
 export const selectProducts = createSelector(
   [selectProductsState],
-  (items: Products) => {
-    if (items) {
-      return Object?.values(items)[0]?.map((item: Product) => ({ ...item }))
-    }
+  (productsList: Products) => {
+    return productsList.map((item) => ({
+      id: item.id,
+      attributes: { ...item.attributes },
+    }))
   }
 )
 
 export const fetchProducts = createAppAsyncThunk(
   'products/fetchProducts',
   async () => {
-    const response = await storeClient.get<Products>('/products')
+    const response = await storeClient.get<ProductsResponse>('/products')
+    const data = response.data
 
-    return response.data
+    return data.data
   }
 )
 
