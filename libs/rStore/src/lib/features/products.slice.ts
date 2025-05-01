@@ -1,7 +1,6 @@
-import { storeClient } from '../api/client'
+import { fetchProducts } from '../api/fetch.data'
 import type { RootState } from '../rStore'
-import { createAppAsyncThunk } from '../types'
-import { Products, type ProductsResponse } from '../types/products.type'
+import { Products } from '../types/products.type'
 
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 
@@ -16,28 +15,6 @@ const initialState: ProdcutsState = {
   isLoading: false,
   error: null,
 }
-
-export const selectProductsState = (state: RootState) => state.products.items
-
-export const selectProducts = createSelector(
-  [selectProductsState],
-  (productsList: Products) => {
-    return productsList.map((item) => ({
-      id: item.id,
-      attributes: { ...item.attributes },
-    }))
-  }
-)
-
-export const fetchProducts = createAppAsyncThunk(
-  'products/fetchProducts',
-  async () => {
-    const response = await storeClient.get<ProductsResponse>('/products')
-    const data = response.data
-
-    return data.data
-  }
-)
 
 const productsSlice = createSlice({
   name: 'products',
@@ -58,5 +35,17 @@ const productsSlice = createSlice({
       })
   },
 })
+
+export const selectProductsState = (state: RootState) => state.products.items
+
+export const selectProducts = createSelector(
+  [selectProductsState],
+  (productsList: Products) => {
+    return productsList.map((item) => ({
+      id: item.id,
+      attributes: { ...item.attributes },
+    }))
+  }
+)
 
 export const productsReducer = productsSlice.reducer

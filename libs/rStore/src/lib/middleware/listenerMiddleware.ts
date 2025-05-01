@@ -1,4 +1,4 @@
-import { AppDispatch, RootState } from '../../rStore'
+import { AppDispatch, RootState } from '../rStore'
 
 import { addListener, createListenerMiddleware } from '@reduxjs/toolkit'
 

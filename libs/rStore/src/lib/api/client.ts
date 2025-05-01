@@ -6,7 +6,7 @@ interface ClientResponse<T> {
 }
 
 export const createClient = (baseURL: string) => {
-  const apiClient = async <T>(
+  const client = async <T>(
     endpoint: string,
     { body, ...customConfig }: Partial<RequestInit> = {}
   ): Promise<ClientResponse<T>> => {
@@ -36,23 +36,22 @@ export const createClient = (baseURL: string) => {
     }
   }
 
-  // Attach the helper methods
-  apiClient.get = function <T>(
+  client.get = function <T>(
     endpoint: string,
     customConfig: Partial<RequestInit> = {}
   ) {
-    return apiClient<T>(endpoint, { ...customConfig, method: 'GET' })
+    return client<T>(endpoint, { ...customConfig, method: 'GET' })
   }
 
-  apiClient.post = function <T>(
+  client.post = function <T>(
     endpoint: string,
     body: any,
     customConfig: Partial<RequestInit> = {}
   ) {
-    return apiClient<T>(endpoint, { ...customConfig, body })
+    return client<T>(endpoint, { ...customConfig, body })
   }
 
-  return apiClient
+  return client
 }
 
 export const storeClient = createClient(

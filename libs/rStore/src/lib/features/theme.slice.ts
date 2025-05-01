@@ -15,13 +15,13 @@ function initializeTheme(): Theme {
   return theme
 }
 
-const INITIAL_STATE: ThemeState = {
+const initialState: ThemeState = {
   theme: initializeTheme(),
 }
 
 const themeSlice = createSlice({
   name: 'theme',
-  initialState: INITIAL_STATE,
+  initialState,
   reducers: {
     setTheme: (state, action: PayloadAction<Theme>) => {
       state.theme = action.payload
