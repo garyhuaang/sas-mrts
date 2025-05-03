@@ -6,11 +6,13 @@ import { userShopRoutes } from '@sas-mrts/common'
 
 function Layout() {
   return (
-    <>
-      <UserAuthHeader />
-      <NavBar routes={userShopRoutes} />
+    <div className="flex flex-col">
+      <div className="sticky top-0">
+        <UserAuthHeader />
+        <NavBar routes={userShopRoutes} />
+      </div>
       <Outlet />
-    </>
+    </div>
   )
 }
 

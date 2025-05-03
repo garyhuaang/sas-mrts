@@ -1,23 +1,40 @@
+const h1Content =
+  'Welcome to Stone & Sable, where functionality meets artistry in every ' +
+  'piece we offer. Illuminate your space with our curated collection of ' +
+  'distinctive lamps, anchor your rooms with our quality furniture, and ' +
+  'find the perfect seating that invites both comfort and conversation.'
+
 function Landing() {
   return (
-    <div className="grid grid-row-3 grid-cols-2">
-      <div className="flex flex-col gap-6 p-15">
-        <h1 className="text-6xl font-bold tracking-wide leading-30">
-          Modern Living, Timeless Design
+    <div className="flex flex-col ">
+      <div className="flex p-15 items-center justify-around">
+        <h1 className="text-6xl tracking-wide leading-20 w-11/12">
+          Modern <span className="font-bold">Living</span>,<br />
+          <span className="font-bold">Timless </span>
+          Design
         </h1>
-        <p className="text-2xl font-extralight">
-          Welcome to Stone & Sable, where functionality meets artistry in every
-          piece we offer. Illuminate your space with our curated collection of
-          distinctive lamps, anchor your rooms with our quality furniture, and
-          find the perfect seating that invites both comfort and conversation.
+        <p className="flex flex-wrap text-3xl font-extralight tracking-tighter">
+          {h1Content.split(' ').map((word, index) => (
+            <span
+              className={`
+                motion-preset-blur-up-lg
+                ${
+                  word === 'functionality' ||
+                  word === 'Illuminate' ||
+                  word === 'comfort'
+                    ? 'font-bold'
+                    : 'font-extralight'
+                }
+                mr-2
+              `}
+              key={index}
+              style={{ animationDuration: `${index * 0.1}s` }}
+            >
+              {word}
+            </span>
+          ))}
         </p>
-
-        <h2 className="text-5xl">
-          Illuminate Your <span className="font-bold">Vision</span>
-        </h2>
       </div>
-
-      <div>lol</div>
     </div>
   )
 }
