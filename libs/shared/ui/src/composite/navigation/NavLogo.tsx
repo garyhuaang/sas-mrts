@@ -1,4 +1,4 @@
-import { Button } from '../../base/Button'
+import { Button } from '../../base/button'
 
 import { SofaIcon } from '@sas-mrts/common'
 

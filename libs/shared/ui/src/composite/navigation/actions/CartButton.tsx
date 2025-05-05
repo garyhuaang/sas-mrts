@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { Button } from '../../../base/Button'
+import { Button } from '../../../base/button'
 
 import { CartIcon } from '@sas-mrts/common'
 
