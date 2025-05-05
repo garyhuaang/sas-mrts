@@ -122,6 +122,9 @@
   .align-element {
     @apply mx-auto max-w-6xl px-8;
   }
+  .reduced-viewport {
+    @apply max-h-[calc(100vh-132px)];
+  }
 }
 
 @layer base {

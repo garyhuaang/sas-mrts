@@ -1,12 +1,12 @@
 import nx from '@nx/eslint-plugin'
-import eslintPluginReact from 'eslint-plugin-react'
-import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
 import typescriptEslintParser from '@typescript-eslint/parser'
-import prettier from 'eslint-plugin-prettier'
-import simpleImportSort from 'eslint-plugin-simple-import-sort'
-import importPlugin from 'eslint-plugin-import'
 import airbnbConfig from 'eslint-config-airbnb'
 import airbnbTypeScriptConfig from 'eslint-config-airbnb-typescript'
+import importPlugin from 'eslint-plugin-import'
+import prettier from 'eslint-plugin-prettier'
+import eslintPluginReact from 'eslint-plugin-react'
+import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 export default [
   ...nx.configs['flat/base'],
@@ -19,6 +19,7 @@ export default [
       '**/vitest.config.*.timestamp*',
       '**/node_modules',
       '**/libs/shared/ui/src/base/*',
+      '**/libs/rStore/src/lib/api/*',
     ],
   },
   {
@@ -195,7 +196,7 @@ export default [
       ],
       'array-bracket-spacing': [
         'error',
-        'always',
+        'never',
         {
           objectsInArrays: true,
           arraysInArrays: false,

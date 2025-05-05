@@ -1,4 +1,4 @@
-import NavActions from './NavActions'
+import NavActions from './actions/NavActions'
 import { NavLinks } from './NavLinks'
 import { NavLogo } from './NavLogo'
 

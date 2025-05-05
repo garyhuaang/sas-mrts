@@ -1,4 +1,10 @@
 export * from './base/Button'
-export * from './components/navigation/NavLinks'
-export * from './components/navigation/NavBar'
-export * from './components/header/UserAuthHeader'
+export * from './base/DropDownMenu'
+export * from './base/FadeWordsIn'
+export * from './base/SmoothScroller'
+export * from './base/SofaBackDrop'
+export * from './base/Seperator'
+
+export * from './composite/header/UserAuthHeader'
+export * from './composite/navigation/NavBar'
+export * from './composite/navigation/NavLinks'

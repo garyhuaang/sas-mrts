@@ -1,36 +1,51 @@
+import { fetchProducts } from '../api/fetch.data'
+import type { RootState } from '../rStore'
 import { Products } from '../types/products.type'
 
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createSelector, createSlice } from '@reduxjs/toolkit'
 
-const initialState: Products = [
-  {
-    id: null,
-    attributes: {
-      title: '',
-      company: '',
-      description: '',
-      featured: false,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      publishedAt: new Date().toISOString(),
-      category: '',
-      image: '',
-      price: '0.00',
-      shipping: false,
-      colors: [],
-    },
-  },
-]
+type ProdcutsState = {
+  items: Products
+  isLoading: boolean
+  error: string | null
+}
+
+const initialState: ProdcutsState = {
+  items: [],
+  isLoading: false,
+  error: null,
+}
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    setProducts: (state, action: PayloadAction<Products>) => {
-      state = action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.items = action.payload
+      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.error.message || 'Failed to fetch products'
+      })
   },
 })
 
-export const { setProducts } = productsSlice.actions
-export default productsSlice.reducer
+export const selectProductsState = (state: RootState) => state.products.items
+
+export const selectProducts = createSelector(
+  [selectProductsState],
+  (productsList: Products) => {
+    return productsList.map((item) => ({
+      id: item.id,
+      attributes: { ...item.attributes },
+    }))
+  }
+)
+
+export const productsReducer = productsSlice.reducer
