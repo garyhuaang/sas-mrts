@@ -9,7 +9,6 @@ function FadeWordsIn({
     <p className="flex flex-wrap items-center justify-center tracking-wide leading-relaxed">
       {words.split(' ').map((word, index) => (
         <span
-          tracking-normal
           className={`
                 mr-2
                 motion-preset-blur-up-lg
