@@ -46,6 +46,7 @@ function SmoothScroller({
         smooth: smoothness,
         effects: true,
         ignoreMobileResize: ignoreMobileResize,
+        normalizeScroll: true,
       })
 
       return smoother
