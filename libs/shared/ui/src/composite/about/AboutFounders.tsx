@@ -2,8 +2,7 @@ import { buisnessPartners } from '@sas-mrts/common'
 
 function AboutFounders() {
   return (
-    <div className="flex justify-center h-[536px]">
-      <div className="section-bg-secondary h-[536px]" />
+    <div className="flex justify-center section-bg-secondary ">
       <div className="grid grid-cols-1 md:grid-cols-2 p-6 place-items-center">
         <div className="h-full flex justify-center ">
           <img

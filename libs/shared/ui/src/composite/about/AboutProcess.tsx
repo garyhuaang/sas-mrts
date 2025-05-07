@@ -2,8 +2,7 @@ import { processes, woodWork } from '@sas-mrts/common'
 
 function AboutProcess() {
   return (
-    <div className="flex justify-center ">
-      <div className="section-bg-primary min-h-[738px]" />
+    <div className="flex justify-center section-bg-primary">
       <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-4 place-items-center">
         <h2 className="md:text-[2.25em] font-bold p-10">
           Our Process
@@ -21,7 +20,7 @@ function AboutProcess() {
             </p>
           </section>
           {processes.map((process, index) => (
-            <section className="flex gap-4">
+            <section className="flex gap-4" key={index}>
               <div
                 className="flex bg-muted-foreground rounded-full h-[25px] max-w-[25px] min-w-[25px]
                   items-center justify-center text-sm text-secondary

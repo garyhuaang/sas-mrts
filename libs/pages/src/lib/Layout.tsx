@@ -1,22 +1,30 @@
 import { Outlet } from 'react-router-dom'
 
-import { NavBar, SofaBackDrop, UserAuthHeader } from '@sas-mrts/ui'
+import {
+  NavBar,
+  SmoothScroller,
+  SofaBackDrop,
+  UserAuthHeader,
+} from '@sas-mrts/ui'
 
 import { userShopRoutes } from '@sas-mrts/common'
 
 function Layout() {
   return (
-    <div className="flex flex-col">
-      <div className="fixed w-full z-50">
-        <UserAuthHeader />
-        <NavBar routes={userShopRoutes} />
-      </div>
+    <>
+      <SmoothScroller ignoreMobileResize={true}>
+        <div className="flex flex-col w-full top-0" id="nav-auth">
+          <UserAuthHeader />
+          <NavBar routes={userShopRoutes} />
+        </div>
 
-      <div className="mt-[132px]">
-        <Outlet />
-      </div>
+        <div className="relative -z-1">
+          <Outlet />
+        </div>
+      </SmoothScroller>
+
       <SofaBackDrop />
-    </div>
+    </>
   )
 }
 

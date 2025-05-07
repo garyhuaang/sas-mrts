@@ -8,7 +8,7 @@ function ProductsList() {
   const products: Products = useSelector(selectProducts)
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pt-12">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pt-12 h-full">
       {products.map((product) => (
         <Card className="bg-card shadow-sm max-w-90" key={product.id}>
           <CardContent>

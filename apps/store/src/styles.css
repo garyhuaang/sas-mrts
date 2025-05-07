@@ -126,10 +126,10 @@
     @apply max-h-[calc(100vh-132px)];
   }
   .section-bg-primary {
-    @apply absolute bg-primary-foreground w-full -z-1;
+    @apply bg-primary-foreground w-full h-full;
   }
   .section-bg-secondary {
-    @apply absolute bg-secondary w-full -z-1;
+    @apply bg-secondary w-full h-full;
   }
 }
 

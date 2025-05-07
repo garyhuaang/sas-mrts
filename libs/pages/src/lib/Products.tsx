@@ -2,7 +2,7 @@ import { ProductsList } from '@sas-mrts/ui'
 
 function Products() {
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col items-center justify-center">
       <ProductsList />
     </div>
   )
