@@ -2,8 +2,8 @@ import { hero1 } from '@sas-mrts/common'
 
 function AboutOrigin() {
   return (
-    <div className="flex justify-center min-h-[536px]">
-      <div className="section-bg-secondary" />
+    <div className="flex justify-center ">
+      <div className="section-bg-secondary min-h-[536px]" />
       <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-4 place-items-center">
         <h2 className="md:text-[2.25em] font-bold p-10">
           Where It All Began

@@ -2,8 +2,8 @@ import { processes, woodWork } from '@sas-mrts/common'
 
 function AboutProcess() {
   return (
-    <div className="flex justify-center min-h-[634]">
-      <div className="section-bg-primary" />
+    <div className="flex justify-center ">
+      <div className="section-bg-primary min-h-[738px]" />
       <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-4 place-items-center">
         <h2 className="md:text-[2.25em] font-bold p-10">
           Our Process

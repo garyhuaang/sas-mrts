@@ -8,7 +8,7 @@ import {
 
 function About() {
   return (
-    <div className="flex flex-col min-h-screen text-primary ">
+    <div className="flex flex-col reduced-viewport text-primary ">
       <AboutHero />
       <AboutOrigin />
       <AboutValues />

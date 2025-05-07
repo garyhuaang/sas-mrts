@@ -6,7 +6,7 @@ import { userShopRoutes } from '@sas-mrts/common'
 
 function Layout() {
   return (
-    <div className="flex flex-col relative h-screen overflow-auto">
+    <div className="flex flex-col">
       <div className="fixed w-full z-50">
         <UserAuthHeader />
         <NavBar routes={userShopRoutes} />

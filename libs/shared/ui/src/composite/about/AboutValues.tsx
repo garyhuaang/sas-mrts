@@ -2,8 +2,8 @@ import { values } from '@sas-mrts/common'
 
 function AboutValues() {
   return (
-    <div className=" h-[536px]">
-      <div className="section-bg-primary" />
+    <div className="h-[536px]">
+      <div className="section-bg-primary min-h-[536px]" />
       <div className="flex flex-col items-center pt-32 pb-32">
         <h2 className="md:text-[2.25em] font-bold p-0">Our Values</h2>
         <p className="text-muted-foreground md:text-xl relaxed font-normal mb-7">
