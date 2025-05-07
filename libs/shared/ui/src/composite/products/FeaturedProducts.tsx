@@ -1,5 +1,6 @@
-import hero3 from '../../assets/hero3.jpg'
 import { Separator } from '../../base'
+
+import { hero3 } from '@sas-mrts/common'
 
 function FeaturedProducts() {
   return (
