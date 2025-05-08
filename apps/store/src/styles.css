@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import url('https://fonts.cdnfonts.com/css/general-sans');
 @config "../../../tailwind.config.js";
 @plugin "tailwindcss-animate";
 
@@ -139,5 +140,41 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  @font-face {
+    font-family: 'circular-web';
+    src: url('/fonts/circularweb-book.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'general';
+    src: url('/fonts/general.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'robert-medium';
+    src: url('/fonts/robert-medium.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'robert-regular';
+    src: url('/fonts/robert-regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'zentry';
+    src: url('/fonts/zentry-regular.woff2') format('woff2');
+  }
+}
+
+@layer utilities {
+  .mask-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .maximum-screen {
+    @apply relative min-h-screen w-screen overflow-x-hidden;
+  }
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   }
 }
