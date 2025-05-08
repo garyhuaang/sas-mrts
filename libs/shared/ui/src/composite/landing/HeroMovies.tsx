@@ -122,6 +122,7 @@ function HeroMovies() {
           nextVideoIndex={nextVideoIndex}
           nextVideoRef={nextVideoRef}
         />
+
         <VideoPreview
           handleMiniVideoClick={handleMiniVideoClick}
           nextVideoIndex={nextVideoIndex}
