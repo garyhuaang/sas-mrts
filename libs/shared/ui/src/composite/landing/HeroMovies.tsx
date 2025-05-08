@@ -12,8 +12,6 @@ function HeroMovies() {
   gsap.registerPlugin(useGSAP, ScrollTrigger)
   const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(1)
   const [hasClicked, setHasClicked] = useState<boolean>(false)
-  const [isTransitioning, setIsTransitioning] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(true)
   const [loadedVideos, setLoadedVideos] = useState<number>(0)
   const totalVideos = 4
   const nextVideoIndex = (currentVideoIndex % totalVideos) + 1
@@ -22,17 +20,10 @@ function HeroMovies() {
   const videoFrameRef = useRef<HTMLDivElement>(null)
 
   const handleMiniVideoClick = () => {
-    setIsTransitioning(true)
-
-    if (nextVideoRef.current) {
-      nextVideoRef.current.muted = true
-    }
-
     const tl = gsap.timeline({
       onComplete: () => {
         setCurrentVideoIndex(nextVideoIndex)
-        setHasClicked(false)
-        setIsTransitioning(false)
+        setHasClicked(true)
       },
     })
 
@@ -78,8 +69,8 @@ function HeroMovies() {
         })
         gsap.from('#current-video', {
           transformOrigin: 'center center',
-          scale: 0,
-          duration: 1.5,
+          scale: 1,
+          duration: 1,
           ease: 'power1.inOut',
         })
       }
@@ -91,9 +82,10 @@ function HeroMovies() {
     if (hasClicked) {
       gsap.set('#video-frame', {
         borderRadius: '0% 0% 40% 10%',
+        ease: 'power1.inOut',
       })
       gsap.from('#video-frame', {
-        borderRadius: '0% 0% 0% 0%',
+        borderRadius: '0% 0% 40%% 10%',
         ease: 'power1.inOut',
         scrollTrigger: {
           trigger: '#video-frame',
@@ -106,7 +98,7 @@ function HeroMovies() {
   })
 
   return (
-    <div className="h-full">
+    <div className="h-[calc(100vh-110px)] group">
       <div
         className="flex flex-col items-center justify-center h-full"
         id="video-frame"
@@ -117,18 +109,17 @@ function HeroMovies() {
           currentVideoRef={currentVideoRef}
           handleVideoLoad={handleVideoLoad}
         />
-        <NextVideo
+        {/* <NextVideo
           handleVideoLoad={handleVideoLoad}
           nextVideoIndex={nextVideoIndex}
           nextVideoRef={nextVideoRef}
-        />
+        /> */}
         <VideoPreview
           handleMiniVideoClick={handleMiniVideoClick}
           nextVideoIndex={nextVideoIndex}
-          nextVideoRef={nextVideoRef}
         />
       </div>
-      <h1 className="absolute bottom-5 right-5 z-40 text-secondary text-4xl">
+      <h1 className="absolute bottom-5 right-5 text-secondary text-4xl z-50">
         STONE & SABLE
       </h1>
     </div>

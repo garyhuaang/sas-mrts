@@ -1,16 +1,15 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom'
 
 import {
   About,
+  Auth,
   Cart,
   Checkout,
   Landing,
   Layout,
-  Login,
   Orders,
   Products,
-  Register,
-} from '@sas-mrts/pages';
+} from '@sas-mrts/pages'
 
 const routes = createBrowserRouter([
   {
@@ -25,8 +24,7 @@ const routes = createBrowserRouter([
       { path: 'orders', element: <Orders /> },
     ],
   },
-  { path: '/login', element: <Login /> },
-  { path: '/register', element: <Register /> },
-]);
+  { path: '/auth', element: <Auth /> },
+])
 
-export default routes;
+export default routes

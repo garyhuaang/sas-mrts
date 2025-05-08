@@ -1,0 +1,42 @@
+import {
+  LoginTab,
+  NavBar,
+  RegisterTab,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+} from '@sas-mrts/ui'
+
+import { nonUserShopRoutes } from '@sas-mrts/common'
+
+function Auth() {
+  return (
+    <div className="flex-center flex-col h-screen w-screen">
+      <NavBar className="absolute top-0 w-full" routes={nonUserShopRoutes} />
+
+      <Tabs
+        className="w-[408px] flex-center flex-col gap-5 motion-preset-fade-lg duration-150"
+        defaultValue="login"
+        id="tabs"
+      >
+        <h1 className="font-bold text-3xl self-center leading-1">Welcome</h1>
+        <span className="text-gray-500 tracking-tight">
+          Sign into your account or create a new one
+        </span>
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger className="cursor-pointer" value="login">
+            Sign In
+          </TabsTrigger>
+          <TabsTrigger className="cursor-pointer" value="register">
+            Regsiter
+          </TabsTrigger>
+        </TabsList>
+
+        <LoginTab />
+        <RegisterTab />
+      </Tabs>
+    </div>
+  )
+}
+
+export { Auth }
