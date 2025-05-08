@@ -2,124 +2,135 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { CurrentVideo } from './CurrentVideo'
-import { NextVideo } from './NextVideo'
+import { getVideoSrc } from '../../lib/utils'
+
 import { VideoPreview } from './VideoPreview'
 
-import { useGSAP } from '@gsap/react'
-
 function HeroMovies() {
-  gsap.registerPlugin(useGSAP, ScrollTrigger)
-  const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(1)
-  const [hasClicked, setHasClicked] = useState<boolean>(false)
-  const [loadedVideos, setLoadedVideos] = useState<number>(0)
+  gsap.registerPlugin(ScrollTrigger)
+
+  const [currentVideoDataIndex, setCurrentVideoDataIndex] = useState<number>(1)
+  const [isTransitioning, setIsTransitioning] = useState(false)
   const totalVideos = 4
-  const nextVideoIndex = (currentVideoIndex % totalVideos) + 1
-  const nextVideoRef = useRef<HTMLVideoElement>(null)
-  const currentVideoRef = useRef<HTMLVideoElement>(null)
-  const videoFrameRef = useRef<HTMLDivElement>(null)
+  const videoPlayerARef = useRef<HTMLVideoElement>(null)
+  const videoPlayerBRef = useRef<HTMLVideoElement>(null)
+
+  const [activePlayer, setActivePlayer] =
+    useState<React.RefObject<HTMLVideoElement | null>>(videoPlayerARef)
+
+  const [standbyPlayer, setStandbyPlayer] =
+    useState<React.RefObject<HTMLVideoElement | null>>(videoPlayerBRef)
+
+  const standbyVideoDataIndex = (currentVideoDataIndex % totalVideos) + 1
+
+  const [visualPreviewIndex, setVisualPreviewIndex] = useState<number>(
+    (1 % totalVideos) + 1
+  )
+
+  // Initial setup for the active player (only on mount)
+  useEffect(() => {
+    const activeEl = activePlayer.current
+
+    if (activeEl) {
+      activeEl.src = getVideoSrc(currentVideoDataIndex)
+      gsap.set(activeEl, { opacity: 1, zIndex: 1 })
+      activeEl.muted = true
+
+      activeEl.play()
+    }
+
+    setVisualPreviewIndex((currentVideoDataIndex % totalVideos) + 1)
+
+    const initialStandbyEl = videoPlayerBRef.current
+
+    if (initialStandbyEl) {
+      const initialStandbyIndex = (currentVideoDataIndex % totalVideos) + 1
+
+      initialStandbyEl.src = getVideoSrc(initialStandbyIndex)
+      gsap.set(initialStandbyEl, { opacity: 0, zIndex: 0 })
+      initialStandbyEl.muted = true
+      initialStandbyEl.currentTime = 0
+      initialStandbyEl.load()
+      initialStandbyEl.play()
+    }
+  }, [])
+
+  // Setup standby video source
+  useEffect(() => {
+    const standbyEl = standbyPlayer.current
+
+    if (standbyEl) {
+      standbyEl.src = getVideoSrc(standbyVideoDataIndex)
+      gsap.set(standbyEl, { opacity: 0, zIndex: 0 })
+      standbyEl.muted = true
+      standbyEl.currentTime = 0
+      standbyEl.load()
+      standbyEl.play()
+    }
+  }, [standbyPlayer, standbyVideoDataIndex])
 
   const handleMiniVideoClick = () => {
+    if (isTransitioning || !activePlayer.current || !standbyPlayer.current)
+      return
+
+    setIsTransitioning(true)
+
+    const outgoingEl = activePlayer.current
+    const incomingEl = standbyPlayer.current
+    const newCurrentAfterTransition = standbyVideoDataIndex
+
+    setVisualPreviewIndex((newCurrentAfterTransition % totalVideos) + 1)
+
+    if (incomingEl) {
+      incomingEl.muted = true
+      incomingEl.play()
+    }
+
     const tl = gsap.timeline({
       onComplete: () => {
-        setCurrentVideoIndex(nextVideoIndex)
-        setHasClicked(true)
+        setActivePlayer(standbyPlayer)
+        setStandbyPlayer(activePlayer)
+        setCurrentVideoDataIndex(standbyVideoDataIndex)
+        setIsTransitioning(false)
       },
     })
 
-    tl.to('#next-video', {
-      opacity: 1,
-      duration: 0,
-    })
-
-    tl.to('#current-video', {
-      opacity: 1,
-      duration: 0,
-    })
+    tl.to(outgoingEl, { opacity: 0, duration: 0.3, zIndex: 0 }, 'crossfade').to(
+      incomingEl,
+      { opacity: 1, duration: 0.3, zIndex: 1 },
+      'crossfade'
+    )
   }
-
-  const handleVideoLoad = () => {
-    setLoadedVideos((prev) => prev + 1)
-  }
-
-  useEffect(() => {
-    if (currentVideoRef.current) {
-      const playPromise = currentVideoRef.current as HTMLVideoElement
-
-      playPromise.muted = true
-    }
-
-    if (nextVideoRef.current) {
-      const playPromise = nextVideoRef.current as HTMLVideoElement
-
-      playPromise.play()
-    }
-  }, [currentVideoIndex])
-
-  useGSAP(
-    () => {
-      if (hasClicked) {
-        gsap.to('#next-video', {
-          transformOrigin: 'center center',
-          scale: 1,
-          width: '100%',
-          height: '100%',
-          duration: 1,
-          ease: 'power1.inOut',
-        })
-        gsap.from('#current-video', {
-          transformOrigin: 'center center',
-          scale: 1,
-          duration: 1,
-          ease: 'power1.inOut',
-        })
-      }
-    },
-    { dependencies: [currentVideoIndex], revertOnUpdate: true }
-  )
-
-  useGSAP(() => {
-    if (hasClicked) {
-      gsap.set('#video-frame', {
-        borderRadius: '0% 0% 40% 10%',
-        ease: 'power1.inOut',
-      })
-      gsap.from('#video-frame', {
-        borderRadius: '0% 0% 40%% 10%',
-        ease: 'power1.inOut',
-        scrollTrigger: {
-          trigger: '#video-frame',
-          start: 'center center',
-          end: 'bottom center',
-          scrub: true,
-        },
-      })
-    }
-  })
 
   return (
-    <div className="h-[calc(100vh-110px)] group">
+    <div className="relative flex-1 flex flex-col group">
       <div
-        className="flex flex-col items-center justify-center h-full"
+        className="h-full relative flex items-center justify-center"
         id="video-frame"
-        ref={videoFrameRef}
+        style={{ overflow: 'hidden' }}
       >
-        <CurrentVideo
-          currentVideoIndex={currentVideoIndex}
-          currentVideoRef={currentVideoRef}
-          handleVideoLoad={handleVideoLoad}
+        <video
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-0
+          [will-change:opacity]"
+          ref={videoPlayerARef}
         />
-        {/* <NextVideo
-          handleVideoLoad={handleVideoLoad}
-          nextVideoIndex={nextVideoIndex}
-          nextVideoRef={nextVideoRef}
-        /> */}
+        <video
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-0
+          [will-change:opacity]"
+          ref={videoPlayerBRef}
+        />
         <VideoPreview
           handleMiniVideoClick={handleMiniVideoClick}
-          nextVideoIndex={nextVideoIndex}
+          nextVideoIndex={visualPreviewIndex}
         />
       </div>
-      <h1 className="absolute bottom-5 right-5 text-secondary text-4xl z-50">
+      <h1 className="absolute bottom-5 right-5 text-secondary text-4xl z-40">
         STONE & SABLE
       </h1>
     </div>

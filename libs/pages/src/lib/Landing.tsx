@@ -2,7 +2,7 @@ import { HeroMovies } from '@sas-mrts/ui'
 
 function Landing() {
   return (
-    <div className="h-full">
+    <div className="flex flex-col flex-1">
       <HeroMovies />
     </div>
   )

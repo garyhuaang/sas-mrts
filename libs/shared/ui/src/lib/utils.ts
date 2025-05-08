@@ -13,8 +13,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getVideoSrc(index: number) {
-  if (index === 1) return hero1Movie
-  else if (index === 2) return hero2Movie
-  else if (index === 3) return hero3Movie
-  else if (index === 4) return hero4Movie
+  // Ensure index is between 1 and 4
+  const normalizedIndex = ((index - 1) % 4) + 1
+
+  switch (normalizedIndex) {
+    case 1:
+      return hero1Movie
+    case 2:
+      return hero2Movie
+    case 3:
+      return hero3Movie
+    case 4:
+      return hero4Movie
+    default:
+      return hero1Movie
+  }
 }

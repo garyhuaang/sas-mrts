@@ -9,19 +9,21 @@ function VideoPreview({
   handleMiniVideoClick,
   nextVideoIndex,
 }: ViewPreviewProps) {
+  const videoSrc = getVideoSrc(nextVideoIndex)
+
   return (
-    <div className="group flex z-50 items-center justify-center absolute h-[calc(100vh-110px)] w-full">
+    <div className="group flex z-50 items-center justify-center absolute h-full w-full">
       <div
-        className="bg-black h-[calc(100vh-110px)] w-full opacity-0
-      transition-all duration-150 group-hover:opacity-30 "
+        className="bg-black h-full w-full opacity-0
+      transition-all duration-150 group-hover:opacity-30"
       />
       <div
         className=" mask-clip-path absolute size-64
-      cursor-pointer overflow-hidden rounded-lg
-      "
+      cursor-pointer overflow-hidden rounded-lg"
       >
         <div
-          className="scale-50 opacity-0 transition-all ease-in group-hover:scale-100 group-hover:opacity-100"
+          className="scale-50 opacity-0 transition-all ease-in group-hover:scale-100
+          group-hover:opacity-100"
           onClick={handleMiniVideoClick}
         >
           <video
@@ -29,8 +31,8 @@ function VideoPreview({
             loop
             muted
             className="size-64 object-cover object-center scale-150"
-            id="current-video"
-            src={getVideoSrc(nextVideoIndex)}
+            key={videoSrc}
+            src={videoSrc}
           />
         </div>
       </div>
