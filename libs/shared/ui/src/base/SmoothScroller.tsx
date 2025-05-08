@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
@@ -10,11 +10,6 @@ type SmoothScrollerProps = {
   ignoreMobileResize?: boolean
 }
 
-type WindowSize = {
-  height: number
-  width: number
-}
-
 function SmoothScroller({
   children,
   smoothness,
@@ -22,70 +17,86 @@ function SmoothScroller({
 }: SmoothScrollerProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const [windowSize, setWindowSize] = useState<WindowSize>({
-    height: 0,
-    width: 0,
-  })
-  let scrollPosition = 0
-  let smoother: ScrollSmoother | null = null
+  gsap.registerPlugin(useGSAP, ScrollSmoother, ScrollTrigger)
+  const navAuthHeight = document.getElementById('#nav-auth')?.scrollHeight
+  // let scrollPosition = 0
+  // let smoother: ScrollSmoother | null = null
 
-  useEffect(() => {
-    gsap.registerPlugin(useGSAP, ScrollSmoother, ScrollTrigger)
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        markers: true,
+        trigger: '#nav-auth',
+        pin: true,
+        pinSpacing: false,
+        start: '#outlet-content',
+        end: 'max',
+      })
 
-    setWindowSize({ height: window.innerHeight, width: window.innerWidth })
-
-    const createSmoother = (): ScrollSmoother => {
-      if (smoother) {
-        scrollPosition = smoother.scrollTop()
-        smoother.kill()
-      }
-
-      smoother = ScrollSmoother.create({
+      ScrollSmoother.create({
         wrapper: wrapperRef.current,
         content: contentRef.current,
         smooth: smoothness,
         effects: true,
         ignoreMobileResize: ignoreMobileResize,
+        normalizeScroll: true,
       })
+    },
+    { scope: contentRef }
+  )
 
-      return smoother
-    }
+  // useEffect(() => {
+  //   const navHeight =
+  //     document.querySelector('#nav-auth')?.getBoundingClientRect().height || 132
 
-    smoother = createSmoother()
+  //   const outletContent = document.querySelector('#outlet-content')
+  //   if (outletContent) {
+  //     ;(outletContent as HTMLElement).style.paddingTop = `${navHeight}px`
+  //   }
 
-    const handleResize = () => {
-      // Only recreate if the width changed significantly (prevents multiple triggers)
-      if (Math.abs(window.innerWidth - windowSize.width) > 50) {
-        setWindowSize({ ...windowSize, width: window.innerWidth })
-      }
-      if (Math.abs(window.innerHeight - windowSize.height) > 50) {
-        setWindowSize({ ...windowSize, height: window.innerHeight })
-      }
-      smoother = createSmoother()
-    }
+  //   const createSmoother = (): ScrollSmoother => {
+  //     if (smoother) {
+  //       scrollPosition = smoother.scrollTop()
+  //       smoother.kill()
+  //     }
 
-    // Debounced resize handler to prevent too many recreations
-    let resizeTimer: number
-    const debouncedResize = () => {
-      clearTimeout(resizeTimer)
-      resizeTimer = window.setTimeout(handleResize, 250)
-    }
+  //     setTimeout(() => {
+  //       // Now pin the nav-auth to the top
+  //       ScrollTrigger.create({
+  //         trigger: '#nav-auth',
+  //         start: 'top top',
+  //         end: 'max',
+  //         pin: true,
+  //         pinSpacing: false,
+  //         onRefresh: (self) => console.log('Pin refreshed', self),
+  //       })
+  //     }, 100)
 
-    window.addEventListener('resize', debouncedResize)
+  //     smoother = ScrollSmoother.create({
+  //       wrapper: wrapperRef.current,
+  //       content: contentRef.current,
+  //       smooth: smoothness,
+  //       effects: true,
+  //       ignoreMobileResize: ignoreMobileResize,
+  //       normalizeScroll: true,
+  //     })
 
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', debouncedResize)
-      if (smoother) smoother.kill()
-    }
-  }, [smoothness])
+  //     if (scrollPosition > 0) {
+  //       smoother.scrollTo(scrollPosition, false)
+  //     }
+
+  //     return smoother
+  //   }
+
+  //   smoother = createSmoother()
+
+  //   return () => {
+  //     if (smoother) smoother.kill()
+  //   }
+  // }, [smoothness])
 
   return (
-    <div
-      ref={wrapperRef}
-      id="smooth-main"
-      className="reduced-viewport w-full min-h-full"
-    >
+    <div ref={wrapperRef} id="smooth-main">
       <div id="smooth-content" ref={contentRef}>
         {children}
       </div>

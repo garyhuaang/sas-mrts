@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
-  "files": [],
+  "files": ["./vite-env.d.ts"],
   "references": [
     {
       "path": "./apps/store"

@@ -1,0 +1,5 @@
+export * from './AboutFounders'
+export * from './AboutHero'
+export * from './AboutOrigin'
+export * from './AboutProcess'
+export * from './AboutValues'

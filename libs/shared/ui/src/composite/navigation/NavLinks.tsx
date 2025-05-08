@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
-import { Button } from '../../base/Button'
+import { Button } from '../../base/button'
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
-} from '../../base/NavigationMenu'
+} from '../../base/navigationMenu'
 
 import { Route } from '@sas-mrts/common'
 
