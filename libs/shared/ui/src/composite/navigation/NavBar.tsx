@@ -4,9 +4,17 @@ import { NavLogo } from './NavLogo'
 
 import { Route } from '@sas-mrts/common'
 
-function NavBar({ routes }: { routes: Route[] }) {
+function NavBar({
+  routes,
+  className,
+}: {
+  routes: Route[]
+  className?: string
+}) {
   return (
-    <div className="flex h-20 py-4 px-8 bg-muted justify-between items-center">
+    <div
+      className={`flex h-20 py-4 px-8 bg-muted justify-between items-center ${className}`}
+    >
       <NavLogo />
       <NavLinks routes={routes} />
       <NavActions />
