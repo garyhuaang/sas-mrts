@@ -1,4 +1,5 @@
 import { StrictMode } from 'react'
+import { CookiesProvider } from 'react-cookie'
 import * as ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 
@@ -14,8 +15,10 @@ rStore.dispatch(fetchProducts())
 
 root.render(
   <StrictMode>
-    <Provider store={rStore}>
-      <App />
-    </Provider>
+    <CookiesProvider defaultSetOptions={{ path: '/' }}>
+      <Provider store={rStore}>
+        <App />
+      </Provider>
+    </CookiesProvider>
   </StrictMode>
 )

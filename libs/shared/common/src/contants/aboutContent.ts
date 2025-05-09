@@ -1,6 +1,12 @@
-import { BetweenIcon, CheckmarkCircleIcon, RadioIcon } from '../assets/svg'
-import type { Value } from '../types/navigation'
+import type { FunctionComponent, SVGProps } from 'react'
 
+import { BetweenIcon, CheckmarkCircleIcon, RadioIcon } from '../assets/svg'
+
+type Section = {
+  image: FunctionComponent<SVGProps<SVGSVGElement>>
+  value: string
+  description: string
+}
 const icons = [CheckmarkCircleIcon, RadioIcon, BetweenIcon]
 
 const sections = [
@@ -38,7 +44,7 @@ export const processes = [
   },
 ]
 
-export const values: Value[] = [
+export const values: Section[] = [
   {
     image: icons[0],
     value: sections[0],

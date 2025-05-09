@@ -10,6 +10,8 @@ import {
   VideoPreview,
 } from '@sas-mrts/ui'
 
+import { useGSAP } from '@gsap/react'
+
 function HeroMovies() {
   gsap.registerPlugin(ScrollTrigger)
 
@@ -32,7 +34,7 @@ function HeroMovies() {
   )
 
   // Initial setup for the active player (only on mount)
-  useEffect(() => {
+  useGSAP(() => {
     const activeEl = activePlayer.current
 
     if (activeEl?.checkVisibility) {
@@ -61,7 +63,7 @@ function HeroMovies() {
   }, [])
 
   // Setup standby video source
-  useEffect(() => {
+  useGSAP(() => {
     const standbyEl = standbyPlayer.current
 
     if (standbyEl?.checkVisibility) {

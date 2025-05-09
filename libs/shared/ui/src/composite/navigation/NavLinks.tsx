@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
 } from '../../base/navigationMenu'
 
-import { Route } from '@sas-mrts/common'
+import { Route } from '@sas-mrts/rStore'
 
 function NavLinks({ routes }: { routes: Route[] }) {
   return (
