@@ -1,6 +1,9 @@
+import type { JSX } from 'react'
+
 type Route = {
-  name: string
   path: string
+  name: string
+  element: JSX.Element
 }
 
 export type { Route }

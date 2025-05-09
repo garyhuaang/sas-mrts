@@ -1,37 +1,29 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import {
-  About,
-  Auth,
-  Cart,
-  Checkout,
-  HeroMovies,
-  Layout,
-  Orders,
-  Products,
-} from '@sas-mrts/pages'
+import { Auth, Layout, userShopRoutes } from '@sas-mrts/pages'
 
-const routes = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        { index: true, element: <HeroMovies /> },
-        { path: 'about', element: <About /> },
-        { path: 'products', element: <Products /> },
-        { path: 'cart', element: <Cart /> },
-        { path: 'checkout', element: <Checkout /> },
-        { path: 'orders', element: <Orders /> },
-      ],
-    },
-    { path: '/auth', element: <Auth /> },
-  ],
+import TransitionWrapper from './TransitionWrapper'
+
+const router = createBrowserRouter([
   {
-    future: {
-      v7_relativeSplatPath: true,
-    },
-  }
-)
+    path: '/',
+    element: <TransitionWrapper />,
+    children: [
+      {
+        path: '/',
+        element: <Layout />,
+        children: userShopRoutes.map((route) => ({
+          index: route.path === '/',
+          path: route.path === '/' ? undefined : route.path,
+          element: route.element,
+        })),
+      },
+      {
+        path: '/auth',
+        element: <Auth />,
+      },
+    ],
+  },
+])
 
-export default routes
+export default router

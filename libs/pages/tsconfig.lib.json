@@ -30,6 +30,9 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../rStore/tsconfig.lib.json"
+    },
+    {
       "path": "../shared/common/tsconfig.lib.json"
     },
     {
