@@ -2,7 +2,7 @@ import NavActions from './actions/NavActions'
 import { NavLinks } from './NavLinks'
 import { NavLogo } from './NavLogo'
 
-import { Route } from '@sas-mrts/common'
+import { Route } from '@sas-mrts/rStore'
 
 function NavBar({
   routes,

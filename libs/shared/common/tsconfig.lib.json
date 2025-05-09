@@ -32,6 +32,7 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.svg"
+    "src/**/*.svg",
+    "../../pages/src/routes/routes.tsx"
   ]
 }

@@ -8,7 +8,7 @@ import {
   TabsTrigger,
 } from '@sas-mrts/ui'
 
-import { nonUserShopRoutes } from '@sas-mrts/common'
+import { nonUserShopRoutes } from '../routes'
 
 function Auth() {
   return (

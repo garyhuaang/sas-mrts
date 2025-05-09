@@ -10,7 +10,7 @@ function ProductsList() {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pt-12 h-full">
       {products.map((product) => (
-        <Card className="bg-card shadow-sm max-w-90" key={product.id}>
+        <Card className="max-w-90" key={product.id}>
           <CardContent>
             <CardTitle className="flex justify-center mb-4 mt-4">
               {product.attributes.title}

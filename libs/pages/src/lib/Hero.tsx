@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -10,7 +10,9 @@ import {
   VideoPreview,
 } from '@sas-mrts/ui'
 
-function HeroMovies() {
+import { useGSAP } from '@gsap/react'
+
+function Hero() {
   gsap.registerPlugin(ScrollTrigger)
 
   const [currentVideoDataIndex, setCurrentVideoDataIndex] = useState<number>(1)
@@ -32,7 +34,7 @@ function HeroMovies() {
   )
 
   // Initial setup for the active player (only on mount)
-  useEffect(() => {
+  useGSAP(() => {
     const activeEl = activePlayer.current
 
     if (activeEl?.checkVisibility) {
@@ -61,7 +63,7 @@ function HeroMovies() {
   }, [])
 
   // Setup standby video source
-  useEffect(() => {
+  useGSAP(() => {
     const standbyEl = standbyPlayer.current
 
     if (standbyEl?.checkVisibility) {
@@ -108,11 +110,10 @@ function HeroMovies() {
   }
 
   return (
-    <div className="relative flex-1 flex flex-col ">
+    <div className="h-[calc(100vh-110px)] flex flex-col">
       <div
-        className="h-full relative flex items-center justify-center"
+        className="h-screen flex items-center justify-center relative overflow-hidden"
         id="video-frame"
-        style={{ overflow: 'hidden' }}
       >
         <VideoPlayerA videoPlayerRef={videoPlayerARef} />
         <VideoPlayerB videoPlayerRef={videoPlayerBRef} />
@@ -128,4 +129,4 @@ function HeroMovies() {
   )
 }
 
-export { HeroMovies }
+export { Hero }

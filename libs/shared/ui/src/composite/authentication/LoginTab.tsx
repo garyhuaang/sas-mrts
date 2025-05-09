@@ -1,5 +1,7 @@
 import React from 'react'
+import { useCookies } from 'react-cookie'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
 import {
@@ -12,9 +14,17 @@ import {
 } from '../../base'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { loginFormSchema, postLogin, rStore } from '@sas-mrts/rStore'
+import {
+  type AuthResponse,
+  loginFormSchema,
+  postLogin,
+  rStore,
+} from '@sas-mrts/rStore'
 
 const LoginTab = React.memo(function LoginTab() {
+  const [_, setCookie] = useCookies<'user', AuthResponse>(['user'])
+  const navigate = useNavigate()
+
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -23,9 +33,19 @@ const LoginTab = React.memo(function LoginTab() {
     },
   })
 
-  const handleLogin = () => {
-    rStore.dispatch(postLogin(form.getValues()))
+  const handleLogin = async () => {
+    await rStore.dispatch(postLogin(form.getValues()))
     form.reset()
+    const userState = rStore.getState().user
+
+    if (userState.confirmed) {
+      setCookie(
+        'user',
+        { jwt: userState.jwt, username: userState.username },
+        { expires: new Date(Date.now() + 60 * 60 * 1000) }
+      )
+      navigate('/')
+    }
   }
 
   return (
