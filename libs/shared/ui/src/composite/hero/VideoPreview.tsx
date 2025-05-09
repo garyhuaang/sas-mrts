@@ -1,4 +1,4 @@
-import { getVideoSrc } from '../../lib/utils'
+import { getVideoSrc } from './utils'
 
 type ViewPreviewProps = {
   handleMiniVideoClick: () => void
