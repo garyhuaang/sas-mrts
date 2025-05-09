@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { Button } from '../../base'
 
@@ -6,7 +6,6 @@ import { logoutUser, rStore } from '@sas-mrts/rStore'
 
 const AuthHeader = function AuthHeader() {
   const store = rStore.getState()
-  const navigate = useNavigate()
 
   return (
     <div className="flex justify-end items-center gap-2 h-[30px] p-2 bg-background">
@@ -18,17 +17,17 @@ const AuthHeader = function AuthHeader() {
               onClick={() => rStore.dispatch(logoutUser())}
               variant="link"
             >
-              Logout
+              <Link viewTransition to="/">
+                Logout
+              </Link>
             </Button>
           </span>
         </div>
       ) : (
-        <Button
-          className="text-primary text-xs cursor-pointer"
-          onClick={() => navigate('/auth')}
-          variant="link"
-        >
-          Login/Register
+        <Button className="text-primary text-xs cursor-pointer" variant="link">
+          <Link viewTransition to="/auth">
+            Login/Register
+          </Link>
         </Button>
       )}
     </div>
