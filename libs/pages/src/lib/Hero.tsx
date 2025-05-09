@@ -2,9 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { getVideoSrc } from '../../lib/utils'
-
-import { VideoPreview } from './VideoPreview'
+import {
+  getVideoSrc,
+  playPromiseChecker,
+  VideoPlayer as VideoPlayerA,
+  VideoPlayer as VideoPlayerB,
+  VideoPreview,
+} from '@sas-mrts/ui'
 
 function HeroMovies() {
   gsap.registerPlugin(ScrollTrigger)
@@ -31,27 +35,28 @@ function HeroMovies() {
   useEffect(() => {
     const activeEl = activePlayer.current
 
-    if (activeEl) {
+    if (activeEl?.checkVisibility) {
       activeEl.src = getVideoSrc(currentVideoDataIndex)
       gsap.set(activeEl, { opacity: 1, zIndex: 1 })
       activeEl.muted = true
+      const playPromise = activeEl.play()
 
-      activeEl.play()
+      playPromiseChecker(playPromise)
     }
 
     setVisualPreviewIndex((currentVideoDataIndex % totalVideos) + 1)
 
     const initialStandbyEl = videoPlayerBRef.current
 
-    if (initialStandbyEl) {
+    if (initialStandbyEl?.checkVisibility) {
       const initialStandbyIndex = (currentVideoDataIndex % totalVideos) + 1
 
       initialStandbyEl.src = getVideoSrc(initialStandbyIndex)
       gsap.set(initialStandbyEl, { opacity: 0, zIndex: 0 })
       initialStandbyEl.muted = true
-      initialStandbyEl.currentTime = 0
-      initialStandbyEl.load()
-      initialStandbyEl.play()
+      const playPromise = initialStandbyEl.play()
+
+      playPromiseChecker(playPromise)
     }
   }, [])
 
@@ -59,13 +64,13 @@ function HeroMovies() {
   useEffect(() => {
     const standbyEl = standbyPlayer.current
 
-    if (standbyEl) {
+    if (standbyEl?.checkVisibility) {
       standbyEl.src = getVideoSrc(standbyVideoDataIndex)
       gsap.set(standbyEl, { opacity: 0, zIndex: 0 })
       standbyEl.muted = true
-      standbyEl.currentTime = 0
-      standbyEl.load()
-      standbyEl.play()
+      const playPromise = standbyEl.play()
+
+      playPromiseChecker(playPromise)
     }
   }, [standbyPlayer, standbyVideoDataIndex])
 
@@ -103,28 +108,14 @@ function HeroMovies() {
   }
 
   return (
-    <div className="relative flex-1 flex flex-col group">
+    <div className="relative flex-1 flex flex-col ">
       <div
         className="h-full relative flex items-center justify-center"
         id="video-frame"
         style={{ overflow: 'hidden' }}
       >
-        <video
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover opacity-0
-          [will-change:opacity]"
-          ref={videoPlayerARef}
-        />
-        <video
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover opacity-0
-          [will-change:opacity]"
-          ref={videoPlayerBRef}
-        />
+        <VideoPlayerA videoPlayerRef={videoPlayerARef} />
+        <VideoPlayerB videoPlayerRef={videoPlayerBRef} />
         <VideoPreview
           handleMiniVideoClick={handleMiniVideoClick}
           nextVideoIndex={visualPreviewIndex}

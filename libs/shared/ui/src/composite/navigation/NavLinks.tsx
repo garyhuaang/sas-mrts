@@ -16,7 +16,7 @@ function NavLinks({ routes }: { routes: Route[] }) {
         {routes.map((route) => (
           <NavigationMenuItem key={route.name}>
             <Button asChild variant="link">
-              <Link to={route.path}>{route.name}</Link>
+              <Link to={`../${route.path}`}>{route.name}</Link>
             </Button>
           </NavigationMenuItem>
         ))}

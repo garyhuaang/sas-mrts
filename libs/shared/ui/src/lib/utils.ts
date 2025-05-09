@@ -8,11 +8,11 @@ import {
   hero4Movie,
 } from '@sas-mrts/common'
 
-export function cn(...inputs: ClassValue[]) {
+function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getVideoSrc(index: number) {
+function getVideoSrc(index: number) {
   // Ensure index is between 1 and 4
   const normalizedIndex = ((index - 1) % 4) + 1
 
@@ -29,3 +29,17 @@ export function getVideoSrc(index: number) {
       return hero1Movie
   }
 }
+
+function playPromiseChecker(playPromise: Promise<void>) {
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        return playPromise
+      })
+      .catch((error) => {
+        return error
+      })
+  }
+}
+
+export { cn, getVideoSrc, playPromiseChecker }

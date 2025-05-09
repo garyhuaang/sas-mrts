@@ -135,11 +135,15 @@
 }
 
 @layer base {
+  html {
+    @apply bg-background;
+  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    will-change: background-color;
   }
   @font-face {
     font-family: 'circular-web';

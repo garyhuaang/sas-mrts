@@ -1,38 +1,67 @@
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
 import {
   Button,
   Card,
   CardContent,
-  CardFooter,
-  Input,
-  Label,
+  Form,
+  FormInput,
   TabsContent,
 } from '../../base'
 
-function LoginTab() {
-  const handleLogin = (e: React.FormEvent<Element>) => {
-    e.preventDefault()
+import { zodResolver } from '@hookform/resolvers/zod'
+import { loginFormSchema, postLogin, rStore } from '@sas-mrts/rStore'
+
+const LoginTab = React.memo(function LoginTab() {
+  const form = useForm<z.infer<typeof loginFormSchema>>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      identifier: '',
+      password: '',
+    },
+  })
+
+  const handleLogin = () => {
+    rStore.dispatch(postLogin(form.getValues()))
+    form.reset()
   }
 
   return (
-    <TabsContent value="login">
-      <form onSubmit={(e: React.FormEvent<Element>) => handleLogin(e)}>
-        <Card className="flex-center flex-col gap-3 h-80 w-[408px]">
-          <CardContent className="flex flex-col w-full gap-3">
-            <Label className="self-start">Email</Label>
-            <Input placeholder="name@gmail.com" type="email"></Input>
-            <Label className="self-start">Password</Label>
-            <Input placeholder="● ● ● ●" type="password"></Input>
-          </CardContent>
-          <CardFooter className="flex justify-center gap-6 w-full">
-            <Button className="w-full cursor-pointer">Sign In</Button>
-            <Button className="w-full cursor-pointer" variant="secondary">
-              Guest User
-            </Button>
-          </CardFooter>
-        </Card>
-      </form>
+    <TabsContent className="mt-0 bg-card" value="login">
+      <Card className="flex-center flex-col gap-3 h-80 w-[408px]">
+        <CardContent className="flex flex-col w-full gap-3">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleLogin)}>
+              <FormInput
+                control={form.control}
+                label="Email"
+                name="identifier"
+                placeholder="name@sas.com"
+                type="email"
+              />
+              <FormInput
+                control={form.control}
+                label="Password"
+                name="password"
+                placeholder="password"
+                type="password"
+              />
+              <div className="flex gap-4 mt-6">
+                <Button className="w-full cursor-pointer" type="submit">
+                  Sign In
+                </Button>
+                <Button className="w-full cursor-pointer" variant="secondary">
+                  Guest User
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
     </TabsContent>
   )
-}
+})
 
 export { LoginTab }

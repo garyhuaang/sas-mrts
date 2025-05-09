@@ -18,21 +18,29 @@ export const createClient = (baseURL: string) => {
       },
     }
 
-    let data
+    if (body !== undefined) {
+      config.body = body
+    }
+
+    let responseData
     try {
       const response = await window.fetch(`${baseURL}${endpoint}`, config)
-      data = await response.json()
+      responseData = await response.json()
       if (response.ok) {
         return {
           status: response.status,
-          data,
+          data: responseData,
           headers: response.headers,
           url: response.url,
         }
       }
       throw new Error(response.statusText)
     } catch (err: any) {
-      return Promise.reject(err.message ? err.message : data)
+      return Promise.reject(
+        responseData && typeof responseData === 'object'
+          ? responseData
+          : err.message || 'Network request failed'
+      )
     }
   }
 
@@ -48,7 +56,12 @@ export const createClient = (baseURL: string) => {
     body: any,
     customConfig: Partial<RequestInit> = {}
   ) {
-    return client<T>(endpoint, { ...customConfig, body })
+    const processedBody = JSON.stringify(body)
+    return client<T>(endpoint, {
+      ...customConfig,
+      body: processedBody,
+      method: 'POST',
+    })
   }
 
   return client

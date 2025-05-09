@@ -1,5 +1,5 @@
 export * from './lib/Layout'
-export * from './lib/Landing'
+export * from './lib/Hero'
 export * from './lib/About'
 export * from './lib/Products'
 export * from './lib/Cart'

@@ -2,6 +2,7 @@ import {
   LoginTab,
   NavBar,
   RegisterTab,
+  SofaBackDrop,
   Tabs,
   TabsList,
   TabsTrigger,
@@ -12,7 +13,10 @@ import { nonUserShopRoutes } from '@sas-mrts/common'
 function Auth() {
   return (
     <div className="flex-center flex-col h-screen w-screen">
-      <NavBar className="absolute top-0 w-full" routes={nonUserShopRoutes} />
+      <NavBar
+        className="absolute top-0 w-full bg-background"
+        routes={nonUserShopRoutes}
+      />
 
       <Tabs
         className="w-[408px] flex-center flex-col gap-5 motion-preset-fade-lg duration-150"
@@ -35,6 +39,7 @@ function Auth() {
         <LoginTab />
         <RegisterTab />
       </Tabs>
+      <SofaBackDrop />
     </div>
   )
 }
