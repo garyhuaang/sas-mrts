@@ -21,19 +21,17 @@ function Layout() {
   }, [store.user.confirmed])
 
   return (
-    <div className="h-screen w-full">
+    <div className=" w-full">
       <div className="flex flex-col w-full sticky top-0 z-50">
         <AuthHeader />
         <NavBar routes={userShopRoutes} />
       </div>
-      <div className="flex flex-col min-h-screen">
+      <SofaBackDrop />
+      <div className="flex flex-col">
         <div className="relative flex flex-col flex-1 overflow-hidden">
-          <div className="h-full">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </div>
-      <SofaBackDrop />
     </div>
   )
 }
