@@ -30,8 +30,8 @@ const RegisterTab = React.memo(function RegisterTab() {
   }
 
   return (
-    <TabsContent className="mt-0 bg-card" value="register">
-      <Card className="flex-center flex-col gap-3 h-[380px] w-[408px]">
+    <TabsContent className="mt-0" value="register">
+      <Card className="flex-center flex-col gap-3 h-80 w-[408px]">
         <CardContent className="flex flex-col w-full gap-3">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleRegister)}>

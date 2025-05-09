@@ -12,14 +12,11 @@ import { nonUserShopRoutes } from '@sas-mrts/common'
 
 function Auth() {
   return (
-    <div className="flex-center flex-col h-screen w-screen">
-      <NavBar
-        className="absolute top-0 w-full bg-background"
-        routes={nonUserShopRoutes}
-      />
+    <div className="flex-center flex-col min-h-screen w-screen">
+      <NavBar className="absolute top-0 w-full" routes={nonUserShopRoutes} />
 
       <Tabs
-        className="w-[408px] flex-center flex-col gap-5 motion-preset-fade-lg duration-150"
+        className="w-[408px] flex-center flex-col gap-5"
         defaultValue="login"
         id="tabs"
       >
@@ -32,13 +29,14 @@ function Auth() {
             Sign In
           </TabsTrigger>
           <TabsTrigger className="cursor-pointer" value="register">
-            Regsiter
+            Register
           </TabsTrigger>
         </TabsList>
 
         <LoginTab />
         <RegisterTab />
       </Tabs>
+
       <SofaBackDrop />
     </div>
   )

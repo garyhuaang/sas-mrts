@@ -3,10 +3,10 @@ import { SofaIcon } from '@sas-mrts/common'
 function SofaBackDrop() {
   return (
     <div
-      className="flex flex-col flex-grow h-full w-full fixed
-    text-gray-700 opacity-15 -z-10 justify-center"
+      className="flex flex-col absolute h-screen
+    text-gray-700 opacity-15 -z-1 justify-center"
     >
-      <SofaIcon className="w-250 h-250 self-center" />
+      <SofaIcon className="w-screen h-screen self-center" />
     </div>
   )
 }

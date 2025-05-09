@@ -29,7 +29,7 @@ const LoginTab = React.memo(function LoginTab() {
   }
 
   return (
-    <TabsContent className="mt-0 bg-card" value="login">
+    <TabsContent className="mt-0" value="login">
       <Card className="flex-center flex-col gap-3 h-80 w-[408px]">
         <CardContent className="flex flex-col w-full gap-3">
           <Form {...form}>
