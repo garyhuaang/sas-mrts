@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { apiSlice } from './api/api.slice'
 import { listenerMiddleware } from './middleware/listenerMiddleware'
-import { productsReducer, themeReducer } from './features'
+import { storeApi } from './api'
+import { productsReducer, themeReducer, userReducer } from './features'
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 const rootReducer = combineReducers({
   theme: themeReducer,
   products: productsReducer,
-  [apiSlice.reducerPath]: apiSlice.reducer,
+  user: userReducer,
+  [storeApi.reducerPath]: storeApi.reducer,
 })
 
 export const rStore = configureStore({
@@ -17,7 +18,7 @@ export const rStore = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .prepend(listenerMiddleware.middleware)
-      .concat(apiSlice.middleware),
+      .concat(storeApi.middleware),
 })
 
 export type RootState = ReturnType<typeof rStore.getState>

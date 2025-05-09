@@ -1,37 +1,72 @@
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
 import {
   Button,
   Card,
   CardContent,
-  CardFooter,
-  Input,
-  Label,
+  Form,
+  FormInput,
   TabsContent,
 } from '../../base'
 
-function RegisterTab() {
-  const handleRegister = (e: React.FormEvent<Element>) => {
-    e.preventDefault()
+import { zodResolver } from '@hookform/resolvers/zod'
+import { postRegister, registerFormSchema, rStore } from '@sas-mrts/rStore'
+
+const RegisterTab = React.memo(function RegisterTab() {
+  const form = useForm<z.infer<typeof registerFormSchema>>({
+    resolver: zodResolver(registerFormSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
+  })
+
+  const handleRegister = () => {
+    rStore.dispatch(postRegister(form.getValues()))
+    form.reset()
   }
 
   return (
-    <TabsContent value="register">
-      <form onSubmit={(e: React.FormEvent<Element>) => handleRegister(e)}>
-        <Card className="flex-center flex-col gap-3 h-80 w-[408px]">
-          <CardContent className="flex flex-col w-full gap-3">
-            <Label className="self-start pt-4">Username</Label>
-            <Input placeholder="StoneAndSable" type="identifier"></Input>
-            <Label className="self-start">Email</Label>
-            <Input placeholder="name@gmail.com" type="email"></Input>
-            <Label className="self-start">Password</Label>
-            <Input placeholder="● ● ● ●" type="password"></Input>
-          </CardContent>
-          <CardFooter className="flex justify-center gap-6 w-full">
-            <Button className="w-full cursor-pointer">Register</Button>
-          </CardFooter>
-        </Card>
-      </form>
+    <TabsContent className="mt-0" value="register">
+      <Card className="flex-center flex-col gap-3 h-80 w-[408px]">
+        <CardContent className="flex flex-col w-full gap-3">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleRegister)}>
+              <FormInput
+                control={form.control}
+                label="Username"
+                name="username"
+                placeholder="your_username"
+                type="text"
+              />
+              <FormInput
+                control={form.control}
+                label="Email"
+                name="email"
+                placeholder="name@sas.com"
+                type="email"
+              />
+              <FormInput
+                control={form.control}
+                label="Password"
+                name="password"
+                placeholder="password"
+                type="password"
+              />
+              <div className="flex gap-4 mt-6">
+                <Button className="w-full cursor-pointer" type="submit">
+                  Register
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
     </TabsContent>
   )
-}
+})
 
 export { RegisterTab }

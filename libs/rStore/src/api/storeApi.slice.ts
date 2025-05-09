@@ -1,19 +1,22 @@
 // Import the RTK Query methods from the React-specific entry point
 
-import type { Products } from '../types'
+import type { AuthResponse, LoginCredentials, Products } from '../types'
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const apiSlice = createApi({
+export const storeApi = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://strapi-store-server.onrender.com/api',
   }),
   endpoints: (builder) => ({
+    // <Returns typeof Products, No params required>
     getProducts: builder.query<Products, void>({
       query: () => '/products',
     }),
+    // <Returns typeof AuthResponse, Requires LoginCredentials
+    postLogin: builder.query<AuthResponse, LoginCredentials>({
+      query: () => '/auth/local',
+    }),
   }),
 })
-
-export const { useGetProductsQuery } = apiSlice

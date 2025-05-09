@@ -2,13 +2,13 @@ import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../base'
 
-function UserAuthHeader() {
+const AuthHeader = function AuthHeader() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex justify-end items-center gap-2 h-[30px] p-2 px-8b bg-current">
+    <div className="flex-center gap-2 h-[30px] p-2 px-8 bg-background">
       <Button
-        className="text-secondary text-xs cursor-pointer"
+        className="text-primary text-xs cursor-pointer"
         onClick={() => navigate('/auth')}
         variant="link"
       >
@@ -18,4 +18,4 @@ function UserAuthHeader() {
   )
 }
 
-export { UserAuthHeader }
+export { AuthHeader }
