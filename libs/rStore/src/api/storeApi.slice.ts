@@ -1,6 +1,6 @@
 // Import the RTK Query methods from the React-specific entry point
 
-import type { Products, LoginCredentials, AuthResponse } from '../types'
+import type { AuthResponse, LoginCredentials, Products } from '../types'
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
