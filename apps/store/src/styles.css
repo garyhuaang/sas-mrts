@@ -135,6 +135,12 @@
   body {
     @apply bg-background text-foreground;
   }
+  .section-bg-primary {
+    @apply bg-primary-foreground w-full h-full;
+  }
+  .section-bg-secondary {
+    @apply bg-secondary w-full h-full;
+  }
 }
 
 @layer utilities {

@@ -8,7 +8,7 @@ const AuthHeader = function AuthHeader() {
   return (
     <div className="flex-center gap-2 h-[30px] p-2 px-8 bg-background">
       <Button
-        className="text-gray-500 text-xs cursor-pointer"
+        className="text-primary text-xs cursor-pointer"
         onClick={() => navigate('/auth')}
         variant="link"
       >
