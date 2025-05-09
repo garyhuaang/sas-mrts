@@ -1,1 +1,1 @@
-export * from './UserAuthHeader'
+export * from './AuthHeader'

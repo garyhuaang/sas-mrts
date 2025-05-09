@@ -1,13 +1,12 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../base'
 
-const UserAuthHeader = React.memo(function UserAuthHeader() {
+const AuthHeader = function AuthHeader() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex justify-end items-center gap-2 h-[30px] p-2 px-8b bg-background">
+    <div className="flex justify-end items-center gap-2 h-[30px] p-2 px-8b bg-primary">
       <Button
         className="text-secondary text-xs cursor-pointer"
         onClick={() => navigate('/auth')}
@@ -17,6 +16,6 @@ const UserAuthHeader = React.memo(function UserAuthHeader() {
       </Button>
     </div>
   )
-})
+}
 
-export { UserAuthHeader }
+export { AuthHeader }
