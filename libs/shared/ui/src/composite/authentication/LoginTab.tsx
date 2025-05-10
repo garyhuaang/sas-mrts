@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useCookies } from 'react-cookie'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
@@ -13,6 +12,7 @@ import {
   FormInput,
   TabsContent,
 } from '../../base'
+import { useToast } from '../../lib'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { PayloadAction } from '@reduxjs/toolkit'
@@ -21,7 +21,6 @@ import {
   loginFormSchema,
   postLogin,
   rStore,
-  useToast,
 } from '@sas-mrts/rStore'
 
 const LoginTab = React.memo(function LoginTab() {

@@ -10,6 +10,7 @@ import {
   FormInput,
   TabsContent,
 } from '../../base'
+import { useToast } from '../../lib'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { PayloadAction } from '@reduxjs/toolkit'
@@ -18,7 +19,6 @@ import {
   postRegister,
   registerFormSchema,
   rStore,
-  useToast,
 } from '@sas-mrts/rStore'
 
 const RegisterTab = React.memo(function RegisterTab() {

@@ -1,4 +1,4 @@
-import { useToast } from '@sas-mrts/rStore'
+import { useToast } from '../lib/hooks/use-toast'
 import {
   Toast,
   ToastClose,
