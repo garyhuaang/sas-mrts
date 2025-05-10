@@ -1,3 +1,3 @@
 export * from './aboutContent'
 export * from './guestCredentials'
-export * from './productsSortOptions'
+export * from './productsContent'

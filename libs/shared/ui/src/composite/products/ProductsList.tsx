@@ -8,6 +8,8 @@ import {
   CardTitle,
 } from '../../base'
 
+import ProductsMoreFilters from './ProductsMoreFilters'
+
 import { type Products, selectProducts } from '@sas-mrts/rStore'
 
 function ProductsList() {
@@ -15,7 +17,7 @@ function ProductsList() {
 
   return (
     <div className="flex w-full p-10 pt-3 gap-8">
-      <div className="bg-red-600 min-h-full w-1/3">lol</div>
+      <ProductsMoreFilters />
       <div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
             gap-6 h-full"
