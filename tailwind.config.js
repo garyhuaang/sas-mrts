@@ -8,11 +8,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "circular-web": ["circular-web", "sans-serif"],
-        "robert-medium": ["robert-medium", "sans-serif"],
-        "robert-regular": ["robert-regular", "sans-serif"],
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('tailwindcss-motion'), require('tailwindcss-animate')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('tailwindcss-motion'),
+    require('tailwindcss-animate'),
+  ]
 };

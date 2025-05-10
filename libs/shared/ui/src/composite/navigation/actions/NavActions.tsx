@@ -5,7 +5,7 @@ function NavActions() {
   return (
     <div className="flex gap-4 m-0 p-0">
       <ThemeToggle />
-      <CartButton />
+      {localStorage.getItem('username') && <CartButton />}
     </div>
   )
 }

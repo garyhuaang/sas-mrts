@@ -16,6 +16,7 @@ import { useToast } from '../../lib'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { guestCredentials } from '@sas-mrts/common'
 import {
   type AuthResponse,
   loginFormSchema,
@@ -46,12 +47,13 @@ const LoginTab = React.memo(function LoginTab() {
       setCookie(
         'user',
         { jwt: userState.jwt, username: userState.username },
-        { expires: new Date(Date.now() + 60 * 60 * 1000) }
+        { expires: new Date(Date.now() + 60 * 60 * 60 * 1000) }
       )
       toast({
         title: 'Login success!',
         description: 'Your future abode awaits...',
       })
+      localStorage.setItem('username', response.payload.user.username)
 
       return navigate('/')
     }
@@ -64,8 +66,8 @@ const LoginTab = React.memo(function LoginTab() {
 
   return (
     <TabsContent className="mt-0" value="login">
-      <Card className="flex-center flex-col gap-3 h-80 w-[408px]">
-        <CardContent className="flex flex-col w-full gap-3">
+      <Card className="flex-center flex-col gap-3 h-80 w-[408px] backdrop-blur-sm opacity-95">
+        <CardContent className="flex flex-col w-full gap-3 motion-preset-fade-md">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleLogin)}>
               <FormInput
@@ -82,11 +84,20 @@ const LoginTab = React.memo(function LoginTab() {
                 placeholder="password"
                 type="password"
               />
-              <div className="flex gap-4 mt-6">
-                <Button className="w-full cursor-pointer" type="submit">
+              <div className="flex gap-4 mt-10">
+                <Button className="w-full" type="submit">
                   Sign In
                 </Button>
-                <Button className="w-full cursor-pointer" variant="secondary">
+                <Button
+                  className="w-full"
+                  onClick={() => {
+                    form.setValue('identifier', guestCredentials.identifier)
+                    form.setValue('password', guestCredentials.password)
+
+                    return form.handleSubmit(handleLogin)
+                  }}
+                  variant="secondary"
+                >
                   Guest User
                 </Button>
               </div>

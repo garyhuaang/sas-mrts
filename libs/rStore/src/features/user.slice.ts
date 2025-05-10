@@ -1,10 +1,5 @@
 import { postLogin, postRegister } from '../api/post.data'
-import {
-  AuthResponse,
-  type RegisterCredentials,
-  type User,
-  UserAuthState,
-} from '../types'
+import { AuthResponse, UserAuthState } from '../types'
 
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 

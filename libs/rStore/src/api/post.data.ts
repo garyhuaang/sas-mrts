@@ -1,5 +1,3 @@
-import { AxiosError } from 'axios'
-
 import type {
   AuthResponse,
   LoginCredentials,

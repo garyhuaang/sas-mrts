@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
 
-import { Card, CardContent, CardDescription, CardTitle } from '../../base'
+import ProductCards from './ProductCards'
+import { ProductIndicators } from './ProductIndicators'
+import ProductsMoreFilters from './ProductsMoreFilters'
 
 import { type Products, selectProducts } from '@sas-mrts/rStore'
 
@@ -8,23 +10,19 @@ function ProductsList() {
   const products: Products = useSelector(selectProducts)
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pt-12 h-full">
-      {products.map((product) => (
-        <Card className="max-w-90" key={product.id}>
-          <CardContent>
-            <CardTitle className="flex justify-center mb-4 mt-4">
-              {product.attributes.title}
-            </CardTitle>
-            <img
-              className="h-64 w-full rounded-lg"
-              src={product.attributes.image}
-            />
-            <CardDescription className="flex justify-center mt-4">
-              {product.attributes.price}
-            </CardDescription>
-          </CardContent>
-        </Card>
-      ))}
+    <div className="flex w-full p-10 pt-3 gap-8">
+      <ProductsMoreFilters />
+      <div className="flex flex-col w-full">
+        <ProductIndicators />
+        <div className="flex-center max-h-[calc(100vh-300px)] overflow-auto mb-3 no-scrollbar">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+            gap-8 h-full"
+          >
+            <ProductCards products={products} />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
