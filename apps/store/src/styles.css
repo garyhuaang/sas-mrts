@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import url('https://fonts.cdnfonts.com/css/general-sans');
 @config "../../../tailwind.config.js";
 @plugin "tailwindcss-animate";
 
@@ -10,74 +9,74 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0 0);
-  --foreground: oklch(0.1 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.1 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.1 0 0);
-  --primary: oklch(0.1 0 0);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0 0);
-  --secondary-foreground: oklch(0.1 0 0);
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.96 0 0);
-  --accent-foreground: oklch(0.1 0 0);
-  --destructive: oklch(0.65 0.2 30);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
-  --ring: oklch(0.7 0 0);
-  --chart-1: oklch(0.65 0.1 60);
-  --chart-2: oklch(0.7 0.08 90);
-  --chart-3: oklch(0.6 0.06 70);
-  --chart-4: oklch(0.75 0.07 40);
-  --chart-5: oklch(0.8 0.05 100);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.96 0 0);
-  --sidebar-foreground: oklch(0.1 0 0);
-  --sidebar-primary: oklch(0.1 0 0);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.96 0 0);
-  --sidebar-accent-foreground: oklch(0.1 0 0);
-  --sidebar-border: oklch(0.9 0 0);
-  --sidebar-ring: oklch(0.7 0 0);
+  --background: oklch(0.97 0.015 105);
+  --foreground: oklch(0.3 0.03 90);
+  --card: oklch(0.99 0.01 100);
+  --card-foreground: oklch(0.3 0.03 90);
+  --popover: oklch(0.99 0.01 100);
+  --popover-foreground: oklch(0.3 0.03 90);
+  --primary: oklch(0.55 0.06 140);
+  --primary-foreground: oklch(0.99 0.01 100);
+  --secondary: oklch(0.94 0.02 95);
+  --secondary-foreground: oklch(0.3 0.03 90);
+  --muted: oklch(0.92 0.02 95);
+  --muted-foreground: oklch(0.5 0.03 90);
+  --accent: oklch(0.8 0.04 60);
+  --accent-foreground: oklch(0.99 0.01 100);
+  --destructive: oklch(0.7 0.1 30);
+  --destructive-foreground: oklch(0.99 0.01 100);
+  --border: oklch(0.9 0.02 95);
+  --input: oklch(0.9 0.02 95);
+  --ring: oklch(0.55 0.06 140);
+  --chart-1: oklch(0.7 0.06 140);
+  --chart-2: oklch(0.75 0.05 190);
+  --chart-3: oklch(0.8 0.04 60);
+  --chart-4: oklch(0.75 0.05 100);
+  --chart-5: oklch(0.7 0.06 240);
+  --radius: 0.7rem;
+  --sidebar: oklch(0.95 0.02 105);
+  --sidebar-foreground: oklch(0.3 0.03 90);
+  --sidebar-primary: oklch(0.55 0.06 140);
+  --sidebar-primary-foreground: oklch(0.99 0.01 100);
+  --sidebar-accent: oklch(0.92 0.02 95);
+  --sidebar-accent-foreground: oklch(0.3 0.03 90);
+  --sidebar-border: oklch(0.9 0.02 95);
+  --sidebar-ring: oklch(0.55 0.06 140);
 }
 
 .dark {
-  --background: oklch(0.12 0.0148 121.76);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.15 0 0);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.15 0 0);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.98 0 0);
-  --primary-foreground: oklch(0.1 0 0);
-  --secondary: oklch(0.2 0 0);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.2 0 0);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.5 0.2 30);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.2 0 0);
-  --ring: oklch(0.5 0 0);
-  --chart-1: oklch(0.55 0.15 60);
-  --chart-2: oklch(0.6 0.1 90);
-  --chart-3: oklch(0.65 0.12 40);
-  --chart-4: oklch(0.5 0.08 100);
-  --chart-5: oklch(0.7 0.1 70);
-  --sidebar: oklch(0.15 0 0);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.98 0 0);
-  --sidebar-primary-foreground: oklch(0.1 0 0);
-  --sidebar-accent: oklch(0.2 0 0);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.5 0 0);
+  --background: oklch(0.2 0.02 240);
+  --foreground: oklch(0.9 0.02 95);
+  --card: oklch(0.25 0.02 240);
+  --card-foreground: oklch(0.9 0.02 95);
+  --popover: oklch(0.25 0.02 240);
+  --popover-foreground: oklch(0.9 0.02 95);
+  --primary: oklch(0.7 0.1 190);
+  --primary-foreground: oklch(0.2 0.02 240);
+  --secondary: oklch(0.3 0.02 240);
+  --secondary-foreground: oklch(0.9 0.02 95);
+  --muted: oklch(0.35 0.02 240);
+  --muted-foreground: oklch(0.7 0.02 95);
+  --accent: oklch(0.6 0.08 260);
+  --accent-foreground: oklch(0.2 0.02 240);
+  --destructive: oklch(0.6 0.1 30);
+  --destructive-foreground: oklch(0.9 0.02 95);
+  --border: oklch(0.3 0.02 240);
+  --input: oklch(0.3 0.02 240);
+  --ring: oklch(0.7 0.1 190);
+  --chart-1: oklch(0.7 0.1 190);
+  --chart-2: oklch(0.65 0.08 260);
+  --chart-3: oklch(0.6 0.1 30);
+  --chart-4: oklch(0.65 0.08 140);
+  --chart-5: oklch(0.7 0.08 60);
+  --sidebar: oklch(0.18 0.02 240);
+  --sidebar-foreground: oklch(0.9 0.02 95);
+  --sidebar-primary: oklch(0.7 0.1 190);
+  --sidebar-primary-foreground: oklch(0.2 0.02 240);
+  --sidebar-accent: oklch(0.3 0.02 240);
+  --sidebar-accent-foreground: oklch(0.9 0.02 95);
+  --sidebar-border: oklch(0.3 0.02 240);
+  --sidebar-ring: oklch(0.7 0.1 190);
 }
 
 @theme inline {
@@ -120,33 +119,40 @@
 }
 
 @layer components {
-  .align-element {
-    @apply mx-auto max-w-6xl px-8;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair', serif;
   }
-  .reduced-viewport {
-    @apply max-h-[calc(100vh-110px)];
+
+  body,
+  p,
+  input,
+  button {
+    font-family: 'Inter', sans-serif;
   }
 }
 
 @layer base {
   html {
     scrollbar-gutter: stable;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   html::-webkit-scrollbar {
-    /* For Webkit browsers */
     display: none;
   }
 
   body {
     @apply bg-background text-foreground;
     scrollbar-gutter: stable;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   body::-webkit-scrollbar {
-    /* For Webkit browsers */
     display: none;
   }
 
@@ -162,6 +168,9 @@
 }
 
 @layer utilities {
+  .align-element {
+    @apply mx-auto max-w-6xl px-8;
+  }
   .mask-clip-path {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
@@ -196,12 +205,14 @@
       opacity 1000ms,
       transform 1000ms;
   }
-  /* .no-scrollbar utility class can be kept if needed for specific elements */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  .reduced-viewport {
+    @apply h-[calc(100vh-110px)];
   }
 }

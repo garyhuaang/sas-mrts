@@ -26,10 +26,10 @@ const AuthHeader = function AuthHeader() {
       >
         {localStorage.getItem('username') ? (
           <div>
-            <span>
+            <span className="text-primary text-sm">
               {`Hello ${localStorage.getItem('username')}!`}
               <Button onClick={handleLogout} variant="link">
-                <Link viewTransition to="/auth">
+                <Link viewTransition className="text-primary" to="/auth">
                   Logout
                 </Link>
               </Button>

@@ -47,12 +47,13 @@ const LoginTab = React.memo(function LoginTab() {
       setCookie(
         'user',
         { jwt: userState.jwt, username: userState.username },
-        { expires: new Date(Date.now() + 60 * 60 * 1000) }
+        { expires: new Date(Date.now() + 60 * 60 * 60 * 1000) }
       )
       toast({
         title: 'Login success!',
         description: 'Your future abode awaits...',
       })
+      localStorage.setItem('username', response.payload.user.username)
 
       return navigate('/')
     }

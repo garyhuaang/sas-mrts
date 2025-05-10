@@ -12,18 +12,18 @@ function Layout() {
   const [routes, setLinkRoutes] = useState<Route[]>(nonUserShopRoutes)
 
   useEffect(() => {
-    if (store.user.confirmed || localStorage.getItem('user')) {
+    if (localStorage.getItem('username')) {
       rStore.dispatch(setUser(store.user))
       setLinkRoutes(userShopRoutes)
     } else {
       setLinkRoutes(nonUserShopRoutes)
     }
-  }, [store.user.confirmed])
+  }, [localStorage.getItem('username')])
 
   return (
-    <div className="w-full no-scrollbar">
+    <div className="min-w-fit no-scrollbar">
       <div className="flex flex-col w-full sticky top-0 z-50 backdrop-blur-sm">
-        <div className="">
+        <div>
           <AuthHeader />
           <NavBar routes={routes} />
         </div>

@@ -21,7 +21,7 @@ function ProductsHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div className="flex flex-col space-y-4 w-full p-10 pb-0">
+    <div className="flex flex-col space-y-4 w-full p-10 pb-5">
       <Label className="text-3xl font-bold tracking-tight">Products</Label>
       <div className="flex flex-col sm:flex-row justify-between gap-4 w-full">
         <div className="flex-center relative w-96 border-box h-full">
@@ -45,7 +45,6 @@ function ProductsHeader() {
               )}
             </Button>
           </DropdownMenuTrigger>
-
           <DropdownMenuContent
             className="p-2 border-box w-[200px] h-37 overflow-hidden absolute -left-35"
             sideOffset={6}

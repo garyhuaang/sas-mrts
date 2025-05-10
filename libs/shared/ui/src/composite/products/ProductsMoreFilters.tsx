@@ -6,6 +6,7 @@ import { categoryToggles, companyToggles, TruckIcon } from '@sas-mrts/common'
 function ProductsMoreFilters() {
   return (
     <div className="flex flex-col w-1/3 min-h-full gap-8">
+      <Label className="font-semibold text-lg w-1/3">Filters</Label>
       <div className="flex flex-col space-y-4">
         <Label className="text-md font-medium">Price Range</Label>
         <Slider max={2000} step={10} />
@@ -24,7 +25,7 @@ function ProductsMoreFilters() {
       <Separator />
 
       <div className="flex flex-col gap-2">
-        <Label className="text-md font-medium">Category</Label>
+        <Label className="text-md font-medium">Company</Label>
         {companyToggles.map((category) => (
           <div className="flex gap-2">
             <Checkbox />
