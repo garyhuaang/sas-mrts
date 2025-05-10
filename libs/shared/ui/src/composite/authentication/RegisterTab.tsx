@@ -45,12 +45,12 @@ const RegisterTab = React.memo(function RegisterTab() {
       })
     }
 
-    await toast({
+    toast({
       title: 'Registration success!',
       description: 'Please sign back in',
     })
 
-    return (window.location.href = '/auth')
+    return form.reset()
   }
 
   return (

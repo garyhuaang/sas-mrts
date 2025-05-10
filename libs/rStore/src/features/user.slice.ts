@@ -30,7 +30,7 @@ const userSlice = createSlice({
     },
     logoutUser: (state) => {
       state = { ...initialState }
-      localStorage.removeItem('user')
+      localStorage.removeItem('username')
 
       return state
     },
