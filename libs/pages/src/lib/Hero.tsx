@@ -112,7 +112,7 @@ function Hero() {
   return (
     <div className="h-[calc(100vh-110px)] flex flex-col">
       <div
-        className="h-screen flex items-center justify-center relative overflow-hidden"
+        className="h-screen flex items-center justify-center relative overflow-hidden motion-preset-fade-lg"
         id="video-frame"
       >
         <VideoPlayerA videoPlayerRef={videoPlayerARef} />

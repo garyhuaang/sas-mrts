@@ -65,7 +65,7 @@ const LoginTab = React.memo(function LoginTab() {
 
   return (
     <TabsContent className="mt-0" value="login">
-      <Card className="flex-center flex-col gap-3 h-80 w-[408px] ">
+      <Card className="flex-center flex-col gap-3 h-80 w-[408px] backdrop-blur-sm opacity-95">
         <CardContent className="flex flex-col w-full gap-3 motion-preset-fade-md">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleLogin)}>
@@ -84,11 +84,11 @@ const LoginTab = React.memo(function LoginTab() {
                 type="password"
               />
               <div className="flex gap-4 mt-10">
-                <Button className="w-full cursor-pointer" type="submit">
+                <Button className="w-full" type="submit">
                   Sign In
                 </Button>
                 <Button
-                  className="w-full cursor-pointer"
+                  className="w-full"
                   onClick={() => {
                     form.setValue('identifier', guestCredentials.identifier)
                     form.setValue('password', guestCredentials.password)

@@ -21,10 +21,12 @@ function Layout() {
   }, [store.user.confirmed])
 
   return (
-    <div className=" w-full">
-      <div className="flex flex-col w-full sticky top-0 z-50">
-        <AuthHeader />
-        <NavBar routes={routes} />
+    <div className="w-full no-scrollbar">
+      <div className="flex flex-col w-full sticky top-0 z-50 backdrop-blur-sm">
+        <div className="">
+          <AuthHeader />
+          <NavBar routes={routes} />
+        </div>
       </div>
       <SofaBackDrop />
       <div className="flex flex-col">

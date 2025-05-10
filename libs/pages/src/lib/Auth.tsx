@@ -24,17 +24,15 @@ function Auth() {
         <span className="text-gray-500 tracking-tight">
           Sign into your account or create a new one
         </span>
-        <TabsList className="grid w-full grid-cols-2 shadow-md">
-          <TabsTrigger className="cursor-pointer" value="login">
-            Sign In
-          </TabsTrigger>
-          <TabsTrigger className="cursor-pointer" value="register">
-            Register
-          </TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 shadow-md backdrop-blur-sm">
+          <TabsTrigger value="login">Sign In</TabsTrigger>
+          <TabsTrigger value="register">Register</TabsTrigger>
         </TabsList>
 
-        <LoginTab />
-        <RegisterTab />
+        <div className="backdrop-blur-sm">
+          <LoginTab />
+          <RegisterTab />
+        </div>
       </Tabs>
 
       <SofaBackDrop />

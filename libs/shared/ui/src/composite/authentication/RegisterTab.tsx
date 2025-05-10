@@ -81,7 +81,7 @@ const RegisterTab = React.memo(function RegisterTab() {
                 type="password"
               />
               <div className="flex gap-4 mt-8">
-                <Button className="w-full cursor-pointer" type="submit">
+                <Button className="w-full" type="submit">
                   Register
                 </Button>
               </div>

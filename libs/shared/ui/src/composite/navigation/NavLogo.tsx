@@ -8,11 +8,7 @@ function NavLogo() {
   const navigate = useNavigate()
 
   return (
-    <Button
-      asChild
-      className="p-2 cursor-pointer"
-      onClick={() => navigate('/')}
-    >
+    <Button asChild className="p-2" onClick={() => navigate('/')}>
       <SofaIcon className="h-12 w-12" />
     </Button>
   )
