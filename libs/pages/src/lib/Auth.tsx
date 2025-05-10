@@ -24,7 +24,7 @@ function Auth() {
         <span className="text-gray-500 tracking-tight">
           Sign into your account or create a new one
         </span>
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-2 shadow-md">
           <TabsTrigger className="cursor-pointer" value="login">
             Sign In
           </TabsTrigger>
