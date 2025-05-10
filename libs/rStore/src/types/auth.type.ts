@@ -33,7 +33,11 @@ export type RegisterCredentials = {
 export type AuthResponse = {
   jwt: string
   user: User
-  error?: string
+  error?: {
+    status: number
+    name: string
+    message: string
+  }
 }
 
 export const loginFormSchema = z.object({

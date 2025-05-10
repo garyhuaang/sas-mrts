@@ -10,11 +10,20 @@ import {
   FormInput,
   TabsContent,
 } from '../../base'
+import { useToast } from '../../lib'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { postRegister, registerFormSchema, rStore } from '@sas-mrts/rStore'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import {
+  type AuthResponse,
+  postRegister,
+  registerFormSchema,
+  rStore,
+} from '@sas-mrts/rStore'
 
 const RegisterTab = React.memo(function RegisterTab() {
+  const { toast } = useToast()
+
   const form = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
@@ -24,9 +33,24 @@ const RegisterTab = React.memo(function RegisterTab() {
     },
   })
 
-  const handleRegister = () => {
-    rStore.dispatch(postRegister(form.getValues()))
-    form.reset()
+  const handleRegister = async () => {
+    const response = (await rStore.dispatch(
+      postRegister(form.getValues())
+    )) as PayloadAction<AuthResponse>
+
+    if (response.payload.error?.status === 400) {
+      return toast({
+        title: 'Registration failed',
+        description: 'Username/email already taken',
+      })
+    }
+
+    toast({
+      title: 'Registration success!',
+      description: 'Please sign back in',
+    })
+
+    return form.reset()
   }
 
   return (

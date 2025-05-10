@@ -38,12 +38,6 @@ export const postLogin = createAsyncThunk<AuthResponse, LoginCredentials>(
       return rejectWithValue('Failed to post loginData upstream')
     }
 
-    if (response instanceof AxiosError) {
-      return rejectWithValue(
-        response.response?.status || 'Failed to post login, invalid credentials'
-      )
-    }
-
     return response
   }
 )
@@ -57,13 +51,6 @@ export const postRegister = createAsyncThunk<AuthResponse, RegisterCredentials>(
 
     if (error) {
       return rejectWithValue('Failed to post loginData upstream')
-    }
-
-    if (response instanceof AxiosError) {
-      return rejectWithValue(
-        response.response?.status ||
-          'Failed to post register, check credentials'
-      )
     }
 
     return response

@@ -31,10 +31,13 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../../libs/pages/tsconfig.lib.json"
+      "path": "../../libs/rStore/tsconfig.lib.json"
     },
     {
-      "path": "../../libs/rStore/tsconfig.lib.json"
+      "path": "../../libs/shared/ui/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/pages/tsconfig.lib.json"
     }
   ]
 }
