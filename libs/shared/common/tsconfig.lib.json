@@ -33,6 +33,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.svg",
-    "../../pages/src/routes/routes.tsx"
+    "../../pages/src/routes/routes.tsx",
+    "../ui/src/composite/use-toast.tsx"
   ]
 }

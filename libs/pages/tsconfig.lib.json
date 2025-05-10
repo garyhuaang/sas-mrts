@@ -33,9 +33,6 @@
       "path": "../rStore/tsconfig.lib.json"
     },
     {
-      "path": "../shared/common/tsconfig.lib.json"
-    },
-    {
       "path": "../shared/ui/tsconfig.lib.json"
     }
   ]

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
@@ -14,16 +15,20 @@ import {
 } from '../../base'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import type { PayloadAction } from '@reduxjs/toolkit'
 import {
   type AuthResponse,
   loginFormSchema,
   postLogin,
   rStore,
+  useToast,
 } from '@sas-mrts/rStore'
 
 const LoginTab = React.memo(function LoginTab() {
   const [_, setCookie] = useCookies<'user', AuthResponse>(['user'])
+  const userState = rStore.getState().user
   const navigate = useNavigate()
+  const { toast } = useToast()
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -34,18 +39,28 @@ const LoginTab = React.memo(function LoginTab() {
   })
 
   const handleLogin = async () => {
-    await rStore.dispatch(postLogin(form.getValues()))
-    form.reset()
-    const userState = rStore.getState().user
+    const response = (await rStore.dispatch(
+      postLogin(form.getValues())
+    )) as PayloadAction<AuthResponse>
 
-    if (userState.confirmed) {
+    if (response.payload.error?.status !== 400) {
       setCookie(
         'user',
         { jwt: userState.jwt, username: userState.username },
         { expires: new Date(Date.now() + 60 * 60 * 1000) }
       )
-      navigate('/')
+      toast({
+        title: 'Login success!',
+        description: 'Your future abode awaits...',
+      })
+
+      return navigate('/')
     }
+
+    toast({
+      title: 'Login failed',
+      description: 'Incorrect email or password',
+    })
   }
 
   return (

@@ -9,7 +9,7 @@ import { type Route, rStore, setUser } from '@sas-mrts/rStore'
 
 function Layout() {
   const store = rStore.getState()
-  const [_, setLinkRoutes] = useState<Route[]>(nonUserShopRoutes)
+  const [routes, setLinkRoutes] = useState<Route[]>(nonUserShopRoutes)
 
   useEffect(() => {
     if (store.user.confirmed || localStorage.getItem('user')) {
@@ -24,7 +24,7 @@ function Layout() {
     <div className=" w-full">
       <div className="flex flex-col w-full sticky top-0 z-50">
         <AuthHeader />
-        <NavBar routes={userShopRoutes} />
+        <NavBar routes={routes} />
       </div>
       <SofaBackDrop />
       <div className="flex flex-col">

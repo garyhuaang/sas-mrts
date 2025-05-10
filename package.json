@@ -18,6 +18,7 @@
     "@radix-ui/react-separator": "^1.1.5",
     "@radix-ui/react-slot": "^1.2.2",
     "@radix-ui/react-tabs": "^1.1.11",
+    "@radix-ui/react-toast": "^1.2.13",
     "@reduxjs/toolkit": "^2.7.0",
     "@tailwindcss/postcss": "^4.1.4",
     "clsx": "^2.1.1",
