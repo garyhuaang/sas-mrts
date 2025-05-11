@@ -29,10 +29,8 @@ function Auth() {
           <TabsTrigger value="register">Register</TabsTrigger>
         </TabsList>
 
-        <div className="backdrop-blur-sm">
-          <LoginTab />
-          <RegisterTab />
-        </div>
+        <LoginTab />
+        <RegisterTab />
       </Tabs>
 
       <SofaBackDrop />
