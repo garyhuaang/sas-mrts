@@ -66,7 +66,7 @@ const LoginTab = React.memo(function LoginTab() {
 
   return (
     <TabsContent className="mt-0" value="login">
-      <Card className="flex-center flex-col gap-3 h-80 w-[408px] backdrop-blur-sm opacity-95">
+      <Card className="flex-center flex-col gap-3 h-80 w-[408px] backdrop-blur-3xl">
         <CardContent className="flex flex-col w-full gap-3 motion-preset-fade-md">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleLogin)}>

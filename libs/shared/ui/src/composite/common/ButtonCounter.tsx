@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Button, Label } from '../../base'
 
-function ButtonCounter() {
+function ButtonCounter(): React.ReactNode {
   const [count, setCount] = useState(0)
 
   const handleDecrement = () => {
@@ -26,7 +26,7 @@ function ButtonCounter() {
         -
       </Button>
       <div className="flex-center relative">
-        <Label className="font-bold text-xl absolute">{count}</Label>
+        <Label className="font-md text-base absolute">{count}</Label>
       </div>
       <Button
         className="border-l-0 font-bold text-lg rounded-l-none ml-2"

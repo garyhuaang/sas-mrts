@@ -22,7 +22,7 @@ function ProductsHeader() {
 
   return (
     <div className="flex flex-col space-y-4 w-full p-10 pb-5">
-      <Label className="text-3xl font-bold tracking-tight">Products</Label>
+      <h1 className="text-6xl font-bold tracking-tight">Products</h1>
       <div className="flex flex-col sm:flex-row justify-between gap-4 w-full">
         <div className="flex-center relative w-96 border-box h-full">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
