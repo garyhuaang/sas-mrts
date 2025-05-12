@@ -8,20 +8,13 @@ export const productSortActions = [
   { label: 'Price (Low to High)' },
   { label: 'Price (High to Low)' },
 ]
-export const categoryToggles = [
-  { label: 'All' },
-  { label: 'Kids' },
-  { label: 'Sofas' },
-  { label: 'Beds' },
-  { label: 'Tables' },
-  { label: 'Chairs' },
-]
-export const companyToggles = [
-  { label: 'Artifex' },
-  { label: 'Luxora' },
-  { label: 'Homestead' },
-  { label: 'Modenza' },
-  { label: 'Comfora' },
+export const categories = ['Kids', 'Sofas', 'Beds', 'Tables', 'Chairs']
+export const companies = [
+  'Artifex',
+  'Luxora',
+  'Homestead',
+  'Modenza',
+  'Comfora',
 ]
 export const productsSortOptions = productSortActions.map((action) => {
   return action.label

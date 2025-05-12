@@ -27,7 +27,7 @@ function OrderSummary() {
             <div className="flex flex-col gap-3">
               <h4 className="font-bold text-2xl">Order Summary</h4>
               <p className="text-md text-primary">Subtotal</p>
-              <p className="text-md text-[#b4685c]">{`Tax (${MOCK_SUMMARY_DATA.tax}%)`}</p>
+              <p className="text-md text-primary">{`Tax (${MOCK_SUMMARY_DATA.tax}%)`}</p>
               <p className="text-md text-primary">Shipping</p>
             </div>
           </TableCell>

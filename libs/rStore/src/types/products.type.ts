@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 export type Product = {
   title: string
   company: string
@@ -12,6 +14,8 @@ export type Product = {
   shipping: boolean
   colors: string[]
 }
+
+export type Toggles = { name: string; included: boolean }[]
 
 export type Products = { id: number; attributes: Product }[]
 
@@ -28,3 +32,19 @@ export type ProductsResponse = {
   data: Products
   meta: Pagination
 }
+
+export const categoryFormSchema = z.object({
+  kids: z.boolean(),
+  sofas: z.boolean(),
+  beds: z.boolean(),
+  tables: z.boolean(),
+  chairs: z.boolean(),
+})
+
+export const companyFormSchema = z.object({
+  artifax: z.boolean(),
+  luxora: z.boolean(),
+  homestead: z.boolean(),
+  modenza: z.boolean(),
+  comfora: z.boolean(),
+})

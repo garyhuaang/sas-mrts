@@ -1,13 +1,11 @@
-import { useSelector } from 'react-redux'
-
 import ProductCards from './ProductCards'
 import { ProductIndicators } from './ProductIndicators'
 import ProductsMoreFilters from './ProductsMoreFilters'
 
-import { type Products, selectProducts } from '@sas-mrts/rStore'
+import { useAppSelector } from '@sas-mrts/rStore'
 
 function ProductsList() {
-  const products: Products = useSelector(selectProducts)
+  const products = useAppSelector((state) => state.products.filteredItems)
 
   return (
     <div className="flex w-full p-10 pt-3 gap-8">

@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from '../../base'
 
+import { numToUSD } from '@sas-mrts/common'
 import type { Products } from '@sas-mrts/rStore'
 
 function ProductCards({ products }: { products: Products }) {
@@ -27,7 +28,7 @@ function ProductCards({ products }: { products: Products }) {
                   {product.attributes.category}
                 </CardDescription>
                 <CardDescription className="flex justify-center font-bold text-primary">
-                  {product.attributes.price}
+                  {numToUSD(Number(product.attributes.price))}
                 </CardDescription>
               </div>
               <Button className="mt-2" variant="secondary">

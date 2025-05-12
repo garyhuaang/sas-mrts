@@ -213,7 +213,7 @@
     scrollbar-width: none;
   }
   .reduced-viewport {
-    @apply h-[calc(100vh-110px)];
+    @apply h-[calc(100vh-150px)];
   }
   .table-styles {
     @apply flex items-center justify-center self-center border rounded-md box-border p-6 w-2/3 backdrop-blur-3xl;

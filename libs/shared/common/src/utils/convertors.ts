@@ -1,3 +1,8 @@
 export const numToUSD = (number: number): string => {
-  return number.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+  const includeCents = number / 100
+
+  return includeCents.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
 }
