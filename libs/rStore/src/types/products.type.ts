@@ -32,19 +32,3 @@ export type ProductsResponse = {
   data: Products
   meta: Pagination
 }
-
-export const categoryFormSchema = z.object({
-  kids: z.boolean(),
-  sofas: z.boolean(),
-  beds: z.boolean(),
-  tables: z.boolean(),
-  chairs: z.boolean(),
-})
-
-export const companyFormSchema = z.object({
-  artifax: z.boolean(),
-  luxora: z.boolean(),
-  homestead: z.boolean(),
-  modenza: z.boolean(),
-  comfora: z.boolean(),
-})

@@ -2,7 +2,6 @@ import { fetchProducts } from '../api/fetch.data'
 import { Products } from '../types/products.type'
 
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { categories, companies } from '@sas-mrts/common'
 
 type ProdcutsState = {
   items: Products
@@ -59,8 +58,12 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setPriceRange: (state, action: PayloadAction<number>) => {
-      state.priceRange = action.payload
+    resetCatgories: (state) => {
+      state.categories = []
+      applyFilters(state)
+    },
+    resetCompanies: (state) => {
+      state.companies = []
       applyFilters(state)
     },
     setCategory: (state, action: PayloadAction<string>) => {
@@ -78,7 +81,6 @@ const productsSlice = createSlice({
 
       applyFilters(state)
     },
-
     setCompany: (state, action: PayloadAction<string>) => {
       const companyExists = state.companies.find(
         (company) => company === action.payload
@@ -96,7 +98,11 @@ const productsSlice = createSlice({
     },
     setFreeShipping: (state) => {
       state.freeShipping = !state.freeShipping
-      // state.filteredItems = applyFilters(state)
+      applyFilters(state)
+    },
+    setPriceRange: (state, action: PayloadAction<number>) => {
+      state.priceRange = action.payload
+      applyFilters(state)
     },
   },
   extraReducers: (builder) => {
@@ -116,6 +122,12 @@ const productsSlice = createSlice({
   },
 })
 
-export const { setPriceRange, setCategory, setCompany, setFreeShipping } =
-  productsSlice.actions
+export const {
+  resetCatgories,
+  resetCompanies,
+  setFreeShipping,
+  setCategory,
+  setCompany,
+  setPriceRange,
+} = productsSlice.actions
 export const productsReducer = productsSlice.reducer

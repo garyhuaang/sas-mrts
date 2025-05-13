@@ -9,13 +9,7 @@ export const productSortActions = [
   { label: 'Price (High to Low)' },
 ]
 export const categories = ['Kids', 'Sofas', 'Beds', 'Tables', 'Chairs']
-export const companies = [
-  'Artifex',
-  'Luxora',
-  'Homestead',
-  'Modenza',
-  'Comfora',
-]
+export const companies = ['Luxora', 'Homestead', 'Modenza', 'Comfora']
 export const productsSortOptions = productSortActions.map((action) => {
   return action.label
 })

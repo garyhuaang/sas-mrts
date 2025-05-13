@@ -1,49 +1,21 @@
-import { useForm } from 'react-hook-form'
-import type { z } from 'zod'
-
 import { Button, Checkbox, Label, Separator, Switch } from '../../base'
 import { Slider } from '../../base/slider'
 
 import { categories, companies, numToUSD, TruckIcon } from '@sas-mrts/common'
 import {
-  categoryFormSchema,
-  type companyFormSchema,
+  resetCatgories,
+  resetCompanies,
   setCategory,
   setCompany,
+  setFreeShipping,
   setPriceRange,
   useAppDispatch,
   useAppSelector,
 } from '@sas-mrts/rStore'
 
-type resetProps = 'COMPANY' | 'CATEGORY'
-
 function ProductsMoreFilters() {
   const selector = useAppSelector((state) => state.products)
   const dispatch = useAppDispatch()
-
-  const categoryForm = useForm<z.infer<typeof categoryFormSchema>>({
-    defaultValues: {
-      kids: false,
-      sofas: false,
-      beds: false,
-      tables: false,
-      chairs: false,
-    },
-  })
-
-  const companyForm = useForm<z.infer<typeof companyFormSchema>>({
-    defaultValues: {
-      artifax: false,
-      luxora: false,
-      homestead: false,
-      modenza: false,
-      comfora: false,
-    },
-  })
-
-  const handleReset = (value: resetProps) => {
-    return value === 'CATEGORY' ? categoryForm.reset() : companyForm.reset()
-  }
 
   const handleSliderChange = (e: number[]) => {
     dispatch(setPriceRange(e[0]))
@@ -63,47 +35,51 @@ function ProductsMoreFilters() {
       </div>
       <Separator />
 
-      <form
-        className="flex flex-col gap-2"
-        onSubmit={() => handleReset('CATEGORY')}
-      >
+      <div className="flex flex-col gap-2">
         <Label className="text-lg font-medium">Category</Label>
-        <Button className="w-1/6">Reset</Button>
+        <Button className="w-1/6" onClick={() => dispatch(resetCatgories())}>
+          Reset
+        </Button>
         <Separator className="bg-primary w-20" />
         {categories.map((category, index) => (
-          <div className="flex gap-2" key={index}>
+          <div
+            className="flex gap-2"
+            key={index}
+            onClick={() => dispatch(setCategory(category))}
+          >
             <Checkbox
+              checked={selector.categories.includes(category)}
               id={`category-${category}`}
-              onClick={() => dispatch(setCategory(category))}
             />
             <Label className="text-sm font-medium">{category}</Label>
           </div>
         ))}
-      </form>
+      </div>
       <Separator className="bg-primary" />
 
-      <form
-        className="flex flex-col gap-2"
-        onSubmit={() => handleReset('COMPANY')}
-      >
+      <div className="flex flex-col gap-2">
         <Label className="text-md font-medium">Company</Label>
-        <Button className="w-1/6">Reset</Button>
+        <Button className="w-1/6" onClick={() => dispatch(resetCompanies())}>
+          Reset
+        </Button>
         {companies.map((company, index) => (
-          <div className="flex gap-2" key={index}>
-            <Checkbox />
-            <Label
-              className="text-sm font-medium"
-              onClick={() => dispatch(setCompany(company))}
-            >
-              {company}
-            </Label>
+          <div
+            className="flex gap-2"
+            key={index}
+            onClick={() => dispatch(setCompany(company))}
+          >
+            <Checkbox
+              checked={selector.companies.includes(company)}
+              id={`company-${company}`}
+            />
+            <Label className="text-sm font-medium">{company}</Label>
           </div>
         ))}
-      </form>
+      </div>
       <Separator className="bg-primary" />
 
       <div className="flex gap-4">
-        <Switch />
+        <Switch onClick={() => dispatch(setFreeShipping())} />
         <Label className="flex text-md font-medium gap-2">
           <TruckIcon /> Free shipping only
         </Label>
