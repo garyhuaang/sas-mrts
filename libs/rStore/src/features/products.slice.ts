@@ -59,6 +59,14 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
+    filterByName: (state, action: PayloadAction<string>) => {
+      if (action.payload === '') state.filteredItems = state.items
+      else {
+        state.filteredItems = state.items.filter((item) =>
+          item.attributes.title.includes(action.payload)
+        )
+      }
+    },
     resetCatgories: (state) => {
       state.categories = []
       applyFilters(state)
@@ -160,6 +168,7 @@ const productsSlice = createSlice({
 })
 
 export const {
+  filterByName,
   resetCatgories,
   resetCompanies,
   setFreeShipping,
