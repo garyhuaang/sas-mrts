@@ -19,17 +19,17 @@ function ButtonCounter(): React.ReactNode {
         justify-between w-35 bg-secondary"
     >
       <Button
-        className="font-bold text-lg rounded-r-none mr-2"
+        className="font-bold text-lg rounded-r-none mr-2 hover:bg-primary hover:text-secondary"
         onClick={handleDecrement}
         variant="ghost"
       >
         -
       </Button>
       <div className="flex-center relative">
-        <Label className="font-md text-base absolute">{count}</Label>
+        <Label className="font-medium text-base absolute ">{count}</Label>
       </div>
       <Button
-        className="border-l-0 font-bold text-lg rounded-l-none ml-2"
+        className="border-l-0 font-medium text-lg rounded-l-none ml-2 hover:bg-primary hover:text-secondary"
         onClick={handleIncrement}
         variant="ghost"
       >

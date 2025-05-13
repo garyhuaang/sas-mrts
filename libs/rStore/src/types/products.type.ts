@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 export type Product = {
   title: string
   company: string
@@ -12,6 +14,8 @@ export type Product = {
   shipping: boolean
   colors: string[]
 }
+
+export type Toggles = { name: string; included: boolean }[]
 
 export type Products = { id: number; attributes: Product }[]
 
@@ -28,3 +32,5 @@ export type ProductsResponse = {
   data: Products
   meta: Pagination
 }
+
+export type SortProducts = 'NAME_A_Z' | 'NAME_Z_A' | 'PRICE_L_H' | 'PRICE_H_L'
