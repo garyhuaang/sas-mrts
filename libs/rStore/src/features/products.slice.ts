@@ -1,5 +1,5 @@
 import { fetchProducts } from '../api/fetch.data'
-import { Products } from '../types/products.type'
+import { Products, type SortProducts } from '../types/products.type'
 
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
@@ -10,6 +10,7 @@ type ProdcutsState = {
   categories: string[]
   companies: string[]
   freeShipping: boolean
+  sortOrder: SortProducts
   isLoading: boolean
   error: string | null
 }
@@ -21,11 +22,11 @@ const initialState: ProdcutsState = {
   categories: [],
   companies: [],
   freeShipping: false,
+  sortOrder: 'NAME_A_Z',
   isLoading: false,
   error: null,
 }
 
-// Helper function to apply all filters
 const applyFilters = (state: ProdcutsState) => {
   let filtered = [...state.items]
 
@@ -104,6 +105,42 @@ const productsSlice = createSlice({
       state.priceRange = action.payload
       applyFilters(state)
     },
+    setSort: (state, action: PayloadAction<SortProducts>) => {
+      switch (action.payload) {
+        case 'NAME_A_Z':
+          state.sortOrder = 'NAME_A_Z'
+          state.items.sort((a, b) =>
+            a.attributes.title.localeCompare(b.attributes.title)
+          )
+          break
+        case 'NAME_Z_A':
+          state.sortOrder = 'NAME_Z_A'
+          state.items.sort((a, b) =>
+            b.attributes.title.localeCompare(a.attributes.title)
+          )
+          break
+        case 'PRICE_L_H':
+          state.sortOrder = 'PRICE_L_H'
+          state.items.sort(
+            (a, b) => Number(a.attributes.price) - Number(b.attributes.price)
+          )
+          break
+        case 'PRICE_H_L':
+          state.sortOrder = 'PRICE_H_L'
+          state.items.sort(
+            (a, b) => Number(b.attributes.price) - Number(a.attributes.price)
+          )
+          break
+        default:
+          state.sortOrder = 'NAME_A_Z'
+          state.items.sort((a, b) =>
+            a.attributes.title.localeCompare(b.attributes.title)
+          )
+          break
+      }
+
+      applyFilters(state)
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -129,5 +166,6 @@ export const {
   setCategory,
   setCompany,
   setPriceRange,
+  setSort,
 } = productsSlice.actions
 export const productsReducer = productsSlice.reducer

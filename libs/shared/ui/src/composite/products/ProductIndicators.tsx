@@ -1,13 +1,36 @@
 import { Label } from '../../base'
 
-import { ArrowUpDownIcon } from '@sas-mrts/common'
+import {
+  ArrowDownUpIcon,
+  ArrowLeftRightIcon,
+  ArrowRightLeftIcon,
+  ArrowUpDownIcon,
+} from '@sas-mrts/common'
+import { useAppSelector } from '@sas-mrts/rStore'
 
 function ProductIndicators() {
+  const filteredItems = useAppSelector((state) => state.products)
+
+  const renderSortIcon = () => {
+    switch (filteredItems.sortOrder) {
+      case 'NAME_A_Z':
+        return <ArrowUpDownIcon className="h-4 w-4" />
+      case 'NAME_Z_A':
+        return <ArrowDownUpIcon className="h-4 w-4" />
+      case 'PRICE_L_H':
+        return <ArrowLeftRightIcon className="h-4 w-4" />
+      case 'PRICE_H_L':
+        return <ArrowRightLeftIcon className="h-4 w-4" />
+      default:
+        return <ArrowUpDownIcon className="h-4 w-4" />
+    }
+  }
+
   return (
     <div className="flex justify-between mb-6 border-box w-full">
       <div className="flex justify-between w-full pl-2">
-        <Label className="text-sm text-muted-foreground">{`Showing ${0} products`}</Label>
-        <ArrowUpDownIcon className="h-4 w-4 text-muted-foreground" />
+        <Label className="text-sm text-muted-foreground">{`Showing ${filteredItems.items.length} products`}</Label>
+        {renderSortIcon()}
       </div>
     </div>
   )

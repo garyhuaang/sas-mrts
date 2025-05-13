@@ -32,3 +32,5 @@ export type ProductsResponse = {
   data: Products
   meta: Pagination
 }
+
+export type SortProducts = 'NAME_A_Z' | 'NAME_Z_A' | 'PRICE_L_H' | 'PRICE_H_L'

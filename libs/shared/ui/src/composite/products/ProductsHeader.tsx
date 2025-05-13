@@ -10,14 +10,16 @@ import {
   Label,
 } from '../../base'
 
-import { SearchIcon } from '@sas-mrts/common'
 import {
   ChevronDownIcon,
   ChevronUpIcon,
-  productsSortOptions,
+  productSortOptions,
+  SearchIcon,
 } from '@sas-mrts/common'
+import { setSort, type SortProducts, useAppDispatch } from '@sas-mrts/rStore'
 
 function ProductsHeader() {
+  const dispatch = useAppDispatch()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -37,7 +39,7 @@ function ProductsHeader() {
               className="flex-center gap-4 pt-6 pb-6 pr-14 pl-14 h-10 w-22"
               variant="outline"
             >
-              <Label className="text-lg">Sort</Label>
+              <Label className="text-medium">Sort</Label>
               {isMenuOpen ? (
                 <ChevronUpIcon className="h-5 w-5" />
               ) : (
@@ -49,8 +51,13 @@ function ProductsHeader() {
             className="p-2 border-box w-[200px] h-37 overflow-hidden absolute -left-35"
             sideOffset={6}
           >
-            {productsSortOptions.map((option, index) => (
-              <DropdownMenuItem key={index}>{option}</DropdownMenuItem>
+            {productSortOptions.map((option, index) => (
+              <DropdownMenuItem
+                key={index}
+                onClick={() => dispatch(setSort(option.action as SortProducts))}
+              >
+                {option.label}
+              </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
