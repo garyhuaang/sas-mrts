@@ -1,6 +1,4 @@
-import { z } from 'zod'
-
-export type Product = {
+export type ProductAttributes = {
   title: string
   company: string
   description: string
@@ -15,9 +13,14 @@ export type Product = {
   colors: string[]
 }
 
+export type Product = {
+  id: number
+  attributes: ProductAttributes
+}
+
 export type Toggles = { name: string; included: boolean }[]
 
-export type Products = { id: number; attributes: Product }[]
+export type Products = { id: number; attributes: ProductAttributes }[]
 
 export type Pagination = {
   pagination: {

@@ -2,13 +2,19 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { listenerMiddleware } from './middleware/listenerMiddleware'
 import { storeApi } from './api'
-import { productsReducer, themeReducer, userReducer } from './features'
+import {
+  cartReducer,
+  productsReducer,
+  themeReducer,
+  userReducer,
+} from './features'
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 const rootReducer = combineReducers({
   theme: themeReducer,
   products: productsReducer,
+  cart: cartReducer,
   user: userReducer,
   [storeApi.reducerPath]: storeApi.reducer,
 })

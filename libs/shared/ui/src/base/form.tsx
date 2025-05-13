@@ -155,21 +155,17 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
   )
 }
 
-// Define FormInputProps generically
 type FormInputProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
-  control: Control<TFieldValues> // Use the generic TFieldValues
-  name: TName // Use the generic TName
+  control: Control<TFieldValues>
+  name: TName
   label: string
   type: string
   placeholder: string
-  // Remove onChange if not specifically needed alongside RHF field props
-  // onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-// Define FormInput component generically
 const FormInput = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,

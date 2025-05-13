@@ -79,7 +79,10 @@ function ProductsMoreFilters() {
       <Separator className="bg-primary" />
 
       <div className="flex gap-4">
-        <Switch onClick={() => dispatch(setFreeShipping())} />
+        <Switch
+          checked={selector.freeShipping}
+          onClick={() => dispatch(setFreeShipping())}
+        />
         <Label className="flex text-md font-medium gap-2">
           <TruckIcon /> Free shipping only
         </Label>

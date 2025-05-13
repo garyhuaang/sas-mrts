@@ -1,18 +1,18 @@
-import { useState } from 'react'
+import React from 'react'
 
 import { Button, Label } from '../../base'
 
-function ButtonCounter(): React.ReactNode {
-  const [count, setCount] = useState(0)
+type ButtonCounterProps = {
+  value: number
+  onIncrementClick: () => void
+  onDecrementClick: () => void
+}
 
-  const handleDecrement = () => {
-    return count > 0 ? setCount((prev) => prev - 1) : ''
-  }
-
-  const handleIncrement = () => {
-    return setCount((prev) => prev + 1)
-  }
-
+function ButtonCounter({
+  onIncrementClick,
+  onDecrementClick,
+  value,
+}: ButtonCounterProps): React.ReactNode {
   return (
     <div
       className="flex items-center border rounded-md h-min gap-2
@@ -20,17 +20,17 @@ function ButtonCounter(): React.ReactNode {
     >
       <Button
         className="font-bold text-lg rounded-r-none mr-2 hover:bg-primary hover:text-secondary"
-        onClick={handleDecrement}
+        onClick={() => onDecrementClick()}
         variant="ghost"
       >
         -
       </Button>
       <div className="flex-center relative">
-        <Label className="font-medium text-base absolute ">{count}</Label>
+        <Label className="font-medium text-base absolute ">{value}</Label>
       </div>
       <Button
         className="border-l-0 font-medium text-lg rounded-l-none ml-2 hover:bg-primary hover:text-secondary"
-        onClick={handleIncrement}
+        onClick={() => onIncrementClick()}
         variant="ghost"
       >
         +

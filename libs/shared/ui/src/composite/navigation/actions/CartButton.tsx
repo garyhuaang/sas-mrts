@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { Button } from '../../../base/button'
 
 import { CartIcon } from '@sas-mrts/common'
-
-const itemsInCart = 0
+import { useAppSelector } from '@sas-mrts/rStore'
 
 function CartButton() {
+  const cartItems = useAppSelector((state) => state.cart.cartItems)
+
   return (
     <>
       {localStorage.getItem('username') && (
@@ -25,7 +26,7 @@ function CartButton() {
               text-secondary text-sm
               flex items-center justify-center"
             >
-              <span className="absolute top-0.5">{itemsInCart}</span>
+              <span className="absolute top-0.5">{cartItems.length}</span>
             </div>
           </Link>
         </Button>

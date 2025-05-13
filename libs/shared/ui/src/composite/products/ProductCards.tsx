@@ -7,13 +7,20 @@ import {
 } from '../../base'
 
 import { numToUSD } from '@sas-mrts/common'
-import type { Products } from '@sas-mrts/rStore'
+import {
+  addToCart,
+  type Product,
+  type Products,
+  useAppDispatch,
+} from '@sas-mrts/rStore'
 
 function ProductCards({ products }: { products: Products }) {
+  const dispatch = useAppDispatch()
+
   return (
     <>
-      {products.map((product) => (
-        <Card className="max-w-full min-h-100" key={product.id}>
+      {products.map((product: Product) => (
+        <Card className="max-w-11/12 min-w-10 min-h-100" key={product.id}>
           <CardContent className="p-0">
             <img
               className="h-64 w-full rounded-t-lg"
@@ -31,7 +38,11 @@ function ProductCards({ products }: { products: Products }) {
                   {numToUSD(Number(product.attributes.price))}
                 </CardDescription>
               </div>
-              <Button className="mt-2" variant="secondary">
+              <Button
+                className="mt-2"
+                onClick={() => dispatch(addToCart(product))}
+                variant="secondary"
+              >
                 Add to Cart
               </Button>
             </div>
