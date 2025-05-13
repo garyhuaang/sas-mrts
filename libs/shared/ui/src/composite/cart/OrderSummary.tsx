@@ -20,19 +20,19 @@ const MOCK_SUMMARY_DATA = {
 
 function OrderSummary() {
   return (
-    <Table className="min-h-[200px] w-full">
-      <TableBody className="grid grid-cols-1 border-b-2 mb-2 ">
-        <TableRow className="hover:bg-inherit mb-2 min-w-[430px]">
-          <TableCell className="w-1/5 h-full">
+    <div className="min-h-[200px] w-full">
+      <div className="grid grid-cols-1 border-b-2 mb-2 ">
+        <div className="flex hover:bg-inherit mb-2 min-w-[430px]">
+          <div className="w-1/5 h-full">
             <div className="flex flex-col gap-3">
               <h4 className="font-bold text-2xl">Order Summary</h4>
               <p className="text-md text-primary">Subtotal</p>
               <p className="text-md text-primary">{`Tax (${MOCK_SUMMARY_DATA.tax}%)`}</p>
               <p className="text-md text-primary">Shipping</p>
             </div>
-          </TableCell>
+          </div>
 
-          <TableCell className="w-1/50 h-full self-end">
+          <div className="w-1/50 h-full self-end">
             <div className="flex flex-col gap-3">
               <p className="font-bold text-md mt-4 self-end">
                 {numToUSD(MOCK_SUMMARY_DATA.total)}
@@ -48,40 +48,40 @@ function OrderSummary() {
                   : numToUSD(MOCK_SUMMARY_DATA.shipping)}
               </p>
             </div>
-          </TableCell>
-        </TableRow>
-      </TableBody>
+          </div>
+        </div>
+      </div>
 
-      <TableBody className="grid grid-cols-1 mb-2">
-        <TableRow className="hover:bg-inherit mb-4 min-w-[430px]">
-          <TableCell className="w-1/5 h-full">
+      <div className="grid grid-cols-1 mb-2">
+        <div className="flex hover:bg-inherit mb-4 min-w-[430px]">
+          <div className="w-1/5 h-full">
             <div className="flex flex-col gap-3">
               <h4 className="font-bold text-2xl">Total</h4>
             </div>
-          </TableCell>
+          </div>
 
-          <TableCell className="w-1/50 h-full self-end">
+          <div className="w-1/50 h-full self-end">
             <div className="flex flex-col gap-3 self-end">
               <p className="font-bold text-md text-priamry self-end">
                 {numToUSD(MOCK_SUMMARY_DATA.total)}
               </p>
             </div>
-          </TableCell>
-        </TableRow>
-        <TableRow className="flex flex-col gap-4 hover:bg-inherit p-1">
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 hover:bg-inherit p-1">
           <Input placeholder="Promo code" />
           <Button className="w-full">
             <Link viewTransition to="/checkout">
               Proceed to Checkout
             </Link>
           </Button>
-          <TableCell className="flex items-center justify-start h-15 bg-secondary rounded-md p-4">
+          <div className="flex items-center justify-start h-15 bg-secondary rounded-md p-4">
             <TruckIcon className="mr-2 h-4 w-4" />
             Your order qualifies for free shipping!
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

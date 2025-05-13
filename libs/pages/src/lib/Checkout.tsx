@@ -13,8 +13,11 @@ import {
   numToUSD,
   TruckIcon,
 } from '@sas-mrts/common'
+import { useAppSelector } from '@sas-mrts/rStore'
 
 function Checkout() {
+  const cartSelector = useAppSelector((state) => state.cart)
+
   return (
     <div className="flex flex-col w-screen overflow-y-auto p-10 md:p-24">
       <div className="flex flex-col w-full h-full justify-center">

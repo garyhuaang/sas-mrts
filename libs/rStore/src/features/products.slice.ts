@@ -63,7 +63,9 @@ const productsSlice = createSlice({
       if (action.payload === '') state.filteredItems = state.items
       else {
         state.filteredItems = state.items.filter((item) =>
-          item.attributes.title.includes(action.payload)
+          item.attributes.title
+            .toLowerCase()
+            .includes(action.payload.toLowerCase())
         )
       }
     },

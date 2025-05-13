@@ -14,6 +14,7 @@ import { ReactComponent as RadioSVG } from './radio.svg'
 import { ReactComponent as SearchSVG } from './search.svg'
 import { ReactComponent as SofaSVG } from './sofa.svg'
 import { ReactComponent as SunSVG } from './sun.svg'
+import { ReactComponent as TrashSVG } from './trash.svg'
 import { ReactComponent as TruckSVG } from './truck.svg'
 
 export const ArrowUpDownIcon = ArrowUpDownSVG
@@ -32,4 +33,5 @@ export const RadioIcon = RadioSVG
 export const SearchIcon = SearchSVG
 export const SofaIcon = SofaSVG
 export const SunIcon = SunSVG
+export const TrashIcon = TrashSVG
 export const TruckIcon = TruckSVG
