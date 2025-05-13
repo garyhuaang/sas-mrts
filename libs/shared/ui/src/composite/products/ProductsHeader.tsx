@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { type ChangeEvent, useState } from 'react'
 
 import {
   Button,
@@ -16,7 +16,12 @@ import {
   productSortOptions,
   SearchIcon,
 } from '@sas-mrts/common'
-import { setSort, type SortProducts, useAppDispatch } from '@sas-mrts/rStore'
+import {
+  filterByName,
+  setSort,
+  type SortProducts,
+  useAppDispatch,
+} from '@sas-mrts/rStore'
 
 function ProductsHeader() {
   const dispatch = useAppDispatch()
@@ -30,7 +35,13 @@ function ProductsHeader() {
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
             <SearchIcon className="h-4 w-4" />
           </span>
-          <Input className="pl-9 h-12" placeholder="Search products..." />
+          <Input
+            className="pl-9 h-12"
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              dispatch(filterByName(e.target.value))
+            }
+            placeholder="Search products..."
+          />
         </div>
 
         <DropdownMenu onOpenChange={setIsMenuOpen} open={isMenuOpen}>
