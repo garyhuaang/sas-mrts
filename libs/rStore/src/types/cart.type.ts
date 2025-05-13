@@ -5,11 +5,16 @@ type CartItem = {
   qty: number
 }
 
+type NotFreeShipping = {
+  false: number
+}
+
 type CartState = {
   cartItems: CartItem[]
   subTotal: number
   tax: number
-  shipping: number
+  calculatedTax: number
+  shipping: NotFreeShipping
   total: number
 }
 

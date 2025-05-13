@@ -20,7 +20,7 @@ function ProductCards({ products }: { products: Products }) {
   return (
     <>
       {products.map((product: Product) => (
-        <Card className="max-w-full min-h-100" key={product.id}>
+        <Card className="max-w-11/12 min-w-10 min-h-100" key={product.id}>
           <CardContent className="p-0">
             <img
               className="h-64 w-full rounded-t-lg"

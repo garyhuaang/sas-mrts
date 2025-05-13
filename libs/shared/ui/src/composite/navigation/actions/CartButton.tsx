@@ -5,8 +5,6 @@ import { Button } from '../../../base/button'
 import { CartIcon } from '@sas-mrts/common'
 import { useAppSelector } from '@sas-mrts/rStore'
 
-const itemsInCart = 0
-
 function CartButton() {
   const cartItems = useAppSelector((state) => state.cart.cartItems)
 
