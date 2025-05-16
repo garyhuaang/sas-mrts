@@ -13,7 +13,7 @@ import {
 } from '@sas-mrts/rStore'
 
 function CartItems() {
-  const cartSelector = useAppSelector((state) => state.cart)
+  const cartState = useAppSelector((state) => state.cart)
   const dispatch = useAppDispatch()
 
   return (
@@ -21,7 +21,7 @@ function CartItems() {
       className="flex flex-col h-full table-styles w-full overflow-y-auto
         p-10 md:p-24 justify-self-center"
     >
-      {cartSelector.cartItems.map((item, index) => (
+      {cartState.cartItems.map((item, index) => (
         <div
           className="flex w-full justify-between hover:bg-inherit
             gap-4 self-start border-b-1 border-primary p-6"

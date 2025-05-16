@@ -1,5 +1,9 @@
 import { fetchProducts } from '../api/fetch.data'
-import { Products, type SortProducts } from '../types/products.type'
+import {
+  type Product,
+  Products,
+  type SortProducts,
+} from '../types/products.type'
 
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
@@ -159,8 +163,22 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false
-        state.items = action.payload as Products
-        state.filteredItems = action.payload as Products
+        const payload = action.payload as Product[]
+
+        const data = payload.map((product: Product) => {
+          return {
+            id: product.id,
+            attributes: {
+              ...product.attributes,
+              price: Number(product.attributes.price) / 100,
+            },
+          }
+        }) as Product[] | unknown
+
+        if (data) {
+          state.items = data as Product[]
+          state.filteredItems = data as Product[]
+        }
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false

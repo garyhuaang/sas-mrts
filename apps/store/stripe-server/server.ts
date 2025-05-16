@@ -25,6 +25,9 @@ app.post('/create-checkout-session', async (req: Request, res: Response) => {
     })
   }
 
+  // IMPORTANT: Replace 'txr_YOUR_8_PERCENT_TAX_RATE_ID' with your actual Tax Rate ID from the Stripe Dashboard
+  const eightPercentTaxRateId = 'txr_YOUR_8_PERCENT_TAX_RATE_ID'
+
   try {
     const session = await stripe.checkout.sessions.create({
       ui_mode: 'custom',
@@ -39,6 +42,7 @@ app.post('/create-checkout-session', async (req: Request, res: Response) => {
           ),
         },
         quantity: item.qty,
+        tax_rates: [eightPercentTaxRateId], // Apply the tax rate ID
       })),
       mode: 'payment',
       return_url: `${STORE_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
