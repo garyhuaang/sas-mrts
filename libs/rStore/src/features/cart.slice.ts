@@ -11,6 +11,12 @@ const initialState: CartState = {
   total: 0,
 }
 
+const updateTotalsTax = (state: CartState, price: number) => {
+  state.subTotal += price
+  state.calculatedTax = state.tax * state.subTotal
+  state.total = state.subTotal + state.calculatedTax
+}
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -25,8 +31,7 @@ const cartSlice = createSlice({
       if (itemExists) itemExists.qty++
       else state.cartItems.push({ qty: 1, product: action.payload })
 
-      state.subTotal += Number(action.payload.attributes.price)
-      state.calculatedTax = state.tax * state.subTotal
+      updateTotalsTax(state, Number(action.payload.attributes.price))
     },
     deleteCartItem: (state, action: PayloadAction<Product>) => {
       const itemToRemove = state.cartItems.filter(
@@ -42,8 +47,7 @@ const cartSlice = createSlice({
 
       if (!action.payload.attributes.shipping) state.shipping.false -= itemQty
 
-      state.subTotal -= Number(itemPrice) * itemQty
-      state.calculatedTax = state.tax * state.subTotal
+      updateTotalsTax(state, -Number(itemPrice) * itemQty)
     },
     removeFromCart: (state, action: PayloadAction<number>) => {
       const item = state.cartItems.find(
@@ -62,8 +66,7 @@ const cartSlice = createSlice({
 
       if (!item?.product.attributes.shipping) state.shipping.false--
 
-      state.subTotal -= Number(itemPrice)
-      state.calculatedTax = state.tax * state.subTotal
+      updateTotalsTax(state, -Number(itemPrice))
     },
   },
 })

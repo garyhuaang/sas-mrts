@@ -5,7 +5,8 @@
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
+      "@nx/react/typings/image.d.ts",
+      "vite/client"
     ],
     "rootDir": "src",
     "jsx": "react-jsx",
@@ -31,6 +32,9 @@
   "references": [
     {
       "path": "../rStore/tsconfig.lib.json"
+    },
+    {
+      "path": "../shared/common/tsconfig.lib.json"
     },
     {
       "path": "../shared/ui/tsconfig.lib.json"

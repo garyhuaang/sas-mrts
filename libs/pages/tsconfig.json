@@ -6,6 +6,9 @@
       "path": "../rStore"
     },
     {
+      "path": "../shared/common"
+    },
+    {
       "path": "../shared/ui"
     },
     {

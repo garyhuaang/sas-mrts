@@ -20,6 +20,7 @@ export default [
       '**/node_modules',
       '**/libs/shared/ui/src/base/*',
       '**/libs/rStore/src/lib/api/*',
+      '**/apps/store/stripe-server/*',
     ],
   },
   {
