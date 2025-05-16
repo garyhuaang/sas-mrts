@@ -1,6 +1,6 @@
 import { createBrowserRouter, type RouteObject } from 'react-router-dom'
 
-import { Auth, Layout, userShopRoutes } from '@sas-mrts/pages'
+import { Auth, Checkout, Layout, Return, userShopRoutes } from '@sas-mrts/pages'
 
 const router = createBrowserRouter([
   {
@@ -14,10 +14,9 @@ const router = createBrowserRouter([
       })
     ),
   },
-  {
-    path: '/auth',
-    element: <Auth />,
-  },
+  { path: '/checkout', element: <Checkout /> },
+  { path: '/return', element: <Return /> },
+  { path: '/auth', element: <Auth /> },
 ])
 
 export default router

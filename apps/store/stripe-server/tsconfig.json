@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es2020",
+    "sourceMap": true,
+    "outDir": "../../../dist/out-tsc/apps/store/stripe-server",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "types": ["node"],
+    "lib": ["es2020"]
+  },
+  "include": ["*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
