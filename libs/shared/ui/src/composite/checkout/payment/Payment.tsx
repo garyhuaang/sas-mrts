@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button, Label, SofaBackDrop } from '../../../base'
@@ -7,7 +7,7 @@ import { validateEmail } from '../../../lib'
 import { EmailInput } from './EmailInput'
 
 import { ArrowLeftIcon } from '@sas-mrts/common'
-import { useAppSelector } from '@sas-mrts/rStore'
+// import { useAppSelector } from '@sas-mrts/rStore'
 import { PaymentElement, useCheckout } from '@stripe/react-stripe-js'
 
 function Payment() {
@@ -16,7 +16,7 @@ function Payment() {
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const checkout = useCheckout()
-  const cartState = useAppSelector((state) => state.cart)
+  // const cartState = useAppSelector((state) => state.cart)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -42,10 +42,10 @@ function Payment() {
     setIsLoading(false)
   }
 
-  useEffect(() => {
-    console.log('CARTSTATE----', cartState)
-    console.log('CHECKOUTSTATE----', checkout)
-  }, [])
+  // useEffect(() => {
+  //   console.log('CARTSTATE----', cartState)
+  //   console.log('CHECKOUTSTATE----', checkout)
+  // }, [])
 
   return (
     <div
