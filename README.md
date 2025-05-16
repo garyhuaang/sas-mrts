@@ -115,5 +115,3 @@ Open your web browser and navigate to the address provided by the `nx serve stor
 - **TypeScript Errors:**
   - Ensure all dependencies are installed (`@types/express`, etc.).
   - The `apps/store/stripe-server/tsconfig.json` is set up for CommonJS, while the rest of the monorepo might use ESNext. This is intentional for the server.
-
-This README provides a starting point. Feel free to expand it with more details about your application's features and architecture.
