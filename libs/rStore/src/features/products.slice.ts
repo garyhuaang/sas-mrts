@@ -22,7 +22,7 @@ type ProdcutsState = {
 const initialState: ProdcutsState = {
   items: [],
   filteredItems: [],
-  priceRange: 0,
+  priceRange: 599.99,
   categories: [],
   companies: [],
   freeShipping: false,
@@ -102,7 +102,7 @@ const productsSlice = createSlice({
       )
 
       if (companyExists) {
-        state.categories = state.categories.filter(
+        state.categories = state.companies.filter(
           (company) => company !== action.payload
         )
       } else {

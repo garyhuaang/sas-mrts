@@ -29,10 +29,9 @@ function Layout() {
         </div>
       </div>
       <SofaBackDrop />
-      <div className="flex flex-col">
-        <div className="relative flex flex-col flex-1 overflow-hidden">
-          <Outlet />
-        </div>
+
+      <div className="relative flex flex-col flex-1 no-scrollbar">
+        <Outlet />
       </div>
     </div>
   )

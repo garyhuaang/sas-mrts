@@ -30,12 +30,12 @@ function Cart() {
     </div>
   ) : (
     <div className="flex-center reduced-viewport w-full motion-preset-fade-lg">
-      <div className="flex flex-col table-styles bg-secondary self-center max-w-fit">
+      <div className="flex flex-col table-styles bg-primary self-center max-w-fit">
         <h1 className="text-3xl">Oops, looks like your cart is empty!</h1>
         <div className="flex self-center">
           <Button
             asChild
-            className="mt-3 hover:bg-primary hover:text-secondary"
+            className="mt-3 hover:bg-secondary hover:text-white"
             variant="outline"
           >
             <Link viewTransition className="flex" to="/products">
