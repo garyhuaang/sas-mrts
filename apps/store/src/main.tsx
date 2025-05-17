@@ -7,11 +7,11 @@ import App from './app/app'
 
 import './styles.css'
 
-import { fetchProducts, rStore } from '@sas-mrts/rStore'
+import { apiSlice, rStore } from '@sas-mrts/rStore'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
-rStore.dispatch(fetchProducts())
+rStore.dispatch(apiSlice.endpoints.getProducts.initiate())
 
 root.render(
   <StrictMode>

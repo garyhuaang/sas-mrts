@@ -14,4 +14,15 @@ const validateEmail = async (email: string, checkout: CheckoutContextValue) => {
   return { isValid, message: !isValid ? updateResult.error.message : null }
 }
 
-export { cn, validateEmail }
+const toUppercaseWords = (words: string) => {
+  const upperCaseWords = words.split(' ').map((word) => {
+    const upperCase = word.charAt(0).toUpperCase()
+    const leftOvers = word.slice(1).toLowerCase()
+
+    return upperCase + leftOvers
+  })
+
+  return upperCaseWords.join(' ')
+}
+
+export { cn, validateEmail, toUppercaseWords }

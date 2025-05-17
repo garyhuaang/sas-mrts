@@ -15,20 +15,19 @@ import {
 import { useToast } from '../../lib'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { guestCredentials } from '@sas-mrts/common'
+import { guestCredentials, tryCatch } from '@sas-mrts/common'
 import {
   type AuthResponse,
+  type LoginCredentials,
   loginFormSchema,
-  postLogin,
-  rStore,
+  usePostLoginMutation,
 } from '@sas-mrts/rStore'
 
 const LoginTab = React.memo(function LoginTab() {
   const [_, setCookie] = useCookies<'user', AuthResponse>(['user'])
-  const userState = rStore.getState().user
   const navigate = useNavigate()
   const { toast } = useToast()
+  const [loginTrigger] = usePostLoginMutation()
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -36,32 +35,36 @@ const LoginTab = React.memo(function LoginTab() {
       identifier: '',
       password: '',
     },
+    mode: 'onChange',
   })
 
+  const identifierFilled = form.watch('identifier')
+  const passwordFilled = form.watch('password')
+  const hasEmptyFields = !identifierFilled || !passwordFilled
+
   const handleLogin = async () => {
-    const response = (await rStore.dispatch(
-      postLogin(form.getValues())
-    )) as PayloadAction<AuthResponse>
+    const credentials: LoginCredentials = form.getValues()
+    const { data: response } = await tryCatch(loginTrigger(credentials))
 
-    if (response.payload.error?.status !== 400) {
-      setCookie(
-        'user',
-        { jwt: userState.jwt, username: userState.username },
-        { expires: new Date(Date.now() + 60 * 60 * 60 * 1000) }
-      )
-      toast({
-        title: 'Login success!',
-        description: 'Your future abode awaits...',
+    if (response?.error) {
+      return toast({
+        title: 'Login failed',
+        description: 'Incorrect email or password',
       })
-      localStorage.setItem('username', response.payload.user.username)
-
-      return navigate('/')
     }
 
+    setCookie(
+      'user',
+      { jwt: response?.data.jwt, username: response?.data.user.username },
+      { expires: new Date(Date.now() + 60 * 60 * 60 * 1000) }
+    )
     toast({
-      title: 'Login failed',
-      description: 'Incorrect email or password',
+      title: 'Login success!',
+      description: 'Your future abode awaits...',
     })
+    localStorage.setItem('username', response?.data.user.username as string)
+
+    return navigate('/')
   }
 
   return (
@@ -85,11 +88,14 @@ const LoginTab = React.memo(function LoginTab() {
                 type="password"
               />
               <div className="flex gap-4 mt-10">
-                <Button className="w-full" type="submit">
+                <Button
+                  className={`w-full text-foreground ${hasEmptyFields && 'button-disabled'}`}
+                  type="submit"
+                >
                   Sign In
                 </Button>
                 <Button
-                  className="w-full"
+                  className="w-full text-foreground"
                   onClick={() => {
                     form.setValue('identifier', guestCredentials.identifier)
                     form.setValue('password', guestCredentials.password)

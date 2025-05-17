@@ -1,5 +1,4 @@
-import { postLogin, postRegister } from '../api/post.data'
-import { AuthResponse, UserAuthState } from '../types'
+import { UserAuthState } from '../types'
 
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
@@ -29,45 +28,6 @@ const userSlice = createSlice({
 
       return state
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(postLogin.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(
-        postLogin.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
-          if (action.payload.error) return state
-
-          return {
-            ...state,
-            isLoading: false,
-            username: action.payload.user.username,
-            confirmed: action.payload.user.confirmed,
-          }
-        }
-      )
-      .addCase(postLogin.rejected, (state, action) => {
-        state.isLoading = false
-        state.confirmed = false
-        state.error =
-          action.error.message || 'Failed to login user, check credentials'
-      })
-      .addCase(postRegister.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(
-        postRegister.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
-          if (action.payload.error) return state
-
-          return { ...state, isLoading: false }
-        }
-      )
-      .addCase(postRegister.rejected, (state) => {
-        state.isLoading = false
-      })
   },
 })
 

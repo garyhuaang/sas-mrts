@@ -1,6 +1,7 @@
 import { ReactComponent as ArrowUpDownSVG } from './arrow-down-up.svg'
 import { ReactComponent as ArrowLeftSVG } from './arrow-left.svg'
 import { ReactComponent as ArrowLeftRightSVG } from './arrow-left-right.svg'
+import { ReactComponent as ArrowRightSVG } from './arrow-right.svg'
 import { ReactComponent as ArrowRightLeftSVG } from './arrow-right-left.svg'
 import { ReactComponent as ArrowDownUpSVG } from './arrow-up-down.svg'
 import { ReactComponent as BetweenSVG } from './between.svg'
@@ -20,6 +21,7 @@ import { ReactComponent as TruckSVG } from './truck.svg'
 export const ArrowUpDownIcon = ArrowUpDownSVG
 export const ArrowDownUpIcon = ArrowDownUpSVG
 export const ArrowLeftRightIcon = ArrowLeftRightSVG
+export const ArrowRightIcon = ArrowRightSVG
 export const ArrowRightLeftIcon = ArrowRightLeftSVG
 export const ArrowLeftIcon = ArrowLeftSVG
 export const BetweenIcon = BetweenSVG
