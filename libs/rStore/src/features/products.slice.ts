@@ -1,4 +1,3 @@
-import { fetchProducts } from '../api/fetch.data'
 import {
   type Product,
   Products,
@@ -115,6 +114,10 @@ const productsSlice = createSlice({
       state.freeShipping = !state.freeShipping
       applyFilters(state)
     },
+    setProducts: (state, action: PayloadAction<Product[]>) => {
+      state.items = [...action.payload]
+      state.filteredItems = [...action.payload]
+    },
     setPriceRange: (state, action: PayloadAction<number>) => {
       state.priceRange = action.payload
       applyFilters(state)
@@ -156,35 +159,6 @@ const productsSlice = createSlice({
       applyFilters(state)
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProducts.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.isLoading = false
-        const payload = action.payload as Product[]
-
-        const data = payload.map((product: Product) => {
-          return {
-            id: product.id,
-            attributes: {
-              ...product.attributes,
-              price: Number(product.attributes.price) / 100,
-            },
-          }
-        }) as Product[] | unknown
-
-        if (data) {
-          state.items = data as Product[]
-          state.filteredItems = data as Product[]
-        }
-      })
-      .addCase(fetchProducts.rejected, (state, action) => {
-        state.isLoading = false
-        state.error = action.error.message || 'Failed to fetch products'
-      })
-  },
 })
 
 export const {
@@ -194,6 +168,7 @@ export const {
   setFreeShipping,
   setCategory,
   setCompany,
+  setProducts,
   setPriceRange,
   setSort,
 } = productsSlice.actions

@@ -5,21 +5,23 @@ import {
   CardDescription,
   CardTitle,
 } from '../../base'
+import { toUppercaseWords } from '../../lib'
 
 import { numToUSD } from '@sas-mrts/common'
 import {
   addToCart,
   type Product,
-  type Products,
   useAppDispatch,
+  useAppSelector,
 } from '@sas-mrts/rStore'
 
-function ProductCards({ products }: { products: Products }) {
+function ProductCards() {
+  const filteredItems = useAppSelector((state) => state.products.filteredItems)
   const dispatch = useAppDispatch()
 
   return (
     <>
-      {products.map((product: Product) => (
+      {filteredItems?.map((product: Product) => (
         <Card
           className="max-w-11/12 min-w-9 min-h-100 motion-preset-fade-lg"
           key={product.id}
@@ -31,7 +33,7 @@ function ProductCards({ products }: { products: Products }) {
             />
             <div className="flex flex-col gap-2 p-4">
               <CardTitle className="flex justify-start font-medium">
-                {product.attributes.title}
+                {toUppercaseWords(product?.attributes?.title)}
               </CardTitle>
               <div className="flex justify-between">
                 <CardDescription className="flex justify-center">

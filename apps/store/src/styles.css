@@ -168,20 +168,15 @@
 }
 
 @layer utilities {
-  .align-element {
-    @apply mx-auto max-w-6xl px-8;
-  }
-  .mask-clip-path {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  .maximum-screen {
-    @apply relative min-h-screen w-screen overflow-x-hidden;
-  }
   .absolute-center {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   }
-  .flex-center {
-    @apply flex items-center justify-center;
+  .align-element {
+    @apply mx-auto max-w-6xl px-8;
+  }
+  .button-disabled {
+    @apply opacity-70 bg-muted-foreground border border-none focus:outline-none
+      text-foreground pointer-events-none;
   }
   .fade-enter {
     opacity: 0;
@@ -204,6 +199,15 @@
     transition:
       opacity 1000ms,
       transform 1000ms;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .mask-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .maximum-screen {
+    @apply relative min-h-screen w-screen overflow-x-hidden;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;

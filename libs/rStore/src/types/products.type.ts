@@ -8,7 +8,7 @@ export type ProductAttributes = {
   publishedAt: string
   category: string
   image: string
-  price: string
+  price: number
   shipping: boolean
   colors: string[]
 }

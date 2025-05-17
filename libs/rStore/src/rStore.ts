@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { listenerMiddleware } from './middleware/listenerMiddleware'
-import { storeApi } from './api'
+import { apiSlice } from './api'
 import {
   cartReducer,
   productsReducer,
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
   user: userReducer,
-  [storeApi.reducerPath]: storeApi.reducer,
+  [apiSlice.reducerPath]: apiSlice.reducer,
 })
 
 export const rStore = configureStore({
@@ -24,7 +24,7 @@ export const rStore = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .prepend(listenerMiddleware.middleware)
-      .concat(storeApi.middleware),
+      .concat(apiSlice.middleware),
 })
 
 export type RootState = ReturnType<typeof rStore.getState>

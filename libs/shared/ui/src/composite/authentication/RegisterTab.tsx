@@ -13,16 +13,16 @@ import {
 import { useToast } from '../../lib'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { tryCatch } from '@sas-mrts/common'
 import {
-  type AuthResponse,
-  postRegister,
+  type RegisterCredentials,
   registerFormSchema,
-  rStore,
+  usePostRegisterMutation,
 } from '@sas-mrts/rStore'
 
 const RegisterTab = React.memo(function RegisterTab() {
   const { toast } = useToast()
+  const [registerTrigger] = usePostRegisterMutation()
 
   const form = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
@@ -31,17 +31,22 @@ const RegisterTab = React.memo(function RegisterTab() {
       email: '',
       password: '',
     },
+    mode: 'onChange',
   })
 
-  const handleRegister = async () => {
-    const response = (await rStore.dispatch(
-      postRegister(form.getValues())
-    )) as PayloadAction<AuthResponse>
+  const usernameFilled = form.watch('username')
+  const emailFilled = form.watch('email')
+  const passwordFilled = form.watch('password')
+  const hasEmptyFields = !usernameFilled || !emailFilled || !passwordFilled
 
-    if (response.payload.error?.status === 400) {
+  const handleRegister = async () => {
+    const credentials: RegisterCredentials = form.getValues()
+    const { data: response } = await tryCatch(registerTrigger(credentials))
+
+    if (response?.error) {
       return toast({
         title: 'Registration failed',
-        description: 'Username/email already taken',
+        description: 'Username/Email invalid or taken',
       })
     }
 
@@ -81,7 +86,10 @@ const RegisterTab = React.memo(function RegisterTab() {
                 type="password"
               />
               <div className="flex gap-4 mt-8">
-                <Button className="w-full" type="submit">
+                <Button
+                  className={`w-full ${hasEmptyFields && 'button-disabled'}`}
+                  type="submit"
+                >
                   Register
                 </Button>
               </div>
