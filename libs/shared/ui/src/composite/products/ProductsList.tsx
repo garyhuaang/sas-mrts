@@ -8,14 +8,14 @@ function ProductsList() {
   const products = useAppSelector((state) => state.products.filteredItems)
 
   return (
-    <div className="flex w-full min-h-full p-10 pt-3 gap-8">
+    <div className="flex w-full p-10 pt-3 gap-8 h-[calc(100vh-284px)]">
       <ProductsMoreFilters />
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full ">
         <ProductIndicators />
-        <div className="flex justify-start overflow-auto mb-3 no-scrollbar max-h-1/2">
+        <div className="flex justify-start overflow-y-auto  ">
           <div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
-            gap-8"
+            gap-8 overflow-auto min-h-full no-scrollbar"
           >
             <ProductCards products={products} />
           </div>

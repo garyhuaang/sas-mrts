@@ -20,10 +20,13 @@ function ProductCards({ products }: { products: Products }) {
   return (
     <>
       {products.map((product: Product) => (
-        <Card className="max-w-11/12 min-w-10 min-h-100" key={product.id}>
+        <Card
+          className="max-w-11/12 min-w-9 min-h-100 motion-preset-fade-lg"
+          key={product.id}
+        >
           <CardContent className="p-0">
             <img
-              className="h-64 w-full rounded-t-lg"
+              className="h-64 w-full min-w-9 rounded-t-lg"
               src={product.attributes.image}
             />
             <div className="flex flex-col gap-2 p-4">

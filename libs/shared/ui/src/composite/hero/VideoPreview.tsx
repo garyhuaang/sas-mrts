@@ -14,11 +14,7 @@ function VideoPreview({
   return (
     <div className="group flex z-50 items-center justify-center absolute h-full w-full">
       <div
-        className="bg-black h-full w-full opacity-0
-      transition-all duration-150 group-hover:opacity-30"
-      />
-      <div
-        className=" mask-clip-path absolute size-64
+        className=" mask-clip-path absolute size-64 z-10
       cursor-pointer overflow-hidden rounded-lg"
       >
         <div
