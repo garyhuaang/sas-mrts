@@ -15,6 +15,17 @@
       "{workspaceRoot}/.github/workflows/ci.yml"
     ]
   },
+  "targetDefaults": {
+    "build": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    }
+  },
   "nxCloudId": "68093b52f8477f09dbd279f3",
   "plugins": [
     {
