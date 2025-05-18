@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { Button } from '../../base/button'
+import { Button } from '../../base/Button'
 
 import { SofaIcon } from '@sas-mrts/common'
 
