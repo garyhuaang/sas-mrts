@@ -7,7 +7,6 @@ import { logoutUser, rStore } from '@sas-mrts/rStore'
 
 const AuthHeader = function AuthHeader() {
   const [_, setCookies] = useCookies()
-  const store = rStore.getState()
 
   const handleLogout = () => {
     rStore.dispatch(logoutUser())

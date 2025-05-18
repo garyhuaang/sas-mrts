@@ -1,13 +1,9 @@
-import { Link } from 'react-router-dom'
-
-import { Button, Label } from '../../base'
-import { generateDate, toUppercaseWords } from '../../lib'
+import { Label } from '../../base'
+import { generateDate } from '../../lib'
 
 import OrdersTableBody from './OrdersTableBody'
 import { OrdersTableFooter } from './OrdersTableFooter'
 
-import { Separator } from '@radix-ui/react-dropdown-menu'
-import { ChevronRightIcon, numToUSD } from '@sas-mrts/common'
 import type { Order } from '@sas-mrts/rStore'
 
 function OrdersTable({
