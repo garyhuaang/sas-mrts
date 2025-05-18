@@ -2,6 +2,9 @@
 
 This repository contains the `SasMrts` application, a monorepo managing a React-based online store with Stripe integration for payments.
 
+## Live Deployment - Github Pages
+- https://garyhuaang.github.io/sas-mrts/
+
 ## Project Structure
 
 The project is an Nx monorepo with the following key components:
