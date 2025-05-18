@@ -57,24 +57,24 @@ export default defineConfig(() => ({
             return 'vendor'
           }
 
-          if (
-            id.includes('libs/shared/common') ||
-            id.includes('@sas-mrts/common')
-          ) {
-            return 'common-lib'
-          }
+          // if (
+          //   id.includes('libs/shared/common') ||
+          //   id.includes('@sas-mrts/common')
+          // ) {
+          //   return 'common-lib'
+          // }
 
-          if (id.includes('libs/rStore') || id.includes('@sas-mrts/rStore')) {
-            return 'rstore-lib'
-          }
+          // if (id.includes('libs/rStore') || id.includes('@sas-mrts/rStore')) {
+          //   return 'rstore-lib'
+          // }
 
-          if (id.includes('libs/shared/ui') || id.includes('@sas-mrts/ui')) {
-            return 'ui-lib'
-          }
+          // if (id.includes('libs/shared/ui') || id.includes('@sas-mrts/ui')) {
+          //   return 'ui-lib'
+          // }
 
-          if (id.includes('libs/pages') || id.includes('@sas-mrts/pages')) {
-            return 'pages-lib'
-          }
+          // if (id.includes('libs/pages') || id.includes('@sas-mrts/pages')) {
+          //   return 'pages-lib'
+          // }
 
           return undefined
         },
