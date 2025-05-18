@@ -18,7 +18,12 @@ export default defineConfig(() => ({
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
   },
   optimizeDeps: {
-    include: ['@sas-mrts/ui'],
+    include: [
+      '@sas-mrts/ui > @sas-mrts/ui/src/base/button',
+      '@sas-mrts/ui > @sas-mrts/ui/src/base/card',
+      '@sas-mrts/ui/src/index.ts',
+    ],
+    needsInterop: ['@sas-mrts/ui'],
   },
   server: {
     port: 4200,
