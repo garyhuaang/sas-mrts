@@ -41,6 +41,9 @@ jobs:
       - name: Reset Nx Cache
         run: npx nx reset
 
+      - name: Sync Nx Cache
+        run: npx nx sync
+
       - run: npx nx affected -t lint test build
 
       - run: npx nx dep-graph --file=dist/graph.html
