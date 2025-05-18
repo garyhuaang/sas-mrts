@@ -35,3 +35,30 @@ jobs:
       - uses: nrwl/nx-set-shas@v4
 
       - run: npx nx affected -t lint test build
+
+      - run: npx nx dep-graph --file=dist/graph.html
+
+      - run: npx nx affected --target=build
+
+      - run: npx nx show projects --affected --type=app
+
+      - run: npx nx affected --target=deploy
+
+      - run: npx nx build store
+
+      - name: Generate timestamp
+        run: |
+          echo "timestamp=$(date +%s)" >> "$GITHUB_ENV"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact-${{ env.timestamp }}
+          path: apps/store/dist
+
+      - name: Upload Dependency Graph Artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-graph-${{ env.timestamp }}
+          path: dist/**/*
