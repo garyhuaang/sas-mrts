@@ -19,7 +19,7 @@ function CartItems() {
   return (
     <div
       className="flex flex-col h-full table-styles w-full overflow-y-auto
-        p-10 md:p-24 justify-self-center"
+        p-10 md:p-24 justify-self-center self-center"
     >
       {cartState.cartItems.map((item, index) => (
         <div
