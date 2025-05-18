@@ -4,6 +4,8 @@ This repository contains the `SasMrts` application, a monorepo managing a React-
 
 ## Live Deployment - Github Pages
 - https://garyhuaang.github.io/sas-mrts/
+- Stripe express server is not active and not permitted with my current Github pages plan
+- AWS BE deployment for Stripe WIP
 
 ## Project Structure
 
