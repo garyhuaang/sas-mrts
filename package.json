@@ -112,6 +112,8 @@
     "libs/shared/*",
     "libs/pages/*",
     "libs/rStore/*",
+    "libs/shared/ui/*",
+    "libs/shared/common/*",
     "libs/*"
   ]
 }
