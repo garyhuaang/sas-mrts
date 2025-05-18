@@ -45,6 +45,7 @@ function Checkout() {
         theme: 'night',
         variables: {
           colorPrimary: '#df8071',
+          border: '#000',
         },
       }
     }
@@ -53,6 +54,7 @@ function Checkout() {
       theme: 'stripe',
       variables: {
         colorPrimary: '#df8071',
+        border: '#000',
       },
     }
   }, [theme])
