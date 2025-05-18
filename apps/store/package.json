@@ -2,6 +2,7 @@
   "name": "@sas-mrts/store",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "nx": {
     "name": "store"
   },
