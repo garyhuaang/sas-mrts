@@ -34,17 +34,19 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx affected -t lint test build
+      - run: npm install
 
-      - run: npx nx dep-graph --file=dist/graph.html
+      - run: nx affected -t lint test build
 
-      - run: npx nx affected --target=build
+      - run: nx dep-graph --file=dist/graph.html
 
-      - run: npx nx show projects --affected --type=app
+      - run: nx affected --target=build
 
-      - run: npx nx affected --target=deploy
+      - run: nx show projects --affected --type=app
 
-      - run: npx nx build store
+      - run: nx affected --target=deploy
+
+      - run: npm run build
 
       - name: Generate timestamp
         run: |
