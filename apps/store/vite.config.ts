@@ -10,6 +10,11 @@ export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/store',
   envDir: path.resolve(__dirname, 'stripe-server'),
+  resolve: {
+    alias: {
+      '@libs': path.resolve(__dirname, '../../libs'),
+    },
+  },
   server: {
     port: 4200,
     host: 'localhost',
