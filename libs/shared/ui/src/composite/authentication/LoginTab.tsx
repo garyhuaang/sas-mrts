@@ -25,6 +25,7 @@ import {
 } from '@sas-mrts/rStore'
 
 const LoginTab = React.memo(function LoginTab() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setCookie] = useCookies<'user', AuthResponse>(['user'])
   const [loginTrigger] = usePostLoginMutation()
   const [submitting, setSubmitting] = useState(false)
