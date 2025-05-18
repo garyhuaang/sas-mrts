@@ -20,7 +20,8 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@sas-mrts/rStore": ["libs/rStore/src/index.ts"]
+      "@sas-mrts/rStore": ["libs/rStore/src/index.ts"],
+      "@sas-mrts/ui": ["libs/shared/ui/src/index.ts"]
     }
   }
 }
