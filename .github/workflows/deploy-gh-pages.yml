@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,14 +31,22 @@ jobs:
           node-version: '20' # Or your project's Node.js version
           cache: 'npm' # Or 'yarn' if you use yarn
 
-      - name: Install dependencies
-        run: npm install # Or yarn install
-
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - name: List UI base directory for debugging
-        run: ls -la libs/shared/ui/src/base/
+       - name: Check Git History
+        run: |
+          git --version
+          git status
+          echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
+          echo "Fetching all tags and branches just in case..."
+          git fetch --all --tags --unshallow || git fetch --all --tags # Fallback if unshallow fails
+          echo "Last 20 commits in the current checkout:"
+          git log -n 20 --oneline --graph --decorate
+          echo "Checking if NX_BASE commit (${NX_BASE}) exists:"
+          git cat-file -e "${NX_BASE}" && echo "NX_BASE commit exists" || echo "NX_BASE commit DOES NOT EXIST"
+          echo "Checking if NX_HEAD commit (${NX_HEAD}) exists:"
+          git cat-file -e "${NX_HEAD}" && echo "NX_HEAD commit exists" || echo "NX_HEAD commit DOES NOT EXIST"
 
       - name: Reset Nx Cache
         run: npx nx reset
