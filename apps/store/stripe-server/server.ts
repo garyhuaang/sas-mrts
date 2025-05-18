@@ -35,7 +35,7 @@ app.post('/create-checkout-session', async (req: Request, res: Response) => {
             name: item.product.attributes.title,
           },
           unit_amount: Math.round(
-            parseFloat(item.product.attributes.price) * 100
+            parseFloat(item.product.attributes.price.toString()) * 100
           ),
         },
         quantity: item.qty,
