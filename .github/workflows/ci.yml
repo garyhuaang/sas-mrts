@@ -36,15 +36,15 @@ jobs:
 
       - run: npm install
 
-      - run: nx affected -t lint test build
+      - run: npx nx affected -t lint test build
 
-      - run: nx dep-graph --file=dist/graph.html
+      - run: npx nx dep-graph --file=dist/graph.html
 
-      - run: nx affected --target=build
+      - run: npx nx affected --target=build
 
-      - run: nx show projects --affected --type=app
+      - run: npx nx show projects --affected --type=app
 
-      - run: nx affected --target=deploy
+      - run: npx nx affected --target=deploy
 
       - run: npm run build
 
