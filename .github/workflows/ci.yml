@@ -34,7 +34,11 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npm install
+      - name: List UI base directory for debugging
+        run: ls -la libs/shared/ui/src/base/
+
+      - name: Reset Nx Cache
+        run: npx nx reset
 
       - run: npx nx affected -t lint test build
 
