@@ -13,7 +13,6 @@ import {
   TruckIcon,
 } from '@sas-mrts/common'
 import {
-  rStore,
   setFreeShipping,
   setPriceRange,
   useAppDispatch,

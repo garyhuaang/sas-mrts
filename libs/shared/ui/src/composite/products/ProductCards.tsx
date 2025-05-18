@@ -4,7 +4,6 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
-  Toast,
 } from '../../base'
 import { toUppercaseWords, useToast } from '../../lib'
 

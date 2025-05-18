@@ -6,8 +6,8 @@ import { Button } from '../../base'
 import { logoutUser, rStore } from '@sas-mrts/rStore'
 
 const AuthHeader = function AuthHeader() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setCookies] = useCookies()
-  const store = rStore.getState()
 
   const handleLogout = () => {
     rStore.dispatch(logoutUser())
