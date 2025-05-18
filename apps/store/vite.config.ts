@@ -12,10 +12,9 @@ export default defineConfig(() => ({
   envDir: path.resolve(__dirname, 'stripe-server'),
   resolve: {
     alias: {
-      '@libs': path.resolve(__dirname, '../../libs'),
+      '@sas-mrts/libs': path.resolve(__dirname, '../../libs'),
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
-    preserveSymlinks: true,
   },
   server: {
     port: 4200,
