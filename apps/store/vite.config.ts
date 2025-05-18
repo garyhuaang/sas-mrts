@@ -5,7 +5,7 @@ import svgr from 'vite-plugin-svgr'
 
 import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/store',
   envDir: path.resolve(__dirname, 'stripe-server'),
