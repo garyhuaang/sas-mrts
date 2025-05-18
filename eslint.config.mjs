@@ -19,7 +19,7 @@ export default [
       '**/vitest.config.*.timestamp*',
       '**/node_modules',
       '**/libs/shared/ui/src/base/*',
-      '**/libs/shared/ui/src/lib/*',
+      '**/libs/shared/ui/src/lib/hooks/*',
       '**/libs/rStore/src/lib/api/*',
       '**/apps/store/stripe-server/*',
     ],
