@@ -12,6 +12,12 @@ export default defineConfig(() => ({
   envDir: path.resolve(__dirname, 'stripe-server'),
   resolve: {
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
+    dedupe: [
+      '@sas-mrts/ui',
+      '@sas-mrts/rStore',
+      '@sas-mrts/pages',
+      // Consider adding 'react', 'react-dom' too
+    ],
   },
   server: {
     port: 4200,
