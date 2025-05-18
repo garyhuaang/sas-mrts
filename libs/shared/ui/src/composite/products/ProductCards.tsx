@@ -25,7 +25,7 @@ function ProductCards() {
     <>
       {filteredItems?.map((product: Product) => (
         <Card
-          className="max-w-11/12 min-w-9 min-h-100 motion-preset-fade-lg"
+          className="max-w-11/12 min-w-9 min-h-100 motion-preset-fade-lg shadow-xl"
           key={product.id}
         >
           <CardContent className="p-0">

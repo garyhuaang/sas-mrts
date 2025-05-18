@@ -22,7 +22,7 @@ function Layout() {
 
   return (
     <div className="min-w-fit no-scrollbar">
-      <div className="flex flex-col w-full sticky top-0 z-50 backdrop-blur-sm">
+      <div className="flex flex-col w-full sticky top-0 z-50 shadow-lg">
         <div>
           <AuthHeader />
           <NavBar routes={routes} />
