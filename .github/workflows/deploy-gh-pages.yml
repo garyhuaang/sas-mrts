@@ -34,7 +34,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-       - name: Check Git History
+      - name: Check Git History
         run: |
           git --version
           git status
