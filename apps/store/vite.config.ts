@@ -14,6 +14,8 @@ export default defineConfig(() => ({
     alias: {
       '@libs': path.resolve(__dirname, '../../libs'),
     },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
+    preserveSymlinks: true,
   },
   server: {
     port: 4200,
