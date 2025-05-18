@@ -7,15 +7,15 @@ import { ArrowLeftIcon } from '@sas-mrts/common'
 import { useAppSelector } from '@sas-mrts/rStore'
 
 function Cart() {
-  const cartSelector = useAppSelector((state) => state.cart)
+  const state = useAppSelector((state) => state.cart)
 
-  return cartSelector.cartItems.length > 0 ? (
+  return state.cartItems.length > 0 ? (
     <div className="flex flex-col w-screen overflow-y-auto p-10 md:p-24">
       <div className="flex flex-col w-full h-full justify-center">
         <header className="flex flex-col self-center gap-2 w-2/3 mb-8">
           <h1 className="text-5xl font-bold tracking-tight">Shopping Cart</h1>
           <Label className="text-sm text-muted-foreground">
-            {`${cartSelector.cartItems.length} items in your cart`}
+            {`${state.cartItems.length} items in your cart`}
           </Label>
         </header>
 

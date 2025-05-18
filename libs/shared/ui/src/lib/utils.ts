@@ -25,4 +25,12 @@ const toUppercaseWords = (words: string) => {
   return upperCaseWords.join(' ')
 }
 
-export { cn, validateEmail, toUppercaseWords }
+const generateDate = (date: Date) => {
+  const month = date.toLocaleDateString('en-US', { month: 'long' })
+  const day = date.getDay()
+  const year = date.getFullYear()
+
+  return `${month} ${day}, ${year}`
+}
+
+export { cn, validateEmail, toUppercaseWords, generateDate }

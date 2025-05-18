@@ -4,8 +4,9 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
+  Toast,
 } from '../../base'
-import { toUppercaseWords } from '../../lib'
+import { toUppercaseWords, useToast } from '../../lib'
 
 import { numToUSD } from '@sas-mrts/common'
 import {
@@ -16,6 +17,7 @@ import {
 } from '@sas-mrts/rStore'
 
 function ProductCards() {
+  const { toast } = useToast()
   const filteredItems = useAppSelector((state) => state.products.filteredItems)
   const dispatch = useAppDispatch()
 
@@ -45,8 +47,13 @@ function ProductCards() {
               </div>
               <Button
                 className="mt-2"
-                onClick={() => dispatch(addToCart(product))}
-                variant="secondary"
+                onClick={() => {
+                  toast({
+                    title: 'Item added to cart!',
+                    description: `${toUppercaseWords(product?.attributes?.title)} in cart`,
+                  })
+                  dispatch(addToCart(product))
+                }}
               >
                 Add to Cart
               </Button>
