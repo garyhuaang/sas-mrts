@@ -84,7 +84,7 @@ STRIPE_8_PERCENT_TAX_RATE_ID=txr_YOUR_STRIPE_TAX_RATE_ID
 The Node.js server for Stripe operations needs to be running independently. Open a terminal and run:
 
 ```bash
-./node_modules/.bin/ts-node apps/store/stripe-server/server.ts
+npx ts-node apps/store/stripe-server/server.ts
 ```
 
 This server will typically run on `http://localhost:3000` (or the port specified in `apps/store/stripe-server/server.ts`).
