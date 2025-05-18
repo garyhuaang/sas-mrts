@@ -33,9 +33,10 @@ jobs:
         run: npm install # Or yarn install
 
       - name: Build Store application
-        run: NX_SKIP_NX_CLOUD=true npx nx build store
+        run: npx nx build store
         env:
           VITE_STRIPE_PUBLISH_KEY: ${{ secrets.VITE_STRIPE_PUBLISH_KEY }}
+          # NX_CLOUD_ACCESS_TOKEN will be automatically used if it's in GitHub secrets
           # Add any other build-time VITE_ environment variables here
 
       - name: Setup Pages
