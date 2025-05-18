@@ -6,8 +6,8 @@ import { validateEmail } from '../../../lib'
 
 import { EmailInput } from './EmailInput'
 
-import { ArrowLeftIcon } from '@sas-mrts/common'
-// import { useAppSelector } from '@sas-mrts/rStore'
+import { ReloadIcon } from '@radix-ui/react-icons'
+import { ChevronLeftIcon } from '@sas-mrts/common'
 import { PaymentElement, useCheckout } from '@stripe/react-stripe-js'
 
 function Payment() {
@@ -16,7 +16,6 @@ function Payment() {
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const checkout = useCheckout()
-  // const cartState = useAppSelector((state) => state.cart)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -42,17 +41,12 @@ function Payment() {
     setIsLoading(false)
   }
 
-  // useEffect(() => {
-  //   console.log('CARTSTATE----', cartState)
-  //   console.log('CHECKOUTSTATE----', checkout)
-  // }, [])
-
   return (
     <div
       className="flex flex-col justify-center items-center w-screen h-screen
       overflow-y-auto p-10 md:p-15 motion-preset-fade-sm"
     >
-      <div className="w-1/2 backdrop-blur-lg border border-secondary rounded-md p-10">
+      <div className="w-1/2 bg-primary-foreground border border-secondary rounded-md p-10">
         <form className="flex flex-col w-full gap-4" onSubmit={handleSubmit}>
           <EmailInput
             email={email}
@@ -62,9 +56,12 @@ function Payment() {
           />
           <Label className="font-medium text-lg">Payment</Label>
           <PaymentElement id="payment-element" />
-          <Button className="text-white" disabled={isLoading} id="submit">
+          <Button disabled={isLoading} id="submit">
             {isLoading ? (
-              <div className="spinner"></div>
+              <span className="flex">
+                <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                Submitting payment...
+              </span>
             ) : (
               `Pay ${checkout.total.total.amount} now`
             )}
@@ -72,9 +69,9 @@ function Payment() {
 
           {message && <div id="payment-message">{message}</div>}
 
-          <Button className="bg-secondary text-white self-start w-/14">
+          <Button className="self-start w-/14" variant="outline">
             <Link viewTransition className="flex-center gap-2" to="/cart">
-              <ArrowLeftIcon className="h-6 w-6" />
+              <ChevronLeftIcon className="h-6 w-6" />
               Cart
             </Link>
           </Button>

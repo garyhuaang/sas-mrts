@@ -4,6 +4,7 @@ import { listenerMiddleware } from './middleware/listenerMiddleware'
 import { apiSlice } from './api'
 import {
   cartReducer,
+  ordersReducer,
   productsReducer,
   themeReducer,
   userReducer,
@@ -12,9 +13,10 @@ import {
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 const rootReducer = combineReducers({
-  theme: themeReducer,
-  products: productsReducer,
   cart: cartReducer,
+  orders: ordersReducer,
+  products: productsReducer,
+  theme: themeReducer,
   user: userReducer,
   [apiSlice.reducerPath]: apiSlice.reducer,
 })

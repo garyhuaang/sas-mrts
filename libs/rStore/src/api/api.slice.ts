@@ -1,6 +1,7 @@
 import type {
   AuthResponse,
   LoginCredentials,
+  OrderResponse,
   Product,
   ProductsResponse,
   RegisterCredentials,
@@ -68,6 +69,15 @@ export const apiSlice = createApi({
         return { data: allProducts }
       },
     }),
+    getOrders: builder.query<OrderResponse, void>({
+      query: (jwt) => ({
+        url: '/orders',
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      }),
+    }),
     postLogin: builder.mutation<AuthResponse, LoginCredentials>({
       query: (credentials) => ({
         url: '/auth/local',
@@ -85,9 +95,9 @@ export const apiSlice = createApi({
   }),
 })
 
-// Export hooks for usage in components
 export const {
   useGetProductsQuery,
+  useGetOrdersQuery,
   usePostLoginMutation,
   usePostRegisterMutation,
 } = apiSlice

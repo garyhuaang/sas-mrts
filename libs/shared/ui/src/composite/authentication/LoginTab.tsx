@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +15,7 @@ import {
 import { useToast } from '../../lib'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ReloadIcon } from '@radix-ui/react-icons'
 import { guestCredentials, tryCatch } from '@sas-mrts/common'
 import {
   type AuthResponse,
@@ -25,9 +26,10 @@ import {
 
 const LoginTab = React.memo(function LoginTab() {
   const [_, setCookie] = useCookies<'user', AuthResponse>(['user'])
+  const [loginTrigger] = usePostLoginMutation()
+  const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate()
   const { toast } = useToast()
-  const [loginTrigger] = usePostLoginMutation()
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -46,7 +48,11 @@ const LoginTab = React.memo(function LoginTab() {
     const credentials: LoginCredentials = form.getValues()
     const { data: response } = await tryCatch(loginTrigger(credentials))
 
+    setSubmitting(true)
+
     if (response?.error) {
+      setSubmitting(false)
+
       return toast({
         title: 'Login failed',
         description: 'Incorrect email or password',
@@ -58,11 +64,14 @@ const LoginTab = React.memo(function LoginTab() {
       { jwt: response?.data.jwt, username: response?.data.user.username },
       { expires: new Date(Date.now() + 60 * 60 * 60 * 1000) }
     )
+
     toast({
       title: 'Login success!',
       description: 'Your future abode awaits...',
     })
     localStorage.setItem('username', response?.data.user.username as string)
+
+    setSubmitting(false)
 
     return navigate('/')
   }
@@ -88,24 +97,35 @@ const LoginTab = React.memo(function LoginTab() {
                 type="password"
               />
               <div className="flex gap-4 mt-10">
-                <Button
-                  className={`w-full text-foreground ${hasEmptyFields && 'button-disabled'}`}
-                  type="submit"
-                >
-                  Sign In
-                </Button>
-                <Button
-                  className="w-full text-foreground"
-                  onClick={() => {
-                    form.setValue('identifier', guestCredentials.identifier)
-                    form.setValue('password', guestCredentials.password)
+                {submitting ? (
+                  <Button className="w-full text-foreground button-disabled">
+                    <span className="flex-center">
+                      <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                      Loggin in...
+                    </span>
+                  </Button>
+                ) : (
+                  <>
+                    <Button
+                      className={`w-full text-foreground ${hasEmptyFields && 'button-disabled'}`}
+                      type="submit"
+                    >
+                      Sign In
+                    </Button>
+                    <Button
+                      className="w-full text-foreground"
+                      onClick={() => {
+                        form.setValue('identifier', guestCredentials.identifier)
+                        form.setValue('password', guestCredentials.password)
 
-                    return form.handleSubmit(handleLogin)
-                  }}
-                  variant="secondary"
-                >
-                  Guest User
-                </Button>
+                        return form.handleSubmit(handleLogin)
+                      }}
+                      variant="secondary"
+                    >
+                      Guest User
+                    </Button>
+                  </>
+                )}
               </div>
             </form>
           </Form>

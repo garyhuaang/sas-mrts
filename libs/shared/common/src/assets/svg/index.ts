@@ -8,7 +8,8 @@ import { ReactComponent as BetweenSVG } from './between.svg'
 import { ReactComponent as CartSVG } from './cart.svg'
 import { ReactComponent as CheckmarkCircleSVG } from './checkmark-circle.svg'
 import { ReactComponent as ChevronDownSVG } from './chevron-down.svg'
-import { ReactComponent as ChevfronRightSVG } from './chevron-right.svg'
+import { ReactComponent as ChevronLeftSVG } from './chevron-left.svg'
+import { ReactComponent as ChevronRightSVG } from './chevron-right.svg'
 import { ReactComponent as ChevronUpSVG } from './chevron-up.svg'
 import { ReactComponent as MoonSVG } from './moon.svg'
 import { ReactComponent as RadioSVG } from './radio.svg'
@@ -28,7 +29,8 @@ export const BetweenIcon = BetweenSVG
 export const CartIcon = CartSVG
 export const CheckmarkCircleIcon = CheckmarkCircleSVG
 export const ChevronDownIcon = ChevronDownSVG
-export const ChevronRightIcon = ChevfronRightSVG
+export const ChevronLeftIcon = ChevronLeftSVG
+export const ChevronRightIcon = ChevronRightSVG
 export const ChevronUpIcon = ChevronUpSVG
 export const MoonIcon = MoonSVG
 export const RadioIcon = RadioSVG
