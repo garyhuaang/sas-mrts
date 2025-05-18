@@ -33,9 +33,8 @@ jobs:
         run: npm install # Or yarn install
 
       - name: Build Store application
-        run: npx nx build store
+        run: NX_SKIP_NX_CLOUD=true npx nx build store
         env:
-          NX_SKIP_NX_CLOUD: true
           VITE_STRIPE_PUBLISH_KEY: ${{ secrets.VITE_STRIPE_PUBLISH_KEY }}
           # Add any other build-time VITE_ environment variables here
 
