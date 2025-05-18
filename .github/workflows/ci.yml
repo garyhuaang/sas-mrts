@@ -40,11 +40,7 @@ jobs:
       - name: Reset Nx Cache
         run: npx nx reset
 
-      - run: npx nx affected -t lint test build
-
       - run: npx nx dep-graph --file=dist/graph.html
-
-      - run: npx nx affected --target=build
 
       - run: npx nx show projects --affected --type=app
 
