@@ -19,7 +19,7 @@ function Cart() {
           </Label>
         </header>
 
-        <div className="mb-8">
+        <div className="flex-center mb-8">
           <CartItems />
         </div>
 
