@@ -16,6 +16,9 @@ export default defineConfig(() => ({
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
   },
+  optimizeDeps: {
+    include: ['@sas-mrts/ui'],
+  },
   server: {
     port: 4200,
     host: 'localhost',
