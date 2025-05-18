@@ -12,18 +12,7 @@ export default defineConfig(() => ({
   cacheDir: '../../node_modules/.vite/apps/store',
   envDir: path.resolve(__dirname, 'stripe-server'),
   resolve: {
-    alias: {
-      '@sas-mrts/libs': path.resolve(__dirname, '../../libs'),
-    },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
-  },
-  optimizeDeps: {
-    include: [
-      '@sas-mrts/ui > @sas-mrts/ui/src/base/button',
-      '@sas-mrts/ui > @sas-mrts/ui/src/base/card',
-      '@sas-mrts/ui/src/index.ts',
-    ],
-    needsInterop: ['@sas-mrts/ui'],
   },
   server: {
     port: 4200,
