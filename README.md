@@ -1,8 +1,8 @@
 # SasMrts Repository
 
-This repository contains the `SasMrts` application, a monorepo managing a React-based online store with Stripe integration for payments.
+This repository contains the `SAS-MRTS (Stone and Sable, Monorepo ReactTS)` application, a monorepo managing a React-based online store with Stripe integration for payments. It functions as a faux ecommerce site where users can be authenticated, switch themes, view/add/remove products, view order history, and filter/search for products. 
 
-## Live Deployment - Github Pages
+## Live Deployment - Github Pages (static only)
 - https://garyhuaang.github.io/sas-mrts/
 - Stripe express server is not active and not permitted with my current Github pages plan
 - AWS BE deployment for Stripe WIP
