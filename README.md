@@ -6,6 +6,7 @@ This repository contains the `SAS-MRTS (Stone and Sable, Monorepo ReactTS)` appl
 - https://garyhuaang.github.io/sas-mrts/
 - Stripe express server is not active and not permitted with my current Github pages plan
 - AWS BE deployment for Stripe WIP
+- Sonner toasts WIP
 
 ## Project Structure
 
