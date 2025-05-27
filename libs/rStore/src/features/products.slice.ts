@@ -101,7 +101,7 @@ const productsSlice = createSlice({
       )
 
       if (companyExists) {
-        state.categories = state.companies.filter(
+        state.companies = state.companies.filter(
           (company) => company !== action.payload
         )
       } else {

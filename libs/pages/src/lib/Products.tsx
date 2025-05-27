@@ -1,12 +1,13 @@
-import { ProductsHeader } from '@sas-mrts/ui'
-import { ProductsList } from '@sas-mrts/ui'
+import { ProductsHeader, ProductsList } from '@sas-mrts/ui'
 
 function Products() {
   return (
-    <div className="relative items-center justify-center w-ful overflow-auto">
-      <ProductsHeader />
+    <>
+      <div className="items-center justify-center w-full">
+        <ProductsHeader />
+      </div>
       <ProductsList />
-    </div>
+    </>
   )
 }
 
