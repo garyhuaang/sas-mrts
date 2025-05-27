@@ -26,12 +26,13 @@ function ProductCheckboxes({
       <div className="flex flex-col gap-2">
         <Label className="text-lg font-medium">Category</Label>
         <Button
-          className="w-1/6"
+          className="w-1/2"
           onClick={() =>
             checkboxType === 'companies'
               ? dispatch(resetCompanies())
               : dispatch(resetCatgories())
           }
+          variant="outline"
         >
           Reset
         </Button>

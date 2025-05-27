@@ -29,7 +29,7 @@ function ProductsMoreFilters() {
   }
 
   return (
-    <div className="flex flex-col w-1/3 min-h-full gap-8">
+    <div className="flex flex-col min-h-full gap-8 sticky">
       <Label className="font-semibold text-lg w-1/3">Filters</Label>
       <div className="flex flex-col space-y-4">
         <Label className="text-md font-medium">{`Price Range - ${numToUSD(productsState.priceRange)}`}</Label>
