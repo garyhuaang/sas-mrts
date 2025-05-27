@@ -14,7 +14,7 @@ function NavBar({
   return (
     <div
       className={`flex h-20 py-4 px-8 bg-muted justify-between items-center
-        shadow-md ${className} relative`}
+        shadow-md ${className}`}
     >
       <NavLogo />
       <NavLinks routes={routes} />

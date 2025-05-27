@@ -2,12 +2,12 @@ import { ProductsHeader, ProductsList } from '@sas-mrts/ui'
 
 function Products() {
   return (
-    <>
-      <div className="sticky items-center justify-center w-full overflow-auto">
+    <div className="overlflow-hidden">
+      <div className="sticky items-center justify-center w-full">
         <ProductsHeader />
       </div>
       <ProductsList />
-    </>
+    </div>
   )
 }
 

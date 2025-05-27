@@ -23,18 +23,18 @@ function ProductsList() {
   return isLoading ? (
     <Skeleton className="w-full h-full rounded-full" />
   ) : (
-    <div className="grid md:grid-cols-7 sm:grid-cols-1 p-10 pt-3 h-full gap-8">
+    <div className="grid md:grid-cols-7 sm:grid-cols-1 p-10 pt-3 gap-8">
       <div className="sticky">
         <ProductsMoreFilters />
       </div>
 
-      <div className="md:col-span-6 xs:col-span-1 h-[calc(100vh-248px)]">
-        <div className="flex flex-col w-full overflow-auto">
+      <div className="md:col-span-6 xs:col-span-1">
+        <div className="flex flex-col w-full">
           <ProductIndicators />
-          <div className="flex justify-start overflow-y-auto  ">
+          <div className="flex justify-start">
             <div
               className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
-            gap-8 overflow-auto min-h-full no-scrollbar"
+            gap-8 overflow-auto h-[calc(100vh-400px)] no-scrollbar"
             >
               <ProductCards />
             </div>
