@@ -1,3 +1,7 @@
+## Project currently on hold
+- CI Pipeline via NX Cloud free-tier has expired. Current code will be updated but Github pages will not update until i migrate this project into AWS
+
+
 # SasMrts Repository
 
 This repository contains the `SAS-MRTS (Stone and Sable, Monorepo ReactTS)` application, a monorepo managing a React-based online store with Stripe integration for payments. It functions as a faux ecommerce site where users can be authenticated, switch themes, view/add/remove products, view order history, and filter/search for products. 
