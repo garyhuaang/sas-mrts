@@ -28,7 +28,7 @@ function ProductsHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div className="flex flex-col space-y-4 w-full p-10 pb-5 sticky">
+    <div className="flex flex-col space-y-4 w-full p-10 pb-5">
       <h1 className="text-5xl font-bold tracking-tight">Products</h1>
       <div className="flex flex-col sm:flex-row justify-between gap-4 w-full">
         <div className="flex-center relative w-96 border-box h-full">
