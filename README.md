@@ -1,5 +1,5 @@
 ## Project currently on hold
-- CI Pipeline via NX Cloud free-tier has expired. Current code will be updated but Github pages will not update until i migrate this project into AWS
+- CI/CD Pipeline via NX Cloud free-tier has expired. Current code will be updated but Github pages will not update until i migrate this project into AWS
 
 
 # SasMrts Repository
