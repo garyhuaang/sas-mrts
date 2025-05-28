@@ -9,13 +9,18 @@ import {
 
 import { Route } from '@sas-mrts/rStore'
 
-function NavLinks({ routes }: { routes: Route[] }) {
+type NavLinksProps = {
+  routes: Route[]
+  onLinkClick: () => void
+}
+
+function NavLinks({ routes, onLinkClick }: NavLinksProps) {
   return (
     <NavigationMenu className="fade">
       <NavigationMenuList>
         {routes.map((route) => (
           <NavigationMenuItem key={route.name}>
-            <Button asChild variant="link">
+            <Button asChild variant="link" onClick={() => onLinkClick()}>
               <Link viewTransition to={`../${route.path}`}>
                 {route.name}
               </Link>

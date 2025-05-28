@@ -34,6 +34,7 @@ function OrdersTable({
             <div className="space-y-4 w-full">
               {order.attributes.cartItems.map((item, index) => (
                 <OrdersTableBody
+                  key={index}
                   image={item.image}
                   index={index}
                   price={Number(item.price)}

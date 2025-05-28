@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRef, useState } from 'react'
 
 import {
   getVideoSrc,
@@ -13,7 +13,7 @@ import {
 import { useGSAP } from '@gsap/react'
 
 function Hero() {
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger, useGSAP)
 
   const [currentVideoDataIndex, setCurrentVideoDataIndex] = useState<number>(1)
   const [isTransitioning, setIsTransitioning] = useState(false)

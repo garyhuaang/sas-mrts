@@ -5,7 +5,7 @@ import { Button } from '../../../base/Button'
 import { CartIcon } from '@sas-mrts/common'
 import { useAppSelector } from '@sas-mrts/rStore'
 
-function CartButton() {
+function CartButton({ onCartClick }: { onCartClick: () => void }) {
   const cartItems = useAppSelector((state) => state.cart.cartItems)
 
   return (
@@ -15,6 +15,7 @@ function CartButton() {
           asChild
           className="relative p-3 cursor-pointer"
           variant="outline"
+          onClick={() => onCartClick()}
         >
           <Link className="h-12 w-12" to="/cart">
             <CartIcon />

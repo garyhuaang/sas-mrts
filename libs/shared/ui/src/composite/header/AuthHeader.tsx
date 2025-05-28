@@ -19,31 +19,26 @@ const AuthHeader = function AuthHeader() {
   }
 
   return (
-    <div className="backdrop-blur-sm ">
-      <div
-        className="flex justify-end items-center gap-2 h-[30px] p-2
-        bg-background opacity-95"
-      >
-        {localStorage.getItem('username') ? (
-          <div>
-            <span className="text-primary text-sm">
-              {`Hello ${localStorage.getItem('username')}!`}
-              <Button onClick={handleLogout} variant="link">
-                <Link viewTransition className="text-primary" to="/auth">
-                  Logout
-                </Link>
-              </Button>
-            </span>
-          </div>
-        ) : (
-          <Button className="text-primary text-xs" variant="link">
-            <Link viewTransition to="/auth">
-              Login/Register
-            </Link>
-          </Button>
-        )}
-      </div>
-    </div>
+    <section className="flex justify-end items-center gap-2 h-[30px] p-2 bg-background">
+      {localStorage.getItem('username') ? (
+        <section>
+          <span className="text-primary text-sm">
+            {`Hello ${localStorage.getItem('username')}!`}
+            <Button onClick={handleLogout} variant="link">
+              <Link viewTransition className="text-primary" to="/auth">
+                Logout
+              </Link>
+            </Button>
+          </span>
+        </section>
+      ) : (
+        <Button className="text-primary text-xs" variant="link">
+          <Link viewTransition to="/auth">
+            Login/Register
+          </Link>
+        </Button>
+      )}
+    </section>
   )
 }
 
