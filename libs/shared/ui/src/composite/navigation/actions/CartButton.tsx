@@ -14,8 +14,8 @@ function CartButton({ onCartClick }: { onCartClick: () => void }) {
         <Button
           asChild
           className="relative p-3 cursor-pointer"
-          variant="outline"
           onClick={() => onCartClick()}
+          variant="outline"
         >
           <Link className="h-12 w-12" to="/cart">
             <CartIcon />

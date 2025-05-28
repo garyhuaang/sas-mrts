@@ -18,7 +18,7 @@ function NavBar({ routes, className, onLinkClick, onCartClick }: NavBarProps) {
          ${className}`}
     >
       <NavLogo />
-      <NavLinks routes={routes} onLinkClick={onLinkClick} />
+      <NavLinks onLinkClick={onLinkClick} routes={routes} />
       <NavActions onCartClick={onCartClick} />
     </div>
   )
