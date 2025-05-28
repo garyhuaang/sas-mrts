@@ -1,9 +1,9 @@
 import { Button, Checkbox, Label, Separator } from '../../base'
 
 type ProductCheckboxesProps = {
-  checkboxType?: 'companies' | 'categories'
   checkboxContents: string[]
   checkedItems: string[]
+  label?: string
   onClickCheckbox: (content: string) => void
   onClickReset: () => void
 }
@@ -11,13 +11,14 @@ type ProductCheckboxesProps = {
 function ProductCheckboxes({
   checkboxContents,
   checkedItems,
+  label,
   onClickCheckbox,
   onClickReset,
 }: ProductCheckboxesProps) {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <Label className="text-lg font-medium">Category</Label>
+        {label && <Label className="text-lg font-medium">{label}</Label>}
         <Button
           className="w-1/2"
           onClick={() => onClickReset()}

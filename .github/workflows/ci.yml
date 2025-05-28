@@ -19,11 +19,9 @@ jobs:
           filter: tree:0
           fetch-depth: 0
 
-      # This enables task distribution via Nx Cloud
-      # Run this command as early as possible, before dependencies are installed
-      # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
-      # Uncomment this line to enable task distribution
-      - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
+      # Disable NX Cloud
+      - name: Disable NX Cloud
+        run: npx nx reset
 
       # Cache node_modules
       - uses: actions/setup-node@v4
@@ -32,25 +30,37 @@ jobs:
           cache: 'npm'
 
       - run: npm ci --legacy-peer-deps
-      - uses: nrwl/nx-set-shas@v4
+
+      # Set environment variables to disable cloud for all steps
+      - name: Set no-cloud environment
+        run: |
+          echo "NX_CLOUD_ACCESS_TOKEN=" >> $GITHUB_ENV
+          echo "NX_CLOUD_AUTH_TOKEN=" >> $GITHUB_ENV
+          echo "NX_NO_CLOUD=true" >> $GITHUB_ENV
+
+      # Use manual command instead of the action
+      - name: Set Git SHAs for affected commands
+        run: |
+          echo "BASE_SHA=$(git merge-base origin/main HEAD)" >> $GITHUB_ENV
+          echo "HEAD_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: Reset Nx Cache
         run: npx nx reset
 
-      - name: Sync Nx Cache
-        run: npx nx sync
+      - name: Sync Nx Cache - Local
+        run: npx nx sync --local
 
-      - run: npx nx dep-graph --file=dist/graph.html
+      - run: npx nx dep-graph --file=dist/graph.html --no-cloud
 
-      - run: npx nx show projects --affected --type=app
+      - run: npx nx show projects --affected --base=${{ env.BASE_SHA }} --head=${{ env.HEAD_SHA }} --type=app --no-cloud
 
-      - run: npx nx affected --target=deploy
+      - run: npx nx affected --base=${{ env.BASE_SHA }} --head=${{ env.HEAD_SHA }} --target=deploy --no-cloud
 
       - run: npm run build
 
       - name: Generate timestamp
         run: |
-          echo "timestamp=$(date +%s)" >> "$GITHUB_ENV"
+          echo "timestamp=$(date +%s)" >> $GITHUB_ENV
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

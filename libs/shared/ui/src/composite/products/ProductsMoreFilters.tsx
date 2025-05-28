@@ -50,12 +50,14 @@ function ProductsMoreFilters() {
       <ProductCheckboxes
         checkboxContents={categories}
         checkedItems={productsState.categories}
+        label="Categories"
         onClickCheckbox={(content) => dispatch(setCategory(content))}
         onClickReset={() => dispatch(resetCatgories())}
       />
       <ProductCheckboxes
         checkboxContents={companies}
         checkedItems={productsState.companies}
+        label="Companies"
         onClickCheckbox={(content) => dispatch(setCompany(content))}
         onClickReset={() => dispatch(resetCompanies())}
       />
@@ -65,7 +67,7 @@ function ProductsMoreFilters() {
           checked={productsState.freeShipping}
           onClick={() => dispatch(setFreeShipping())}
         />
-        <Label className="flex text-md font-medium gap-2">
+        <Label className="flex items-center text-xs font-medium gap-2">
           <TruckIcon /> Free shipping only
         </Label>
       </div>

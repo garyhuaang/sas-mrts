@@ -6,7 +6,8 @@
     "lint": "nx run-many --target=lint --all",
     "prepare": "husky",
     "buildr": "bash ./reset-build.sh",
-    "build": "nx build store"
+    "build": "nx build store",
+    "stripe": "npx ts-node apps/store/stripe-server/server.ts"
   },
   "build": {
     "options": {
