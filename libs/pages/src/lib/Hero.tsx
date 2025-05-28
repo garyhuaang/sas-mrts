@@ -1,6 +1,6 @@
+import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useRef, useState } from 'react'
 
 import {
   getVideoSrc,
