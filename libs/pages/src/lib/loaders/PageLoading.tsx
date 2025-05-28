@@ -15,7 +15,7 @@ function PageLoading({ loading }: { loading: boolean }) {
       gsap.to(spinner.current, {
         opacity: 0,
         duration: 0.5,
-        zIndex: -100,
+        zIndex: -1,
       })
     }
   }, [loading])
