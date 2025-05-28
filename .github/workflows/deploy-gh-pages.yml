@@ -48,21 +48,33 @@ jobs:
           echo "Checking if NX_HEAD commit (${NX_HEAD}) exists:"
           git cat-file -e "${NX_HEAD}" && echo "NX_HEAD commit exists" || echo "NX_HEAD commit DOES NOT EXIST"
 
+      - name: Set no-cloud environment
+        run: |
+          echo "NX_CLOUD_ACCESS_TOKEN=" >> $GITHUB_ENV
+          echo "NX_CLOUD_AUTH_TOKEN=" >> $GITHUB_ENV
+          echo "NX_NO_CLOUD=true" >> $GITHUB_ENV
+
+      # Use manual command instead of the action
+      - name: Set Git SHAs for affected commands
+        run: |
+          echo "BASE_SHA=$(git merge-base origin/main HEAD)" >> $GITHUB_ENV
+          echo "HEAD_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
       - name: Reset Nx Cache
         run: npx nx reset
 
-      - name: Sync Nx Cache
-        run: npx nx sync
+      - name: Sync Nx Cache - Local
+        run: npx nx sync --local
 
-      - run: npx nx affected -t lint test build
+      - run: npx nx affected -t lint test build --no-cloud
 
-      - run: npx nx dep-graph --file=dist/graph.html
+      - run: npx nx dep-graph --file=dist/graph.html --no-cloud
 
-      - run: npx nx affected --target=build
+      - run: npx nx affected --target=build --no-cloud
 
-      - run: npx nx show projects --affected --type=app
+      - run: npx nx show projects --affected --base=${{ env.BASE_SHA }} --head=${{ env.HEAD_SHA }} --type=app --no-cloud
 
-      - run: npx nx affected --target=deploy
+      - run: npx nx affected --base=${{ env.BASE_SHA }} --head=${{ env.HEAD_SHA }} --target=deploy --no-cloud
 
       - run: npm run build
 
