@@ -6,7 +6,7 @@ import importPlugin from 'eslint-plugin-import'
 import prettier from 'eslint-plugin-prettier'
 import eslintPluginReact from 'eslint-plugin-react'
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
-// import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 export default [
   ...nx.configs['flat/base'],

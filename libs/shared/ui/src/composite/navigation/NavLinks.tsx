@@ -20,7 +20,7 @@ function NavLinks({ routes, onLinkClick }: NavLinksProps) {
       <NavigationMenuList>
         {routes.map((route) => (
           <NavigationMenuItem key={route.name}>
-            <Button asChild variant="link" onClick={() => onLinkClick()}>
+            <Button asChild onClick={() => onLinkClick()} variant="link">
               <Link viewTransition to={`../${route.path}`}>
                 {route.name}
               </Link>
