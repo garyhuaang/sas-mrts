@@ -52,9 +52,9 @@ function Layout() {
       <nav className="flex flex-col w-full sticky top-0 z-50">
         <AuthHeader />
         <NavBar
-          routes={routes}
           onCartClick={() => setLoading(true)}
           onLinkClick={() => setLoading(true)}
+          routes={routes}
         />
       </nav>
 

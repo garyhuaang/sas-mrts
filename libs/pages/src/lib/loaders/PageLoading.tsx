@@ -1,5 +1,5 @@
-import gsap from 'gsap'
 import { useRef } from 'react'
+import gsap from 'gsap'
 
 import './styles.css'
 
