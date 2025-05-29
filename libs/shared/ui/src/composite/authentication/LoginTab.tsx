@@ -65,12 +65,14 @@ const LoginTab = React.memo(function LoginTab() {
       { jwt: response?.data.jwt, username: response?.data.user.username },
       { expires: new Date(Date.now() + 60 * 60 * 60 * 1000) }
     )
-
     toast({
       title: 'Login success!',
       description: 'Your future abode awaits...',
     })
     localStorage.setItem('username', response?.data.user.username as string)
+    localStorage.removeItem('filteredItems')
+    localStorage.removeItem('categories')
+    localStorage.removeItem('companies')
 
     setSubmitting(false)
 

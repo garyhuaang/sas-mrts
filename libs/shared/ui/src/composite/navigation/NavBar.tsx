@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import NavActions from './actions/NavActions'
 import { NavLinks } from './NavLinks'
 import { NavLogo } from './NavLogo'
@@ -7,8 +9,8 @@ import { Route } from '@sas-mrts/rStore'
 type NavBarProps = {
   routes: Route[]
   className?: string
-  onLinkClick: () => void
-  onCartClick: () => void
+  onLinkClick?: () => void
+  onCartClick?: () => void
 }
 
 function NavBar({ routes, className, onLinkClick, onCartClick }: NavBarProps) {
@@ -24,4 +26,4 @@ function NavBar({ routes, className, onLinkClick, onCartClick }: NavBarProps) {
   )
 }
 
-export { NavBar }
+export default memo(NavBar)

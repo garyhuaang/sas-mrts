@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState } from 'react'
+import { type ChangeEvent, memo, useState } from 'react'
 
 import {
   Button,
@@ -77,4 +77,4 @@ function ProductsHeader() {
   )
 }
 
-export { ProductsHeader }
+export default memo(ProductsHeader)

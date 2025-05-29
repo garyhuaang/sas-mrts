@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import {
   AboutFounders,
   AboutHero,
@@ -18,4 +20,4 @@ function About() {
   )
 }
 
-export { About }
+export default memo(About)

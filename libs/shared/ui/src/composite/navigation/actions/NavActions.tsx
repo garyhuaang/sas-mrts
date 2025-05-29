@@ -1,7 +1,11 @@
 import CartButton from './CartButton'
 import ThemeToggle from './ThemeToggle'
 
-function NavActions({ onCartClick }: { onCartClick: () => void }) {
+function NavActions({
+  onCartClick = () => null,
+}: {
+  onCartClick?: () => void
+}) {
   return (
     <div className="flex gap-4 m-0 p-0">
       <ThemeToggle />

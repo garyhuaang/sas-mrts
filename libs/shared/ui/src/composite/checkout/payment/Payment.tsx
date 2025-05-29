@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Button, Label, SofaBackDrop } from '../../../base'
+import { Button, Label, SofaBackdrop } from '../../../base'
 import { validateEmail } from '../../../lib'
 
 import { EmailInput } from './EmailInput'
@@ -78,7 +78,7 @@ function Payment() {
         </form>
       </div>
 
-      <SofaBackDrop />
+      <SofaBackdrop />
     </div>
   )
 }

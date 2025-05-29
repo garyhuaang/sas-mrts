@@ -1,4 +1,4 @@
-export * from './About'
+export { default as About } from './About'
 export * from './Auth'
 export * from './Cart'
 export * from './Checkout'
