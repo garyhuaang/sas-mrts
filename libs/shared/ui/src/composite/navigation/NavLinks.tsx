@@ -11,10 +11,10 @@ import { Route } from '@sas-mrts/rStore'
 
 type NavLinksProps = {
   routes: Route[]
-  onLinkClick: () => void
+  onLinkClick?: () => void
 }
 
-function NavLinks({ routes, onLinkClick }: NavLinksProps) {
+function NavLinks({ routes, onLinkClick = () => null }: NavLinksProps) {
   return (
     <NavigationMenu className="fade">
       <NavigationMenuList>

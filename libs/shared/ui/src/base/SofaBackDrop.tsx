@@ -1,4 +1,5 @@
 import { SofaIcon } from '@sas-mrts/common'
+import { memo } from 'react'
 
 function SofaBackDrop() {
   return (
@@ -11,4 +12,4 @@ function SofaBackDrop() {
   )
 }
 
-export { SofaBackDrop }
+export default memo(SofaBackDrop)

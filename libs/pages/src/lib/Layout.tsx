@@ -12,21 +12,15 @@ import { type Route, rStore, setUser } from '@sas-mrts/rStore'
 function Layout() {
   const store = rStore.getState()
   const [loading, setLoading] = useState(true)
-  const [showContents, setShowContents] = useState(false)
   const [routes, setLinkRoutes] = useState<Route[]>(nonUserShopRoutes)
 
   const handleLoadPage = () => {
-    setTimeout(() => {
-      setShowContents(true)
-    }, 1500)
-
     setTimeout(() => {
       setLoading(false)
     }, 1500)
   }
 
   useEffect(() => {
-    setShowContents(false)
     window.addEventListener('load', () => {
       if (document.readyState === 'complete') handleLoadPage()
     })

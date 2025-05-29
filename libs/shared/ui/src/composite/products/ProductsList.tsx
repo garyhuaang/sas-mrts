@@ -1,24 +1,31 @@
-import { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 
 import { Skeleton } from '../../base'
 
 import ProductCards from './ProductCards'
-import { ProductIndicators } from './ProductIndicators'
-import ProductsMoreFilters from './ProductsMoreFilters'
+import ProductsMoreFilters from './ProductFilters'
+import ProductIndicators from './ProductIndicators'
 
 import {
   type Product,
+  reapplyOnMount,
   rStore,
   setProducts,
+  useAppDispatch,
   useGetProductsQuery,
 } from '@sas-mrts/rStore'
 
 function ProductsList() {
   const { data: allProducts, isSuccess, isLoading } = useGetProductsQuery()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (isSuccess) rStore.dispatch(setProducts(allProducts as Product[]))
   }, [isSuccess])
+
+  useEffect(() => {
+    dispatch(reapplyOnMount())
+  }, [])
 
   return isLoading ? (
     <Skeleton className="w-full h-full rounded-full" />
@@ -45,4 +52,4 @@ function ProductsList() {
   )
 }
 
-export { ProductsList }
+export default memo(ProductsList)

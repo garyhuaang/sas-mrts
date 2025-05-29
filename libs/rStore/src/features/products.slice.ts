@@ -3,6 +3,10 @@ import {
   Products,
   type SortProducts,
 } from '../types/products.type'
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from '../utils/local.storage'
 
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
@@ -20,10 +24,10 @@ type ProdcutsState = {
 
 const initialState: ProdcutsState = {
   items: [],
-  filteredItems: [],
+  filteredItems: loadFromLocalStorage('filteredItems') || [],
   priceRange: 599.99,
-  categories: [],
-  companies: [],
+  categories: loadFromLocalStorage('categories') || [],
+  companies: loadFromLocalStorage('companies') || [],
   freeShipping: false,
   sortOrder: 'NAME_A_Z',
   isLoading: false,
@@ -55,7 +59,9 @@ const applyFilters = (state: ProdcutsState) => {
     filtered = filtered.filter((item) => item.attributes.shipping)
   }
 
-  return (state.filteredItems = filtered)
+  state.filteredItems = filtered
+
+  saveToLocalStorage('filteredItems', filtered)
 }
 
 const productsSlice = createSlice({
@@ -63,14 +69,19 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     filterByName: (state, action: PayloadAction<string>) => {
-      if (action.payload === '') state.filteredItems = state.items
+      const filteredItemsCopy = loadFromLocalStorage('filteredItems')
+
+      if (action.payload === '') state.filteredItems = filteredItemsCopy
       else {
-        state.filteredItems = state.items.filter((item) =>
+        state.filteredItems = filteredItemsCopy.filter((item: Product) =>
           item.attributes.title
             .toLowerCase()
             .includes(action.payload.toLowerCase())
         )
       }
+    },
+    reapplyOnMount: (state) => {
+      applyFilters(state)
     },
     resetCatgories: (state) => {
       state.categories = []
@@ -94,6 +105,7 @@ const productsSlice = createSlice({
       }
 
       applyFilters(state)
+      saveToLocalStorage('categories', state.categories)
     },
     setCompany: (state, action: PayloadAction<string>) => {
       const companyExists = state.companies.find(
@@ -109,6 +121,7 @@ const productsSlice = createSlice({
       }
 
       applyFilters(state)
+      saveToLocalStorage('companies', state.companies)
     },
     setFreeShipping: (state) => {
       state.freeShipping = !state.freeShipping
@@ -163,6 +176,7 @@ const productsSlice = createSlice({
 
 export const {
   filterByName,
+  reapplyOnMount,
   resetCatgories,
   resetCompanies,
   setFreeShipping,

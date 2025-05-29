@@ -2,7 +2,7 @@ import {
   LoginTab,
   NavBar,
   RegisterTab,
-  SofaBackDrop,
+  SofaBackdrop,
   Tabs,
   TabsList,
   TabsTrigger,
@@ -33,7 +33,7 @@ function Auth() {
         <RegisterTab />
       </Tabs>
 
-      <SofaBackDrop />
+      <SofaBackdrop />
     </div>
   )
 }

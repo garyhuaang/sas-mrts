@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import { Label } from '../../base'
 
 import {
@@ -29,11 +31,11 @@ function ProductIndicators() {
   return (
     <div className="flex justify-between mb-6 border-box w-full border-b-2">
       <div className="flex justify-between w-full pl-2">
-        <Label className="text-sm text-foreground">{`Showing ${filteredItems.items.length} products`}</Label>
+        <Label className="text-sm text-foreground">{`Showing ${filteredItems.filteredItems.length} products`}</Label>
         {renderSortIcon()}
       </div>
     </div>
   )
 }
 
-export { ProductIndicators }
+export default memo(ProductIndicators)

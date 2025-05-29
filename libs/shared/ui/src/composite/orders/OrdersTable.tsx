@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import { Label } from '../../base'
 import { generateDate } from '../../lib'
 
@@ -15,9 +17,9 @@ function OrdersTable({
 }) {
   if (!orders || orders.length === 0) return <p>No orders to display</p>
 
-  return (
-    <div className="flex flex-col gap-6 w-full p-10">
-      {orders.map((order, index) => (
+  const OrderHistory = memo(
+    ({ order, index }: { order: Order; index: number }) => {
+      return (
         <div className="flex w-full justify-center" key={index}>
           <div className="flex flex-col table-styles gap-8">
             <div className="flex flex-col self-start w-full bg-primary rounded-md p-6 gap-2">
@@ -50,6 +52,14 @@ function OrdersTable({
             />
           </div>
         </div>
+      )
+    }
+  )
+
+  return (
+    <div className="flex flex-col gap-6 w-full p-10">
+      {orders.map((order, index) => (
+        <OrderHistory index={index} order={order} />
       ))}
     </div>
   )
