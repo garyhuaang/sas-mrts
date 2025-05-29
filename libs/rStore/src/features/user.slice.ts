@@ -25,6 +25,9 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       state = { ...initialState }
       localStorage.removeItem('username')
+      localStorage.removeItem('filteredItems')
+      localStorage.removeItem('categories')
+      localStorage.removeItem('companies')
 
       return state
     },
