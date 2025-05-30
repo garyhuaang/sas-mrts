@@ -3,7 +3,7 @@ import { ProductsHeader, ProductsList } from '@sas-mrts/ui'
 function Products() {
   return (
     <>
-      <div className="items-center justify-center w-full">
+      <div className="w-full items-center justify-center">
         <ProductsHeader />
       </div>
       <ProductsList />

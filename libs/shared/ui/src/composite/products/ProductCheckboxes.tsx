@@ -48,7 +48,7 @@ function ProductCheckboxes({
         >
           Reset
         </Button>
-        <Separator className="bg-primary w-20" />
+        <Separator className="w-20 bg-primary" />
         {checkboxContents.map((content, index) => (
           <CheckboxContent content={content} index={index} key={index} />
         ))}

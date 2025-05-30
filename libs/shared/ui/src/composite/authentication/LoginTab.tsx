@@ -81,8 +81,8 @@ function LoginTab() {
 
   return (
     <TabsContent className="mt-0" value="login">
-      <Card className="flex-center flex-col gap-3 h-80 w-[408px] backdrop-blur-3xl">
-        <CardContent className="flex flex-col w-full gap-3 motion-preset-fade-md">
+      <Card className="flex-center h-80 w-[408px] flex-col gap-3 backdrop-blur-3xl">
+        <CardContent className="motion-preset-fade-md flex w-full flex-col gap-3">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleLogin)}>
               <FormInput
@@ -99,9 +99,9 @@ function LoginTab() {
                 placeholder="password"
                 type="password"
               />
-              <div className="flex gap-4 mt-10">
+              <div className="mt-10 flex gap-4">
                 {submitting ? (
-                  <Button className="w-full text-foreground button-disabled">
+                  <Button className="button-disabled w-full text-foreground">
                     <span className="flex-center">
                       <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                       Loggin in...

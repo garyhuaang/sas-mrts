@@ -19,10 +19,10 @@ const AuthHeader = function AuthHeader() {
   }
 
   return (
-    <section className="flex justify-end items-center gap-2 h-[30px] p-2 bg-background">
+    <section className="flex h-[30px] items-center justify-end gap-2 bg-background p-2">
       {localStorage.getItem('username') ? (
         <section>
-          <span className="text-primary text-sm">
+          <span className="text-sm text-primary">
             {`Hello ${localStorage.getItem('username')}!`}
             <Button onClick={handleLogout} variant="link">
               <Link viewTransition className="text-primary" to="/auth">
@@ -32,7 +32,7 @@ const AuthHeader = function AuthHeader() {
           </span>
         </section>
       ) : (
-        <Button className="text-primary text-xs" variant="link">
+        <Button className="text-xs text-primary" variant="link">
           <Link viewTransition to="/auth">
             Login/Register
           </Link>

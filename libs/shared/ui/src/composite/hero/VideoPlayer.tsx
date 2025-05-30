@@ -10,8 +10,7 @@ function VideoPlayer({
       loop
       muted
       playsInline
-      className="absolute top-0 left-0 w-full h-full object-cover opacity-0
-    [will-change:opacity]"
+      className="absolute left-0 top-0 h-full w-full object-cover opacity-0 [will-change:opacity]"
       ref={videoPlayerRef}
     />
   )

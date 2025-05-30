@@ -42,8 +42,8 @@ function Layout() {
   }, [localStorage.getItem('username')])
 
   return (
-    <section className="min-w-fit no-scrollbar">
-      <nav className="flex flex-col w-full sticky top-0 z-50">
+    <section className="no-scrollbar min-w-fit">
+      <nav className="sticky top-0 z-50 flex w-full flex-col">
         <AuthHeader />
         <NavBar
           onCartClick={() => setLoading(true)}
@@ -52,7 +52,7 @@ function Layout() {
         />
       </nav>
 
-      <section className="relative flex flex-col flex-1 no-scrollbar">
+      <section className="no-scrollbar relative flex flex-1 flex-col">
         <PageLoading loading={loading} />
         {!loading && (
           <div className="motion-preset-fade-sm">
