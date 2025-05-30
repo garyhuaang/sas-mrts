@@ -26,4 +26,4 @@ function NavBar({ routes, className, onLinkClick, onCartClick }: NavBarProps) {
   )
 }
 
-export default memo(NavBar)
+export default NavBar

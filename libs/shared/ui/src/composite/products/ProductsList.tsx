@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { Skeleton } from '../../base'
 
@@ -52,4 +52,4 @@ function ProductsList() {
   )
 }
 
-export default memo(ProductsList)
+export default ProductsList

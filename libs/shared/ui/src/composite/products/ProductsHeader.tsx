@@ -77,4 +77,4 @@ function ProductsHeader() {
   )
 }
 
-export default memo(ProductsHeader)
+export default ProductsHeader
