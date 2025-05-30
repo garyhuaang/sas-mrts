@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import { Button, Checkbox, Label, Separator } from '../../base'
 
 type ProductCheckboxesProps = {
@@ -17,23 +15,27 @@ function ProductCheckboxes({
   onClickCheckbox,
   onClickReset,
 }: ProductCheckboxesProps) {
-  const CheckboxContent = memo(
-    ({ content, index }: { content: string; index: number }) => {
-      return (
-        <div
-          className="flex gap-2"
-          key={index}
-          onClick={() => onClickCheckbox(content)}
-        >
-          <Checkbox
-            checked={checkedItems.includes(content)}
-            id={`category-${content}`}
-          />
-          <Label className="text-sm font-medium">{content}</Label>
-        </div>
-      )
-    }
-  )
+  const CheckboxContent = ({
+    content,
+    index,
+  }: {
+    content: string
+    index: number
+  }) => {
+    return (
+      <div
+        className="flex gap-2"
+        key={index}
+        onClick={() => onClickCheckbox(content)}
+      >
+        <Checkbox
+          checked={checkedItems.includes(content)}
+          id={`category-${content}`}
+        />
+        <Label className="text-sm font-medium">{content}</Label>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -56,4 +58,4 @@ function ProductCheckboxes({
   )
 }
 
-export default memo(ProductCheckboxes)
+export default ProductCheckboxes

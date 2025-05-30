@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import { Label } from '../../base'
 
 import {
@@ -11,10 +9,13 @@ import {
 import { useAppSelector } from '@sas-mrts/rStore'
 
 function ProductIndicators() {
-  const filteredItems = useAppSelector((state) => state.products)
+  const { count, order } = useAppSelector((state) => ({
+    count: state.products.filteredItems.length,
+    order: state.products.sortOrder,
+  }))
 
   const renderSortIcon = () => {
-    switch (filteredItems.sortOrder) {
+    switch (order) {
       case 'NAME_A_Z':
         return <ArrowUpDownIcon className="h-4 w-4" />
       case 'NAME_Z_A':
@@ -31,11 +32,11 @@ function ProductIndicators() {
   return (
     <div className="flex justify-between mb-6 border-box w-full border-b-2">
       <div className="flex justify-between w-full pl-2">
-        <Label className="text-sm text-foreground">{`Showing ${filteredItems.filteredItems.length} products`}</Label>
+        <Label className="text-sm text-foreground">{`Showing ${count} products`}</Label>
         {renderSortIcon()}
       </div>
     </div>
   )
 }
 
-export default memo(ProductIndicators)
+export default ProductIndicators

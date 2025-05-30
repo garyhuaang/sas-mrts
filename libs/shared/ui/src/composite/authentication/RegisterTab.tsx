@@ -20,7 +20,7 @@ import {
   usePostRegisterMutation,
 } from '@sas-mrts/rStore'
 
-const RegisterTab = React.memo(function RegisterTab() {
+function RegisterTab() {
   const { toast } = useToast()
   const [registerTrigger] = usePostRegisterMutation()
 
@@ -99,6 +99,6 @@ const RegisterTab = React.memo(function RegisterTab() {
       </Card>
     </TabsContent>
   )
-})
+}
 
 export { RegisterTab }
