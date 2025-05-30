@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 function VideoPlayer({
   videoPlayerRef,
 }: {
@@ -15,4 +17,4 @@ function VideoPlayer({
   )
 }
 
-export { VideoPlayer }
+export default memo(VideoPlayer)

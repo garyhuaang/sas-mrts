@@ -7,6 +7,7 @@ function AboutFounders() {
         <div className="h-full flex justify-center ">
           <img
             className="h-[420px] w-[390px] rounded-lg self-center"
+            loading="lazy"
             src={buisnessPartners}
           />
         </div>

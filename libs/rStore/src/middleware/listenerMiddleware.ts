@@ -12,3 +12,8 @@ export type AppStartListening = typeof startAppListening
 
 export const addAppListener = addListener.withTypes<RootState, AppDispatch>()
 export type AppAddListener = typeof addAppListener
+
+/**
+ *
+ *
+ */

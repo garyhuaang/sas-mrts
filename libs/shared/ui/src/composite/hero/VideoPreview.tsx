@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import { getVideoSrc } from './utils'
 
 type ViewPreviewProps = {
@@ -36,4 +38,4 @@ function VideoPreview({
   )
 }
 
-export { VideoPreview }
+export default memo(VideoPreview)

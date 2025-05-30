@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import NavActions from './actions/NavActions'
 import { NavLinks } from './NavLinks'
 import { NavLogo } from './NavLogo'
