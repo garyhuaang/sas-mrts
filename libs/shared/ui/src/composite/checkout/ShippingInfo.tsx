@@ -2,7 +2,7 @@ import { InputWithLabel } from '../common'
 
 function ShippingInfo() {
   return (
-    <div className="flex flex-col w-full h-full gap-4">
+    <div className="flex h-full w-full flex-col gap-4">
       <InputWithLabel label="Email Address *" />
       <div className="flex gap-4">
         <InputWithLabel label="First Name *" />

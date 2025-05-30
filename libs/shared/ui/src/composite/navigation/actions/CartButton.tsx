@@ -13,20 +13,13 @@ function CartButton({ onCartClick }: { onCartClick: () => void }) {
       {localStorage.getItem('username') && (
         <Button
           asChild
-          className="relative p-3 cursor-pointer"
+          className="relative cursor-pointer p-3"
           onClick={() => onCartClick()}
           variant="outline"
         >
           <Link className="h-12 w-12" to="/cart">
             <CartIcon />
-            <div
-              className="
-              absolute -top-3 -right-3
-              h-6 w-6 pb-0.5
-            bg-primary rounded-full
-              text-secondary text-sm
-              flex items-center justify-center"
-            >
+            <div className="absolute -right-3 -top-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary pb-0.5 text-sm text-secondary">
               <span className="absolute top-0.5">{cartItems.length}</span>
             </div>
           </Link>

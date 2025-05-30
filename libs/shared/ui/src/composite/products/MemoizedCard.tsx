@@ -21,7 +21,7 @@ const MemoizedCard = memo(
     onAddToCart: (product: Product) => void
   }) => {
     return (
-      <Card className="max-w-[333px] min-w-9 min-h-100 motion-preset-fade-sm shadow-sm">
+      <Card className="min-h-100 motion-preset-fade-sm min-w-9 max-w-[333px] shadow-sm">
         <CardContent className="p-0">
           <img
             alt={product.attributes.title}

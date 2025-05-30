@@ -12,15 +12,15 @@ import { nonUserShopRoutes } from '../routes'
 
 function Auth() {
   return (
-    <div className="flex-center flex-col min-h-screen w-screen">
+    <div className="flex-center min-h-screen w-screen flex-col">
       <NavBar className="absolute top-0 w-full" routes={nonUserShopRoutes} />
 
       <Tabs
-        className="w-[408px] flex-center flex-col gap-5"
+        className="flex-center w-[408px] flex-col gap-5"
         defaultValue="login"
         id="tabs"
       >
-        <h1 className="font-bold text-3xl self-center leading-1">Welcome</h1>
+        <h1 className="leading-1 self-center text-3xl font-bold">Welcome</h1>
         <span className="text-gray-500 tracking-tight">
           Sign into your account or create a new one
         </span>

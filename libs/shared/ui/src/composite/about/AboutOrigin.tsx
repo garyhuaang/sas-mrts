@@ -4,10 +4,10 @@ function AboutOrigin() {
   return (
     <div className="flex justify-center">
       <div className="section-bg-secondary">
-        <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-4 place-items-center">
-          <h2 className="md:text-[2.25em] font-bold p-10">
+        <div className="grid grid-cols-1 place-items-center gap-4 p-6 md:grid-cols-2">
+          <h2 className="p-10 font-bold md:text-[2.25em]">
             Where It All Began
-            <section className="text-muted-foreground md:text-xl relaxed font-normal">
+            <section className="relaxed font-normal text-muted-foreground md:text-xl">
               <p>
                 Stone & Sable was founded in 2010 by designers Emma Stone and
                 Michael Sable, who shared a vision for creating furniture that
@@ -21,9 +21,9 @@ function AboutOrigin() {
               </p>
             </section>
           </h2>
-          <div className="h-full flex justify-center ">
+          <div className="flex h-full justify-center">
             <img
-              className="h-[400px] w-[491px] rounded-lg self-center"
+              className="h-[400px] w-[491px] self-center rounded-lg"
               loading="lazy"
               src={hero1}
             />

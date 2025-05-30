@@ -60,8 +60,8 @@ function RegisterTab() {
 
   return (
     <TabsContent className="mt-0" value="register">
-      <Card className="flex-center flex-col gap-3 h-80 w-[408px] backdrop-blur-3xl">
-        <CardContent className="flex flex-col w-full gap-3 pt-4 motion-preset-fade-md">
+      <Card className="flex-center h-80 w-[408px] flex-col gap-3 backdrop-blur-3xl">
+        <CardContent className="motion-preset-fade-md flex w-full flex-col gap-3 pt-4">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleRegister)}>
               <FormInput
@@ -85,7 +85,7 @@ function RegisterTab() {
                 placeholder="password"
                 type="password"
               />
-              <div className="flex gap-4 mt-8">
+              <div className="mt-8 flex gap-4">
                 <Button
                   className={`w-full ${hasEmptyFields && 'button-disabled'}`}
                   type="submit"
