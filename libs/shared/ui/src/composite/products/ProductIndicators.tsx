@@ -9,10 +9,8 @@ import {
 import { useAppSelector } from '@sas-mrts/rStore'
 
 function ProductIndicators() {
-  const { count, order } = useAppSelector((state) => ({
-    count: state.products.filteredItems.length,
-    order: state.products.sortOrder,
-  }))
+  const count = useAppSelector((state) => state.products.filteredItems.length)
+  const order = useAppSelector((state) => state.products.sortOrder)
 
   const renderSortIcon = () => {
     switch (order) {

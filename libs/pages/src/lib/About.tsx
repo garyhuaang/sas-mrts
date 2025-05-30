@@ -10,7 +10,7 @@ import {
 
 function About() {
   return (
-    <div className="flex flex-col text-primary">
+    <div className="flex flex-col text-primary motion-preset-fade-md">
       <AboutHero />
       <AboutOrigin />
       <AboutValues />

@@ -2,7 +2,7 @@ import { processes, woodWork } from '@sas-mrts/common'
 
 function AboutProcess() {
   return (
-    <div className="flex justify-center section-bg-primary">
+    <section className="flex justify-center section-bg-primary">
       <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-4 place-items-center">
         <h2 className="md:text-[2.25em] font-bold p-10">
           Our Process
@@ -41,11 +41,12 @@ function AboutProcess() {
         <div className="h-full flex justify-center ">
           <img
             className="h-[400px] w-[491px] rounded-lg self-center"
+            loading="lazy"
             src={woodWork}
           />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

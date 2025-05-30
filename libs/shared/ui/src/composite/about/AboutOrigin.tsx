@@ -24,6 +24,7 @@ function AboutOrigin() {
           <div className="h-full flex justify-center ">
             <img
               className="h-[400px] w-[491px] rounded-lg self-center"
+              loading="lazy"
               src={hero1}
             />
           </div>
