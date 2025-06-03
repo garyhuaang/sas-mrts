@@ -42,16 +42,19 @@ function Payment() {
   }
 
   return (
-    <div className="md:p-15 motion-preset-fade-sm flex h-screen w-screen flex-col items-center justify-center overflow-y-auto p-10">
-      <div className="w-1/2 rounded-md border border-secondary bg-primary-foreground p-10">
-        <form className="flex w-full flex-col gap-4" onSubmit={handleSubmit}>
+    <div
+      className="flex flex-col justify-center items-center w-screen h-screen
+      overflow-y-auto p-10 md:p-15 motion-preset-fade-sm"
+    >
+      <div className="w-1/2 bg-primary-foreground border border-secondary rounded-md p-10">
+        <form className="flex flex-col w-full gap-4" onSubmit={handleSubmit}>
           <EmailInput
             email={email}
             error={emailError}
             setEmail={setEmail}
             setError={setEmailError}
           />
-          <Label className="text-lg font-medium">Payment</Label>
+          <Label className="font-medium text-lg">Payment</Label>
           <PaymentElement id="payment-element" />
           <Button disabled={isLoading} id="submit">
             {isLoading ? (
@@ -66,7 +69,7 @@ function Payment() {
 
           {message && <div id="payment-message">{message}</div>}
 
-          <Button className="w-/14 self-start" variant="outline">
+          <Button className="self-start w-/14" variant="outline">
             <Link viewTransition className="flex-center gap-2" to="/cart">
               <ChevronLeftIcon className="h-6 w-6" />
               Cart

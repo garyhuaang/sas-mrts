@@ -14,7 +14,8 @@ type NavBarProps = {
 function NavBar({ routes, className, onLinkClick, onCartClick }: NavBarProps) {
   return (
     <div
-      className={`flex h-20 items-center justify-between bg-muted px-8 py-4 ${className}`}
+      className={`flex h-20 py-4 px-8 bg-muted justify-between items-center
+         ${className}`}
     >
       <NavLogo />
       <NavLinks onLinkClick={onLinkClick} routes={routes} />

@@ -7,7 +7,7 @@ function NavActions({
   onCartClick?: () => void
 }) {
   return (
-    <div className="m-0 flex gap-4 p-0">
+    <div className="flex gap-4 m-0 p-0">
       <ThemeToggle />
       {localStorage.getItem('username') && (
         <CartButton onCartClick={onCartClick} />

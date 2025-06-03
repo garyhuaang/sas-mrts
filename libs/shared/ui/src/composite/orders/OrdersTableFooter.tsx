@@ -13,16 +13,16 @@ type TableFooterProps = {
 
 function OrdersTableFooter({ address, date, total }: TableFooterProps) {
   return (
-    <div className="flex w-full justify-between">
-      <div className="flex flex-col space-y-2 p-6">
+    <div className="flex justify-between w-full">
+      <div className="flex flex-col p-6 space-y-2">
         <Label>{`Shipped to: ${address}`}</Label>
         <Label>{`Delivered on: ${date}`}</Label>
       </div>
       <div className="flex flex-col gap-4">
-        <Label className="flex self-end text-2xl font-extrabold">
+        <Label className="flex self-end font-extrabold text-2xl">
           {`Total: ${total}`}
         </Label>
-        <div className="flex gap-4">
+        <div className="flex gap-4 ">
           <Button>
             <Link viewTransition to="/products">
               Buy Again

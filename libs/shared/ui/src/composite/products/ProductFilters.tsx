@@ -33,8 +33,8 @@ function ProductFilters() {
   }
 
   return (
-    <div className="flex min-h-full flex-col gap-8">
-      <Label className="w-1/3 text-lg font-semibold">Filters</Label>
+    <div className="flex flex-col min-h-full gap-8">
+      <Label className="font-semibold text-lg w-1/3">Filters</Label>
       <div className="flex flex-col space-y-4">
         <Label className="text-md font-medium">{`Price Range - ${numToUSD(productsState.priceRange)}`}</Label>
         <Slider
@@ -67,7 +67,7 @@ function ProductFilters() {
           checked={productsState.freeShipping}
           onClick={() => dispatch(setFreeShipping())}
         />
-        <Label className="flex items-center gap-2 text-xs font-medium">
+        <Label className="flex items-center text-xs font-medium gap-2">
           <TruckIcon /> Free shipping only
         </Label>
       </div>

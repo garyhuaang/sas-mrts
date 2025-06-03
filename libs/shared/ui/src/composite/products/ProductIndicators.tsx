@@ -28,8 +28,8 @@ function ProductIndicators() {
   }
 
   return (
-    <div className="border-box mb-6 flex w-full justify-between border-b-2">
-      <div className="flex w-full justify-between pl-2">
+    <div className="flex justify-between mb-6 border-box w-full border-b-2">
+      <div className="flex justify-between w-full pl-2">
         <Label className="text-sm text-foreground">{`Showing ${count} products`}</Label>
         {renderSortIcon()}
       </div>

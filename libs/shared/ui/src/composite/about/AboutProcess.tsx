@@ -2,11 +2,11 @@ import { processes, woodWork } from '@sas-mrts/common'
 
 function AboutProcess() {
   return (
-    <section className="section-bg-primary flex justify-center">
-      <div className="grid grid-cols-1 place-items-center gap-4 p-6 md:grid-cols-2">
-        <h2 className="p-10 font-bold md:text-[2.25em]">
+    <section className="flex justify-center section-bg-primary">
+      <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-4 place-items-center">
+        <h2 className="md:text-[2.25em] font-bold p-10">
           Our Process
-          <section className="relaxed mb-4 font-normal text-muted-foreground md:text-xl">
+          <section className="text-muted-foreground md:text-xl relaxed font-normal mb-4">
             <p>
               Every Stone & Sable piece begins with a sketch and ends with a
               carefully crafted object that will become part of your home's
@@ -21,12 +21,16 @@ function AboutProcess() {
           </section>
           {processes.map((process, index) => (
             <section className="flex gap-4" key={index}>
-              <div className="flex h-[25px] min-w-[25px] max-w-[25px] items-center justify-center rounded-full bg-muted-foreground text-sm text-secondary">
+              <div
+                className="flex bg-muted-foreground rounded-full h-[25px] max-w-[25px] min-w-[25px]
+                  items-center justify-center text-sm text-secondary
+                "
+              >
                 {index + 1}
               </div>
               <div className="flex flex-col">
-                <h3 className="leading-none md:text-lg">{process.name}</h3>
-                <p className="mb-2 font-light leading-6 md:text-base">
+                <h3 className="md:text-lg leading-none">{process.name}</h3>
+                <p className="md:text-base font-light leading-6 mb-2">
                   {process.description}
                 </p>
               </div>
@@ -34,9 +38,9 @@ function AboutProcess() {
           ))}
         </h2>
 
-        <div className="flex h-full justify-center">
+        <div className="h-full flex justify-center ">
           <img
-            className="h-[400px] w-[491px] self-center rounded-lg"
+            className="h-[400px] w-[491px] rounded-lg self-center"
             loading="lazy"
             src={woodWork}
           />

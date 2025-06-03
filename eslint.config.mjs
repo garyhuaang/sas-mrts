@@ -116,12 +116,12 @@ export default [
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/ban-ts-ignore': 'off',
-      // 'max-len': [
-      //   'error',
-      //   {
-      //     code: 120,
-      //   },
-      // ],
+      'max-len': [
+        'error',
+        {
+          code: 120,
+        },
+      ],
       'consistent-return': 'off',
       'array-callback-return': 'warn',
       'import/prefer-default-export': 'off',

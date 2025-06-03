@@ -14,9 +14,9 @@ function InputWithLabel({
   className,
 }: InputWithLabelProps): React.ReactNode {
   return (
-    <div className={`flex w-full flex-col gap-2 ${className}}`}>
+    <div className={`flex flex-col gap-2 w-full ${className}}`}>
       <Label>{label}</Label>
-      <Input className="border-primary shadow-none" placeholder={placeholder} />
+      <Input className="shadow-none border-primary" placeholder={placeholder} />
     </div>
   )
 }

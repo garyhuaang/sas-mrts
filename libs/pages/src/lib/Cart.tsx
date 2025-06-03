@@ -10,9 +10,9 @@ function Cart() {
   const state = useAppSelector((state) => state.cart)
 
   return state.cartItems.length > 0 ? (
-    <div className="flex w-screen flex-col overflow-y-auto p-10 md:p-24">
-      <div className="flex h-full w-full flex-col justify-center">
-        <header className="mb-8 flex w-2/3 flex-col gap-2 self-center">
+    <div className="flex flex-col w-screen overflow-y-auto p-10 md:p-24">
+      <div className="flex flex-col w-full h-full justify-center">
+        <header className="flex flex-col self-center gap-2 w-2/3 mb-8">
           <h1 className="text-5xl font-bold tracking-tight">Shopping Cart</h1>
           <Label className="text-sm text-muted-foreground">
             {`${state.cartItems.length} items in your cart`}
@@ -29,13 +29,13 @@ function Cart() {
       </div>
     </div>
   ) : (
-    <div className="flex-center reduced-viewport motion-preset-fade-lg w-full">
-      <div className="table-styles flex max-w-fit flex-col self-center bg-primary">
+    <div className="flex-center reduced-viewport w-full motion-preset-fade-lg">
+      <div className="flex flex-col table-styles bg-primary self-center max-w-fit">
         <h1 className="text-3xl">Oops, looks like your cart is empty!</h1>
         <div className="flex self-center">
           <Button
             asChild
-            className="hover:text-white mt-3 hover:bg-secondary"
+            className="mt-3 hover:bg-secondary hover:text-white"
             variant="outline"
           >
             <Link viewTransition className="flex" to="/products">

@@ -12,12 +12,12 @@ function OrderSummary() {
 
   return (
     <div className="flex min-h-[200px] w-full">
-      <div className="flex w-full flex-col gap-6">
-        <h4 className="text-2xl font-bold">Order Summary</h4>
+      <div className="flex flex-col w-full gap-6">
+        <h4 className="font-bold text-2xl">Order Summary</h4>
         <OrderDetails />
         <div className="flex justify-between">
-          <Label className="text-md font-bold">Total</Label>
-          <Label className="text-md font-bold">
+          <Label className="font-bold text-md">Total</Label>
+          <Label className="font-bold text-md">
             {numToUSD(cartSelector.subTotal * (cartSelector.tax + 1))}
           </Label>
         </div>
@@ -28,7 +28,7 @@ function OrderSummary() {
           </Link>
         </Button>
         {cartSelector.shipping.false === 0 && (
-          <div className="flex-center h-10 rounded-lg bg-secondary">
+          <div className="flex-center  bg-secondary rounded-lg h-10">
             <span className="flex gap-4">
               <TruckIcon className="h-6 w-6" />
               <Label className="flex self-center">

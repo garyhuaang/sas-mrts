@@ -36,7 +36,7 @@ function ProductCards() {
   const visibleCards = useMemo(() => {
     return filteredItems.map((product: Product) => (
       <Card
-        className="min-h-100 motion-preset-fade-lg min-w-9 max-w-[333px] shadow-sm"
+        className="max-w-[333px] min-w-9 min-h-100 motion-preset-fade-lg shadow-sm"
         key={product.id}
       >
         <CardContent className="p-0">

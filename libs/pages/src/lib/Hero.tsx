@@ -110,9 +110,9 @@ function Hero() {
   }
 
   return (
-    <div className="relative flex h-[calc(100vh-110px)] flex-col">
+    <div className="h-[calc(100vh-110px)] flex flex-col relative">
       <div
-        className="motion-preset-fade-lg relative flex h-screen items-center justify-center overflow-hidden"
+        className="h-screen flex items-center justify-center relative overflow-hidden motion-preset-fade-lg"
         id="video-frame"
       >
         <VideoPlayerA videoPlayerRef={videoPlayerARef} />
@@ -122,7 +122,7 @@ function Hero() {
           nextVideoIndex={visualPreviewIndex}
         />
       </div>
-      <h1 className="absolute bottom-5 right-5 z-40 text-4xl text-secondary">
+      <h1 className="absolute bottom-5 right-5 text-secondary text-4xl z-40">
         STONE & SABLE
       </h1>
     </div>

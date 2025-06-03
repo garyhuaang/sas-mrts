@@ -60,7 +60,7 @@ function Checkout() {
   }, [theme])
 
   return (
-    <div className="flex h-full w-full flex-col justify-center">
+    <div className="flex flex-col w-full h-full justify-center">
       {cartState.cartItems.length > 0 ? (
         <CheckoutProvider
           options={{
@@ -72,7 +72,7 @@ function Checkout() {
           <Payment />
         </CheckoutProvider>
       ) : (
-        <div className="flex h-full w-full flex-col justify-center">
+        <div className="flex flex-col w-full h-full justify-center">
           Oops, seems like your cart was empty.
         </div>
       )}

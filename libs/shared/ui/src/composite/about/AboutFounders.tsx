@@ -2,18 +2,18 @@ import { buisnessPartners } from '@sas-mrts/common'
 
 function AboutFounders() {
   return (
-    <div className="section-bg-secondary flex justify-center">
-      <div className="grid grid-cols-1 place-items-center p-6 md:grid-cols-2">
-        <div className="flex h-full justify-center">
+    <div className="flex justify-center section-bg-secondary ">
+      <div className="grid grid-cols-1 md:grid-cols-2 p-6 place-items-center">
+        <div className="h-full flex justify-center ">
           <img
-            className="h-[420px] w-[390px] self-center rounded-lg"
+            className="h-[420px] w-[390px] rounded-lg self-center"
             loading="lazy"
             src={buisnessPartners}
           />
         </div>
-        <h2 className="p-10 font-bold md:text-[2.25em]">
+        <h2 className="md:text-[2.25em] font-bold p-10">
           Meet Our Founders
-          <section className="relaxed font-normal text-muted-foreground md:text-xl">
+          <section className="text-muted-foreground md:text-xl relaxed font-normal">
             <p>
               Stone & Sable was founded in 2010 by designers Emma Stone and
               Michael Sable, who shared a vision for creating furniture that

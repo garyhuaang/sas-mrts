@@ -28,15 +28,15 @@ function ProductsHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div className="flex w-full flex-col space-y-4 p-10 pb-5">
+    <div className="flex flex-col space-y-4 w-full p-10 pb-5">
       <h1 className="text-5xl font-bold tracking-tight">Products</h1>
-      <div className="flex w-full flex-col justify-between gap-4 sm:flex-row">
-        <div className="flex-center border-box relative h-full w-96">
-          <span className="text-gray-400 absolute left-3 top-1/2 -translate-y-1/2">
+      <div className="flex flex-col sm:flex-row justify-between gap-4 w-full">
+        <div className="flex-center relative w-96 border-box h-full">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
             <SearchIcon className="h-4 w-4" />
           </span>
           <Input
-            className="h-12 pl-9"
+            className="pl-9 h-12"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               dispatch(filterByName(e.target.value))
             }
@@ -47,7 +47,7 @@ function ProductsHeader() {
         <DropdownMenu onOpenChange={setIsMenuOpen} open={isMenuOpen}>
           <DropdownMenuTrigger asChild className="relative">
             <Button
-              className="flex-center w-22 h-10 gap-4 pb-6 pl-14 pr-14 pt-6"
+              className="flex-center gap-4 pt-6 pb-6 pr-14 pl-14 h-10 w-22"
               variant="outline"
             >
               <Label className="text-medium">Sort</Label>
@@ -59,7 +59,7 @@ function ProductsHeader() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="border-box h-37 -left-35 absolute w-[200px] overflow-hidden p-2"
+            className="p-2 border-box w-[200px] h-37 overflow-hidden absolute -left-35"
             sideOffset={6}
           >
             {productSortOptions.map((option, index) => (

@@ -6,12 +6,18 @@ function FadeWordsIn({
   highlightWords?: string[]
 }) {
   return (
-    <p className="flex flex-wrap items-center justify-center leading-relaxed tracking-wide">
+    <p className="flex flex-wrap items-center justify-center tracking-wide leading-relaxed">
       {words.split(' ').map((word, index) => (
         <span
-          className={`motion-preset-blur-up-lg mr-2 ${
-            highlightWords?.includes(word) ? 'font-bold' : 'font-extralight'
-          } `}
+          className={`
+                mr-2
+                motion-preset-blur-up-lg
+                ${
+                  highlightWords?.includes(word)
+                    ? 'font-bold'
+                    : 'font-extralight'
+                }
+                `}
           key={index}
           style={{ animationDuration: `${index * 0.1}s` }}
         >
